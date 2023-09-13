@@ -1,7 +1,15 @@
+using LimpiezaProyect.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<LimpiezaContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("LimpiezaContext"));
+});
 
 var app = builder.Build();
 

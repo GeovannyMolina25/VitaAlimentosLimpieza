@@ -9,49 +9,49 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = LimpiezaProyect
 build_property.RootNamespace = LimpiezaProyect
-build_property.ProjectDir = C:\Users\Nelson\Desktop\Empresa\LimpiezaProyect\LimpiezaProyect\
+build_property.ProjectDir = C:\Empresa\LimpiezaProyect\LimpiezaProyect\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Nelson\Desktop\Empresa\LimpiezaProyect\LimpiezaProyect
+build_property.MSBuildProjectDirectory = C:\Empresa\LimpiezaProyect\LimpiezaProyect
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Nelson/Desktop/Empresa/LimpiezaProyect/LimpiezaProyect/Views/Home/Index.cshtml]
+[C:/Empresa/LimpiezaProyect/LimpiezaProyect/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nelson/Desktop/Empresa/LimpiezaProyect/LimpiezaProyect/Views/Home/Privacy.cshtml]
+[C:/Empresa/LimpiezaProyect/LimpiezaProyect/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nelson/Desktop/Empresa/LimpiezaProyect/LimpiezaProyect/Views/Shared/Error.cshtml]
+[C:/Empresa/LimpiezaProyect/LimpiezaProyect/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nelson/Desktop/Empresa/LimpiezaProyect/LimpiezaProyect/Views/Shared/_Footer.cshtml]
+[C:/Empresa/LimpiezaProyect/LimpiezaProyect/Views/Shared/_Footer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nelson/Desktop/Empresa/LimpiezaProyect/LimpiezaProyect/Views/Shared/_Navbar.cshtml]
+[C:/Empresa/LimpiezaProyect/LimpiezaProyect/Views/Shared/_Navbar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZiYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nelson/Desktop/Empresa/LimpiezaProyect/LimpiezaProyect/Views/Shared/_Sidebar.cshtml]
+[C:/Empresa/LimpiezaProyect/LimpiezaProyect/Views/Shared/_Sidebar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaWRlYmFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nelson/Desktop/Empresa/LimpiezaProyect/LimpiezaProyect/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Empresa/LimpiezaProyect/LimpiezaProyect/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nelson/Desktop/Empresa/LimpiezaProyect/LimpiezaProyect/Views/_ViewImports.cshtml]
+[C:/Empresa/LimpiezaProyect/LimpiezaProyect/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nelson/Desktop/Empresa/LimpiezaProyect/LimpiezaProyect/Views/_ViewStart.cshtml]
+[C:/Empresa/LimpiezaProyect/LimpiezaProyect/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nelson/Desktop/Empresa/LimpiezaProyect/LimpiezaProyect/Views/Shared/_Layout.cshtml]
+[C:/Empresa/LimpiezaProyect/LimpiezaProyect/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-o0d5tpze2g

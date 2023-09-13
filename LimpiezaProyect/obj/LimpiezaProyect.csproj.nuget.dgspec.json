@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nelson\\Desktop\\Empresa\\LimpiezaProyect\\LimpiezaProyect\\LimpiezaProyect.csproj": {}
+    "C:\\Empresa\\LimpiezaProyect\\LimpiezaProyect\\LimpiezaProyect.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nelson\\Desktop\\Empresa\\LimpiezaProyect\\LimpiezaProyect\\LimpiezaProyect.csproj": {
+    "C:\\Empresa\\LimpiezaProyect\\LimpiezaProyect\\LimpiezaProyect.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nelson\\Desktop\\Empresa\\LimpiezaProyect\\LimpiezaProyect\\LimpiezaProyect.csproj",
+        "projectUniqueName": "C:\\Empresa\\LimpiezaProyect\\LimpiezaProyect\\LimpiezaProyect.csproj",
         "projectName": "LimpiezaProyect",
-        "projectPath": "C:\\Users\\Nelson\\Desktop\\Empresa\\LimpiezaProyect\\LimpiezaProyect\\LimpiezaProyect.csproj",
+        "projectPath": "C:\\Empresa\\LimpiezaProyect\\LimpiezaProyect\\LimpiezaProyect.csproj",
         "packagesPath": "C:\\Users\\Nelson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nelson\\Desktop\\Empresa\\LimpiezaProyect\\LimpiezaProyect\\obj\\",
+        "outputPath": "C:\\Empresa\\LimpiezaProyect\\LimpiezaProyect\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,6 +43,18 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
