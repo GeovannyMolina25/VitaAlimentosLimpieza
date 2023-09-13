@@ -1,6 +1,7 @@
 ﻿using LimpiezaProyect.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace LimpiezaProyect.Controllers
 {
@@ -12,9 +13,25 @@ namespace LimpiezaProyect.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        /*public async Task<IActionResult> Index()
         {
+
+            var LimpFormularios = _context.LimpFormularios.Select(x => x.CodArea == "PastP2").ToList();
+
             return View(await _context.LimpFormularios.ToListAsync());
         }
+        */
+        
+        public async Task<IActionResult> Index()
+        {
+            var LimpFormularios = _context.LimpFormularios.Where(x => x.CodArea == "PastP2").ToList();
+
+            return View(LimpFormularios);
+        }
+        
+
+
+
+
     }
 }
