@@ -11,6 +11,7 @@ namespace LimpiezaProyect.Models
         }
 
         public string CodArea { get; set; } = null!;
+        
         public int CodRegistro { get; set; }
         public string? Descripcion { get; set; }
         public string CodEmpresa { get; set; } = null!;

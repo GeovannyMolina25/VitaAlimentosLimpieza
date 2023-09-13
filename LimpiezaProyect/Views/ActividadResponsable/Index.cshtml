@@ -1,0 +1,58 @@
+﻿@model List<LimpFormularioActividad>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Tabla de formularios</h3>
+
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>Actividades</td>
+                            <td>Actividad realizada</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var actividade in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(m=>actividade.Decsripcion)</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary">Ver</button>
+                                </td>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                                        <label class="form-check-label" for="flexCheckIndeterminate">
+                                            Realizado
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                         
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+
+</div>

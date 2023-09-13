@@ -10,13 +10,22 @@
     <link rel="stylesheet" href="~/adminlte/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="~/adminlte/dist/css/adminlte.min.css">
+    <!-- jsGrid -->
+    <link rel="stylesheet" href="~/adminlte/plugins/jsgrid/jsgrid.min.css">
+    <link rel="stylesheet" href="~/adminlte/plugins/jsgrid/jsgrid-theme.min.css">
     @RenderSection("Styles",required:false)
 </head>
 <body>
     <partial name="_Navbar"/>
 
     <partial name="_Sidebar" />
-    @RenderBody()
+    <div class="content-wrapper">
+        <div class="content">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
     <partial name="_Footer" />
 
     <!-- jQuery -->
@@ -25,6 +34,9 @@
     <script src="~/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/adminlte/dist/js/adminlte.min.js"></script>
+    <!-- jsGrid -->
+    <script src="~/adminlte/plugins/jsgrid/demos/db.js"></script>
+    <script src="~/adminlte/plugins/jsgrid/jsgrid.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

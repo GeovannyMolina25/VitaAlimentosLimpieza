@@ -1,0 +1,36 @@
+﻿@model List<LimpArea>
+
+    <div class="content">
+    <h3>Bienvenido, Nelson </h3>
+    
+    <h5 class="mb-2">Tipos de formularios</h5>
+    <div class="row">
+        @foreach (var areas in Model)
+            {
+        <div class="col-md-4">
+            
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">Areas</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.card-tools -->
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                        <a href="#">@Html.DisplayFor(m=>areas.Descripcion)</a>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            
+        </div>
+        }
+    </div>
+
+    
+    </div>
