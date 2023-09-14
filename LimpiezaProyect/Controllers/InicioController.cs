@@ -18,5 +18,7 @@ namespace LimpiezaProyect.Controllers
 
             return View(await _context.LimpAreas.ToListAsync());
         }
+        
+    
     }
 }

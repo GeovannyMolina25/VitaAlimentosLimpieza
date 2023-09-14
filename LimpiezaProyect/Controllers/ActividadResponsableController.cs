@@ -12,11 +12,11 @@ namespace LimpiezaProyect.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index( string CodFormulario)
         {
+            var actividadFormulario = _context.LimpFormularioActividads.Where(m=>m.CodFormulario == CodFormulario).ToList();
 
-
-            return View(await _context.LimpFormularioActividads.ToListAsync());
+            return View(actividadFormulario);
         }
     }
 }

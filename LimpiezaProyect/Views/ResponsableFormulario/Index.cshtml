@@ -31,17 +31,21 @@
                     <tbody>
                         @foreach (var formularios in Model)
                         {
-
+                            <form method="post" action="@Url.Action("index","ActividadResponsable")">
+                                <input type="hidden" name="CodFormulario" value="@formularios.CodFormulario" />
                             <tr>
                                 <td>@Html.DisplayFor(m=>formularios.Descripcion)</td>
                                 <td>@Html.DisplayFor(m=>formularios.CodFormulario)</td>
                                 <td>
 
-                                    <button type="button" class="btn btn-primary">Ver</button>
+                                    <button type="submit" class="btn btn-primary">Ver</button>
                                     <button type="button" class="btn btn-danger">Eliminar</button>
                                     <button type="button" class="btn btn-info">Actualizar</button>
                                 </td>
                             </tr>
+
+                            </form>
+                            
                         }
                     </tbody>
                 </table>

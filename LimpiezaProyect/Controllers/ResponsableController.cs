@@ -22,15 +22,13 @@ namespace LimpiezaProyect.Controllers
         }
         */
         
-        public async Task<IActionResult> Index()
+        
+        public async Task<IActionResult> Index(string codArea)
         {
-            var LimpFormularios = _context.LimpFormularios.Where(x => x.CodArea == "PastP2").ToList();
-
+            // Ahora puedes usar el valor de codArea en tu consulta
+            var LimpFormularios = _context.LimpFormularios.Where(x => x.CodArea == codArea).ToList();
             return View(LimpFormularios);
         }
-        
-
-
 
 
     }

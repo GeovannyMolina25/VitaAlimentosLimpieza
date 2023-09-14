@@ -12,9 +12,10 @@ namespace LimpiezaProyect.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string CodFormulario)
         {
-            var LimpFormularios = _context.LimpFormularios.Where(x=>x.CodFormulario == "T-PRO-RE-023").ToList();
+            var LimpFormularios = _context.LimpFormularios.Where(x=>x.CodFormulario == CodFormulario).ToList();
+
             return View(LimpFormularios);
         }
     }
