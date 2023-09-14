@@ -17,6 +17,7 @@ namespace LimpiezaProyect.Models
         public DateTime? FechaHoraCreacion { get; set; }
         public string? ActualixzadoPor { get; set; }
         public DateTime? FechaHoraActualizacion { get; set; }
+
         public int CodRegistro { get; set; }
         public string CodFormulario { get; set; } = null!;
         public int? LimpConfFormulario { get; set; }
