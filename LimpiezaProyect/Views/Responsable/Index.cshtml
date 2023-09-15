@@ -37,18 +37,24 @@
                                     <form method="post" action="@Url.Action("Index","ResponsableFormulario")">
                                         <input type="hidden" name="CodFormulario" value="@formularios.CodFormulario"/>
                                         <button type="submit" class="btn btn-primary">Ver</button>
+                                        
                                     </form>
                                     
                                 </td>
                             </tr>
                         }
                         
+                        
                     </tbody>
                 </table>
+                
             </div>
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
+        <div class="text-center mt-3">
+            <button type="button" class="btn btn-danger">Añadir</button>
+        </div>
     </div>
     
 </div>
