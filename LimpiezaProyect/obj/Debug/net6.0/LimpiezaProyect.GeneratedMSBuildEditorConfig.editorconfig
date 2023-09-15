@@ -24,8 +24,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/ProyectoLimpieza/VitaAlimentosLimpieza/LimpiezaProyect/Views/Home/Menu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNZW51LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/ProyectoLimpieza/VitaAlimentosLimpieza/LimpiezaProyect/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/ProyectoLimpieza/VitaAlimentosLimpieza/LimpiezaProyect/Views/Inicio/CreateArea.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5pY2lvXENyZWF0ZUFyZWEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/ProyectoLimpieza/VitaAlimentosLimpieza/LimpiezaProyect/Views/Inicio/Index.cshtml]

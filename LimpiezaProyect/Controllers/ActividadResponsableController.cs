@@ -18,6 +18,7 @@ namespace LimpiezaProyect.Controllers
 
             return View(actividadFormulario);
         }
+
         /*
         [HttpPost]
         [ValidateAntiForgeryToken]

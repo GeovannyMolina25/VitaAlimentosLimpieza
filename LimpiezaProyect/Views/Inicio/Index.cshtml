@@ -11,24 +11,36 @@
                 <div class="card card-success">
                     <div class="card-header">
                         <h3 class="card-title">Areas</h3>
+                        
                         <div class="card-tools">
+                            <button href="#" type="button" class="btn btn-tool">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-trash"></i>
+                                </a>
+                            </button>
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
+                            
+                            
                         </div>
                     </div>
                     <div class="card-body">
                         <form method="post" action="@Url.Action("Index","Responsable")">
                             <input type="hidden" name="codArea" value="@area.CodArea" />
                             <button type="submit" style="border: none; background: none; padding: 0; margin: 0; cursor: pointer; font: inherit;">@Html.DisplayFor(m => area.Descripcion)</button>
+                            
                         </form>
                     </div>
                 </div>
             </div>
         }
+        
     </div>
-
-    <!-- Mostrar la fecha y hora actual -->
+    <div class="text-center mt-3">
+        <button type="button" class="btn btn-danger"><a asp-action="CreateArea" style="None">Añadir</a></button>
+        
+    </div>
     
 </div>
 <script>
