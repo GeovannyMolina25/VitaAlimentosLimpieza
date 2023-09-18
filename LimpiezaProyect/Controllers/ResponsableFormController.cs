@@ -3,6 +3,8 @@ using LimpiezaProyect.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace LimpiezaProyect.Controllers
 {
@@ -15,11 +17,20 @@ namespace LimpiezaProyect.Controllers
             _context = context;
         }
 
+        private async Task<List<LimpRegistro>> ObtenerRegistros(string CodFormulario)
+        {
+            return await _context.LimpRegistros.Where(x => x.CodFormulario == CodFormulario).ToListAsync();
+        }
+
         public async Task<IActionResult> Index(string CodFormulario)
         {
-            var codResgistros = _context.LimpRegistros.Where(x => x.CodFormulario == CodFormulario).ToList();
+            // Utiliza el método compartido para obtener los registros basados en CodFormulario
+            var codResgistros = await ObtenerRegistros(CodFormulario);
+
+            // Envía los datos a la vista
             return View(codResgistros);
         }
+
         public IActionResult CreateForm()
         {
             ViewData["Registros"] = new SelectList(_context.LimpRegistros, "CodEmpresa", "CodEmpresa");
@@ -27,25 +38,19 @@ namespace LimpiezaProyect.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken] //Evitar informacion de afuera
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateForm(FormViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var registros = new LimpRegistro()
                 {
-                    
                     CodArea = "ADIP",
                     CodEmpresa = "PQSA",
-                    
-                    CreadoPor="Gmolina",
+                    CreadoPor = "Gmolina",
                     Turno = "Mañana",
-                    
-                    
-                    
                     CodFormulario = "T-PRO-RE-025",
                     Estado = "1",
-                    
                 };
                 _context.Add(registros);
                 await _context.SaveChangesAsync();
@@ -56,5 +61,30 @@ namespace LimpiezaProyect.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> EliminarRegistro(string CodFormulario)
+        {
+            if (string.IsNullOrEmpty(CodFormulario))
+            {
+                return NotFound();
+            }
+
+            var registroAEliminar = await _context.LimpRegistros.FirstOrDefaultAsync(x => x.CodFormulario == CodFormulario);
+
+            if (registroAEliminar == null)
+            {
+                return NotFound();
+            }
+
+            // Elimina el registro de la base de datos
+            _context.LimpRegistros.Remove(registroAEliminar);
+            await _context.SaveChangesAsync();
+
+            // Utiliza el método compartido para obtener los registros actualizados basados en CodFormulario
+            var registrosActualizados = await ObtenerRegistros(CodFormulario);
+
+            // Envía los datos actualizados a la vista
+            return View("Index", registrosActualizados);
+        }
     }
 }
