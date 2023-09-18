@@ -4,8 +4,6 @@ namespace LimpiezaProyect.Models.ViewModels
 {
     public class AreaViewModel
     {
-        
-        
        
         public string CodArea { get; set; } = null!;
        

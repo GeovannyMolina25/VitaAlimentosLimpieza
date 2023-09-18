@@ -7,7 +7,6 @@
 
                 <div>
                     <h5>Area:  @Model.FirstOrDefault()?.CodArea</h5>
-
                     <h5>Formulario: @Model.FirstOrDefault()?.CodFormulario</h5>
                     <h5>Usuario: Nelson Molina</h5>
                     <p>Fecha y hora actual: <span id="fechaHoraActual"></span></p>
@@ -67,23 +66,19 @@
         </div>
         <!-- /.card -->
         <div class="text-center mt-3">
-            <button type="button" class="btn btn-danger"><a asp-action="CreateForm">Añadir</a></button>
+            <button type="submit" class="btn btn-danger"><a asp-action="CreateForm">Crear</a></button>
         </div>
     </div>
 
 </div>
 
 <script>
-    // Función para mostrar la fecha y hora actual
     function mostrarFechaHoraActual() {
         var fechaHora = new Date();
         var elementoFechaHora = document.getElementById("fechaHoraActual");
         elementoFechaHora.textContent = fechaHora.toLocaleString();
     }
-
-    // Actualizar la fecha y hora cada segundo
     setInterval(mostrarFechaHoraActual, 1000);
 
-    // Mostrar la fecha y hora actual al cargar la página
     mostrarFechaHoraActual();
 </script>
