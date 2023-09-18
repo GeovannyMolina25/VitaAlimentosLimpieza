@@ -34,7 +34,7 @@
                             <tr>
                                 <td>@Html.DisplayFor(m=>formularios.Descripcion)</td>
                                 <td>
-                                    <form method="post" action="@Url.Action("Index","ResponsableFormulario")">
+                                    <form method="post" action="@Url.Action("Index","ResponsableForm")">
                                         <input type="hidden" name="CodFormulario" value="@formularios.CodFormulario"/>
                                         <button type="submit" class="btn btn-primary">Ver</button>
                                         

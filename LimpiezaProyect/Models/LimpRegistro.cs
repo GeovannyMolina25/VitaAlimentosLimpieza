@@ -12,7 +12,6 @@ namespace LimpiezaProyect.Models
 
         public int NumFormulario { get; set; }
         public string? CodArea { get; set; }
-        public string? Descripcion { get; set; }
         public string? CodEmpresa { get; set; }
         public string? FechaHoraCreacion { get; set; }
         public string? CreadoPor { get; set; }
@@ -27,5 +26,12 @@ namespace LimpiezaProyect.Models
 
         public virtual LimpFormulario? Cod { get; set; }
         public virtual ICollection<LimpRegistroDetalle> LimpRegistroDetalles { get; set; }
+
+        /*
+        public static implicit operator LimpRegistro(LimpRegistro v)
+        {
+            throw new NotImplementedException();
+        }
+        */
     }
 }
