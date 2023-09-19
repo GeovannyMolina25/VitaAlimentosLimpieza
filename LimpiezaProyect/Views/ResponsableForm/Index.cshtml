@@ -30,8 +30,9 @@
                 <table id="tablaRegistros" class="table table-hover text-nowrap">
                     <thead>
                         <tr>
-                            <td>Nombre</td>
-                            <td>Codigo</td>
+                            <td>Numero</td>
+                            <td>Turno</td>
+                            <td>Fecha</td>
                             <td>Actividades</td>
                         </tr>
                     </thead>
@@ -40,14 +41,16 @@
                         {
                             <tr>
                                 <td>@Html.DisplayFor(m => registros.NumFormulario)</td>
-                                <td>@Html.DisplayFor(m => registros.CodFormulario)</td>
+                                <td>@Html.DisplayFor(m => registros.Turno)</td>
+                                <td>@Html.DisplayFor(m => registros.FechaHoraCreacion)</td>
+                                
                                 <td>
                                     <form method="post" action="@Url.Action("Index", "ActividadResponsable")">
                                 <input type="hidden" name="CodFormulario" value="@registros.CodFormulario" />
                                     <button type="submit" class="btn btn-primary">Ver</button>
                                     </form>
                                     <form method="post" action="@Url.Action("EliminarRegistro", "ResponsableForm")">
-                                <input type="hidden" name="CodFormulario" value="@registros.CodFormulario" />
+                                        <input type="hidden" name="CodRegistro" value="@registros.CodRegistro" />
                                     <button type="submit" class="btn btn-danger" name="btnEliminar" value="Eliminar">Eliminar</button>
                                     </form>
 

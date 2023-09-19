@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace LimpiezaProyect.Models
 {
@@ -10,7 +12,10 @@ namespace LimpiezaProyect.Models
             LimpRegistroDetalles = new HashSet<LimpRegistroDetalle>();
         }
 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int NumFormulario { get; set; }
+
         public string? CodArea { get; set; }
         public string? CodEmpresa { get; set; }
         public string? FechaHoraCreacion { get; set; }
