@@ -1,5 +1,7 @@
 ﻿@model List<LimpFormularioActividad>
 
+<form asp-action="Envio" class="form-horizontal">
+    
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -53,8 +55,9 @@
         </div>
         <!-- /.card -->
         <div class="text-center mt-3">
-            <button type="button" class="btn btn-danger">Añadir</button> 
+                <button type="submit" value="Envio" class="btn btn-danger">Enviar</button>
         </div>
     </div>
 
-</div>
+    </div>
+</form>

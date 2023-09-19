@@ -38,45 +38,53 @@ namespace LimpiezaProyect.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateForm(LimpRegistro model)
-        {
+
+    public async Task<IActionResult> CreateForm(LimpRegistro model)
+    {
+            var datosR = await _context.LimpAreas
+                .Where(r => r.CodArea == r.CodArea)
+            .FirstOrDefaultAsync();
             var datos = await _context.LimpFormularios
-                .Where(r => r.CodArea == "ADIP" && r.CodEmpresa == "PQSA")
-                .FirstOrDefaultAsync();
-
-            if (datos != null)
+            .Where(r => r.CodArea == datosR.CodArea )
+            .FirstOrDefaultAsync();
+            if (datos == null)
             {
-                var maxNumFormulario = await _context.LimpRegistros
-                    .Where(r => r.CodFormulario == datos.CodFormulario)
-                    .MaxAsync(r => (int?)r.NumFormulario);
 
-                var nuevoNumFormulario = (maxNumFormulario ?? 0) + 1;
-
-                var registros = new LimpRegistro()
-                {
-                    NumFormulario = nuevoNumFormulario,
-                    CodArea = datos.CodArea,
-                    FechaHoraCreacion = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                    CodEmpresa = datos.CodEmpresa,
-                    CreadoPor = "Gmolina",
-                    Turno = model.Turno,
-                    FechaHoraRevisado = DateTime.Now,
-                    CodFormulario = datos.CodFormulario,
-                    Estado = "1",
-                };
-
-                _context.Add(registros);
-
-                // Actualiza la base de datos
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction("Index", new { CodFormulario = datos.CodFormulario });
             }
 
-            ViewData["Registros"] = new SelectList(_context.LimpRegistros, "CodRegistro", "CodRegistro");
-            return View(model);
+            if (datos != null)
+        {
+            
+
+            var registros = new LimpRegistro()
+            {
+                
+                CodArea = datos.CodArea,
+                FechaHoraCreacion = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                CodEmpresa = datos.CodEmpresa,
+                CreadoPor = "Gmolina",
+                Turno = model.Turno,
+                FechaHoraRevisado = DateTime.Now,
+                CodFormulario = datos.CodFormulario,
+                Estado = "1",
+            };
+
+            _context.Add(registros);
+
+            // Actualiza la base de datos
+            await _context.SaveChangesAsync();
+
+            // Consulta los registros actualizados que cumplen con la condición
+            var registrosActualizados = await _context.LimpRegistros
+                .Where(r => r.CodArea == datosR.CodArea) // Cambia la condición según tus necesidades
+                .ToListAsync();
+
+            return View("Index", registrosActualizados);
         }
 
+        ViewData["Registros"] = new SelectList(_context.LimpRegistros, "CodRegistro", "CodRegistro");
+        return View(model);
+    }
         [HttpPost]
         public async Task<IActionResult> EliminarRegistro(string CodRegistro)
         {
@@ -95,8 +103,11 @@ namespace LimpiezaProyect.Controllers
             _context.LimpRegistros.Remove(registroAEliminar);
             await _context.SaveChangesAsync();
 
-            
-            return RedirectToAction("Index", new { CodFormulario = registroAEliminar.CodFormulario });
+            // Obtén la lista actualizada de registros para el mismo formulario
+            var registrosActualizados = await ObtenerRegistros(registroAEliminar.CodFormulario);
+
+            // Renderiza la vista Index con la lista actualizada de registros
+            return View("Index", registrosActualizados);
         }
 
 

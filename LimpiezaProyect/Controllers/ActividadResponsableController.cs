@@ -1,5 +1,6 @@
 ﻿using LimpiezaProyect.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace LimpiezaProyect.Controllers
@@ -19,40 +20,46 @@ namespace LimpiezaProyect.Controllers
             return View(actividadFormulario);
         }
 
-        /*
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
 
         public async Task<ActionResult> Envio(LimpRegistroDetalle model)
         {
+            var datos = await _context.LimpFormularioActividads
+                .Where(r => r.CodActividad == r.CodActividad && r.CodEmpresa == "PQSA")
+                .FirstOrDefaultAsync();
+            var datosF = await _context.LimpRegistros
+                .Where(r => r.CodArea == r.CodArea && r.CodEmpresa == "PQSA")
+                .FirstOrDefaultAsync();
+            
 
-
-            if(ModelState.IsValid)
-            {
-                var actividades = new LimpRegistroDetalle()
+            var detalles = new LimpRegistroDetalle()
                 {
-                    NumFormulario = model.NumFormulario,
-                    CodFormulario = model.CodFormulario,
-                    CodRegistro = model.CodRegistro,
-                    CodActividad = model.CodActividad,
+                    NumFormulario = datosF.NumFormulario,
+                    CodFormulario = datosF.CodFormulario,
+                    
+                    CodActividad = datos.CodActividad,
                     CodResponsable = model.CodResponsable,
-                    Realizado = model.Realizado,
-                    FechaHoraCreacion = model.FechaHoraCreacion,
-                    CodEmpresa = model.CodEmpresa,
-                    CodArea = model.CodArea,
-                    FechaHoraVerificacion = model.FechaHoraVerificacion,
-                    VerificadoPor = model.VerificadoPor,
-                    RevisadoPor = model.RevisadoPor,
+                    Realizado = true,
+                    FechaHoraCreacion = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                CodEmpresa = datos.CodEmpresa,
+                    CodArea = datosF.CodArea,
+                    FechaHoraVerificacion = DateTime.Now,
+                    VerificadoPor = "ngmolina",
+                    RevisadoPor = "Gmolina",
 
                 };
-                _context.Add(actividades);
-                await _context.SaveChangesAsync(); 
-                
-            }
+                _context.Add(detalles);
+                await _context.SaveChangesAsync();
+            var registrosActualizados = await _context.LimpRegistros
+                    .Where(r => r.CodArea == datosF.CodArea) // Cambia la condición según tus necesidades
+                    .ToListAsync();
+            TempData["Message"] = "Formulario enviado correctamente";
 
-            return RedirectToAction("Index");
+            return View("Index", registrosActualizados);
         }
-        */
     }
-
 }
+
+
