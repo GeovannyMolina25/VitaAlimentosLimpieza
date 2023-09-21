@@ -1,5 +1,6 @@
 ﻿@model List<LimpFormularioActividad>
 
+
 <form method="post" asp-action="Envio" class="form-horizontal">
     <div class="row">
         <div class="col-12">
@@ -36,9 +37,10 @@
                                     <td>@Html.DisplayFor(m => Model[i].Decsripcion)</td>
                                     <td>
                                         <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="model[@i].Realizado" id="Realizado_@Model[i].CodActividad" />
                                             <input type="hidden" name="model[@i].CodActividad" value="@Model[i].CodActividad" />
-                                            <input class="form-check-input" type="checkbox" name="model[@i].Realizado" id="realizado_@Model[i].CodActividad" />
-                                            <label class="form-check-label" for="realizado_@Model[i].CodActividad">
+                                            <input class="form-check-input" type="checkbox" name="model[@i].CodActividad" id="Realizado_@Model[i].CodActividad" />
+                                            <label class="form-check-label" for="Realizado_@Model[i].CodActividad">
                                                 Realizado
                                             </label>
                                         </div>

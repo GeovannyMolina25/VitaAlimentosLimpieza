@@ -258,7 +258,7 @@ namespace LimpiezaProyect.Models
                     .HasForeignKey(d => d.NumFormulario)
                     .HasConstraintName("FK_LimpRegistroDetalle_LimpRegistro");
 
-                entity.HasOne(d => d.Cod)
+                entity.HasOne(d => d.Actividad)
                     .WithMany(p => p.LimpRegistroDetalles)
                     .HasForeignKey(d => new { d.CodActividad, d.CodEmpresa, d.CodFormulario })
                     .HasConstraintName("FK_LimpRegistroDetalle_LimpFormularioActividad");

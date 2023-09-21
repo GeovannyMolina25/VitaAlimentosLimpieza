@@ -30,6 +30,7 @@ namespace LimpiezaProyect.Controllers
 
         public async Task<ActionResult> Envio(List<LimpRegistroDetalle> model, string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
         {
+           
             foreach (var detalle in model)
             {
                
@@ -54,13 +55,9 @@ namespace LimpiezaProyect.Controllers
 
             await _context.SaveChangesAsync();
 
-            var registrosActualizados = await _context.LimpRegistros
-                .Where(r => r.CodArea == CodArea) 
-                .ToListAsync();
-
             TempData["Message"] = "Formulario enviado correctamente";
 
-            return View("Index", registrosActualizados);
+            return RedirectToAction("Index","ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
         }
     }
 }

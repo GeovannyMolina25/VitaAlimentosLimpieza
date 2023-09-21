@@ -21,7 +21,7 @@ namespace LimpiezaProyect.Models
         public string? VerificadoPor { get; set; }
         public DateTime? FechaHoraVerificacion { get; set; }
         public int CodRegistro { get; set; }
-        public string CodFormulario { get; set; } = null!;
+        public string? CodFormulario { get; set; }
         public string? Estado { get; set; }
 
         public virtual LimpFormulario? Cod { get; set; }
