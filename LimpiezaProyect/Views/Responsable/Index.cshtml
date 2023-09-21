@@ -23,6 +23,7 @@
                     <thead>
                         <tr>
                             <td>Nombre</td>
+                            <td>Codigo</td>
                             <td>Actividades</td>
                         </tr>
                     </thead>
@@ -32,9 +33,11 @@
 
                             <tr>
                                 <td>@Html.DisplayFor(m=>formularios.Descripcion)</td>
+                                <td>@Html.DisplayFor(m=>formularios.CodFormulario)</td>
                                 <td>
                                     <form method="post" action="@Url.Action("Index","ResponsableForm")">
                                         <input type="hidden" name="CodFormulario" value="@formularios.CodFormulario"/>
+                                        <input type="hidden" name="CodArea" value="@formularios.CodArea" />
                                         <button type="submit" class="btn btn-primary">Ver</button>
                                         
                                     </form>

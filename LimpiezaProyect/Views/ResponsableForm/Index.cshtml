@@ -6,8 +6,8 @@
             <div class="card-header">
 
                 <div>
-                    <h5>Area:  @Model.FirstOrDefault()?.CodArea</h5>
-                    <h5>Formulario: @Model.FirstOrDefault()?.CodFormulario</h5>
+                    <h5>Area: @TempData["Area"] </h5>
+                    <h5>Formulario: @TempData["Formulario"] </h5>
                     <h5>Usuario: Nelson Molina</h5>
                     <p>Fecha y hora actual: <span id="fechaHoraActual"></span></p>
 
@@ -48,7 +48,8 @@
                                 
                                 <td>
                                     <form method="post" action="@Url.Action("Index", "ActividadResponsable")">
-                                <input type="hidden" name="CodFormulario" value="@registros.CodFormulario" />
+                                        <input type="hidden" name="CodArea" value="@registros.CodArea" />
+                                        <input type="hidden" name="CodFormulario" value="@registros.CodFormulario" />
                                     <button type="submit" class="btn btn-primary">Ver</button>
                                     </form>
                                     <form method="post" action="@Url.Action("EliminarRegistro", "ResponsableForm")">

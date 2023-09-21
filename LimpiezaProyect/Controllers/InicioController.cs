@@ -17,14 +17,14 @@ namespace LimpiezaProyect.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             
             DateTime fechaHoraActual = DateTime.Now;
           
             ViewBag.FechaHoraActual = fechaHoraActual;
-
-            var areas = await _context.LimpAreas.ToListAsync();
+            List<LimpArea> areas = _context.LimpAreas.ToList();
+            
 
             return View(areas);
         }

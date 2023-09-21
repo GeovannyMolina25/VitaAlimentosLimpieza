@@ -16,11 +16,12 @@ namespace LimpiezaProyect.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index(string CodFormulario)
+        public async Task<IActionResult> Index(string CodFormulario, string CodArea)
         {
-            
             var codResgistros = await _context.LimpRegistros.Where(x => x.CodFormulario == CodFormulario).ToListAsync();
 
+            TempData["Area"] = CodArea.ToString();
+            TempData["Formulario"] = CodFormulario.ToString();
             return View(codResgistros);
         }
 
@@ -59,7 +60,8 @@ namespace LimpiezaProyect.Controllers
             };
 
             _context.Add(registros);
-            await _context.SaveChangesAsync();    
+            await _context.SaveChangesAsync();
+                
             var registrosActualizados = await _context.LimpRegistros
                 .Where(r => r.CodArea == datos.CodArea) 
                 .ToListAsync();
