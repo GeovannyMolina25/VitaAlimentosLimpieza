@@ -40,12 +40,13 @@
                     <tbody>
                         @foreach (var registros in Model)
                         {
+                            var botonID = "botonCerrar_" + registros.NumFormulario; // Crea un ID único para cada botón
                             <tr>
                                 <td>@Html.DisplayFor(m => registros.NumFormulario)</td>
                                 <td>@Html.DisplayFor(m => registros.CodArea)</td>
                                 <td>@Html.DisplayFor(m => registros.Turno)</td>
                                 <td>@Html.DisplayFor(m => registros.FechaHoraCreacion)</td>
-                                
+
                                 <td>
                                     <form method="post" action="@Url.Action("Index", "ActividadResponsable")">
                                         <input type="hidden" name="CodArea" value="@registros.CodArea" />
@@ -53,19 +54,19 @@
                                         <input type="hidden" name="NumFormulario" value="@registros.NumFormulario" />
                                         <input type="hidden" name="CodEmpresa" value="@registros.CodEmpresa" />
 
-                                    <button type="submit" class="btn btn-primary">Ver</button>
+                                        <button type="submit" class="btn btn-primary">Ver</button>
                                     </form>
                                     <form method="post" action="@Url.Action("EliminarRegistro", "ResponsableForm")">
                                         <input type="hidden" name="CodArea" value="@registros.CodArea" />
                                         <input type="hidden" name="NumFormulario" value="@registros.NumFormulario" />
                                         <input type="hidden" name="CodEmpresa" value="@registros.CodEmpresa" />
-                                    <button type="submit" class="btn btn-danger" name="btnEliminar" value="Eliminar">Eliminar</button>
+                                        <button type="submit" class="btn btn-danger" name="btnEliminar" value="Eliminar">Eliminar</button>
                                     </form>
 
-
-                                    <button type="button" class="btn btn-primary">Cerrar</button>
+                                    <!-- Usar el ID único para cada botón -->
+                                    <button type="button" id="@botonID" class="btn btn-primary" onclick="confirmarCerrar('@botonID')">Cerrar</button>
                                 </td>
-                            </tr>   
+                            </tr>
                         }
 
                     </tbody>
@@ -88,6 +89,8 @@
 </div>
 
 <script>
+    var botonVisible = true; // Variable para rastrear el estado del botón
+
     function mostrarFechaHoraActual() {
         var fechaHora = new Date();
         var elementoFechaHora = document.getElementById("fechaHoraActual");
@@ -96,4 +99,18 @@
     setInterval(mostrarFechaHoraActual, 1000);
 
     mostrarFechaHoraActual();
+
+        function confirmarCerrar(botonID) {
+            // Mostrar un mensaje de confirmación
+            var confirmacion = confirm("¿Está seguro de que desea cerrar?");
+            if (confirmacion) {
+                // Si el usuario confirma y el botón está visible, ocultar el botón
+                var botonCerrar = document.getElementById(botonID);
+                if (botonCerrar) {
+                    botonCerrar.style.display = "none";
+                }
+            } else {
+                // Si el usuario cancela o el botón ya está oculto, no se hace nada
+            }
+        }
 </script>
