@@ -13,8 +13,12 @@ namespace LimpiezaProyect.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index( string CodFormulario)
+        public async Task<IActionResult> Index( string CodArea, string CodFormulario, int Numformulario,string CodEmpresa)
         {
+            TempData["Area"] = CodArea.ToString();
+            TempData["Formulario"] = CodFormulario.ToString();
+            TempData["NumFormulario"] = Numformulario;
+            TempData["Empresa"] = CodEmpresa.ToString();
             var actividadFormulario = _context.LimpFormularioActividads.Where(m=>m.CodFormulario == CodFormulario).ToList();
 
             return View(actividadFormulario);
@@ -24,37 +28,36 @@ namespace LimpiezaProyect.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<ActionResult> Envio(LimpRegistroDetalle model)
+        public async Task<ActionResult> Envio(List<LimpRegistroDetalle> model, string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
         {
-            var datos = await _context.LimpFormularioActividads
-                .Where(r => r.CodActividad == r.CodActividad && r.CodEmpresa == "PQSA")
-                .FirstOrDefaultAsync();
-            var datosF = await _context.LimpRegistros
-                .Where(r => r.CodArea == r.CodArea && r.CodEmpresa == "PQSA")
-                .FirstOrDefaultAsync();
-            
-
-            var detalles = new LimpRegistroDetalle()
+            foreach (var detalle in model)
+            {
+               
+                var detalles = new LimpRegistroDetalle()
                 {
-                    NumFormulario = datosF.NumFormulario,
-                    CodFormulario = datosF.CodFormulario,
-                    
-                    CodActividad = datos.CodActividad,
-                    CodResponsable = model.CodResponsable,
-                    Realizado = true,
+                    NumFormulario = NumFormulario,
+                    CodFormulario = CodFormulario,
+                    CodRegistro = 0,
+                    CodActividad = detalle.CodActividad,
+                    CodResponsable = "Ngmolina",
+                    Realizado = detalle.Realizado, 
                     FechaHoraCreacion = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                CodEmpresa = datos.CodEmpresa,
-                    CodArea = datosF.CodArea,
+                    CodEmpresa = CodEmpresa,
+                    CodArea = CodArea,
                     FechaHoraVerificacion = DateTime.Now,
                     VerificadoPor = "ngmolina",
                     RevisadoPor = "Gmolina",
-
                 };
+
                 _context.Add(detalles);
-                await _context.SaveChangesAsync();
+            }
+
+            await _context.SaveChangesAsync();
+
             var registrosActualizados = await _context.LimpRegistros
-                    .Where(r => r.CodArea == datosF.CodArea) // Cambia la condición según tus necesidades
-                    .ToListAsync();
+                .Where(r => r.CodArea == CodArea) 
+                .ToListAsync();
+
             TempData["Message"] = "Formulario enviado correctamente";
 
             return View("Index", registrosActualizados);
