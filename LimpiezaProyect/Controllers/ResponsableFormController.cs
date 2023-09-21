@@ -32,14 +32,28 @@ namespace LimpiezaProyect.Controllers
 
         public async Task<IActionResult> CreateForm(LimpRegistro model, string CodArea, string CodFormulario,string CodEmpresa)
             {
+            var horaActual = DateTime.Now.TimeOfDay;
+            string turno = "";
 
-                var registros = new LimpRegistro()
+            if (horaActual >= TimeSpan.Zero && horaActual < TimeSpan.FromHours(12))
+            {
+                turno = "Mañana";
+            }
+            else if (horaActual >= TimeSpan.FromHours(12) && horaActual < TimeSpan.FromHours(19))
+            {
+                turno = "Tarde";
+            }
+            else
+            {
+                turno = "Noche";
+            }
+            var registros = new LimpRegistro()
                 {
                     CodArea = CodArea,
                     FechaHoraCreacion = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     CodEmpresa = CodEmpresa,
                     CreadoPor = "Gmolina",
-                    Turno = model.Turno,
+                    Turno = turno,
                     FechaHoraRevisado = DateTime.Now,
                     CodFormulario = CodFormulario,
                     Estado = "1",
