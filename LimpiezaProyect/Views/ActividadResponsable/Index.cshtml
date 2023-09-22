@@ -1,6 +1,5 @@
 ﻿@model List<LimpRegistroDetalle>
 
-
 <form method="post" asp-action="Envio" class="form-horizontal">
     <div class="row">
         <div class="col-12">
@@ -36,14 +35,26 @@
                                     <td>@Html.DisplayFor(m => Model[i].CodActividad)</td>
                                     <td>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="model[@i].Realizado" id="Realizado_@Model[i].CodActividad" />
-                                            <input type="hidden" name="model[@i].CodActividad" value="@Model[i].CodActividad" />
-                                            <input class="form-check-input" type="checkbox" name="model[@i].Realizado" id="realizado_@Model[i].CodActividad" />
-                                            <label class="form-check-label" for="realizado_@Model[i].CodActividad">
-                                                <input class="form-check-input" type="checkbox" name="model[@i].Realizado" id="@Model[i].Realizado" />
-                                                <label class="form-check-label" for="@Model[i].Realizado">
+                                            <input class="form-check-input" type="checkbox" name="model[@i].Realizado" id="@i" 
+                                            @if (Model[i].Realizado == true)
+                                            {
+                                                <text>checked</text>
+                                            } />
+
+                                            @if (Model[i].Realizado == true)
+                                            {
+                                                <label class="form-check-label text-success" for="@i">
                                                     Realizado
                                                 </label>
+                                            }
+                                            else
+                                            {
+                                                <label class="form-check-label" for="@i">
+                                                    No Realizado
+                                                </label>
+                                            }
+
+                                            <input type="hidden" name="model[@i].Realizado" value="@Model[i].Realizado" />
                                         </div>
                                     </td>
                                 </tr>
@@ -52,12 +63,14 @@
                     </table>
                 </div>
             </div>
+            
             <!-- /.card -->
             <input type="hidden" name="CodArea" value="@TempData["Area"]" />
             <input type="hidden" name="CodFormulario" value="@TempData["Formulario"]" />
             <input type="hidden" name="NumFormulario" value="@TempData["NumFormulario"]" />
             <input type="hidden" name="CodEmpresa" value="@TempData["Empresa"]" />
-            <button type="submit" class="btn btn-danger">Crear</button>
+            <button type="submit" class="btn btn-danger">Enviar</button>
+            
         </div>
     </div>
 </form>
