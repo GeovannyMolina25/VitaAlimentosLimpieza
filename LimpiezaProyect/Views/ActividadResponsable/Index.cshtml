@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Formulario: @TempData["Area"]</h5>
+                    <h5>Area: @TempData["Area"]</h5>
                     <h5>Formulario: @TempData["NumFormulario"]</h5>
                     <h3 class="card-title">Tabla de formularios</h3>
 
@@ -56,7 +56,8 @@
             <input type="hidden" name="CodFormulario" value="@TempData["Formulario"]" />
             <input type="hidden" name="NumFormulario" value="@TempData["NumFormulario"]" />
             <input type="hidden" name="CodEmpresa" value="@TempData["Empresa"]" />
-            <button type="submit" class="btn btn-danger">Crear</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-danger">Atras</button>
         </div>
     </div>
 </form>

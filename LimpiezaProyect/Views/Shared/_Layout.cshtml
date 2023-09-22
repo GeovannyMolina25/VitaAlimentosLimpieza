@@ -40,3 +40,15 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+<script>
+    var botonVisible = true; // Variable para rastrear el estado del botón
+
+    function mostrarFechaHoraActual() {
+        var fechaHora = new Date();
+        var elementoFechaHora = document.getElementById("fechaHoraActual");
+        elementoFechaHora.textContent = fechaHora.toLocaleString();
+    }
+
+    setInterval(mostrarFechaHoraActual, 1000);
+    mostrarFechaHoraActual();
+</script>

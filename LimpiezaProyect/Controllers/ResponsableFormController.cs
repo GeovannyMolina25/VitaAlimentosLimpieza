@@ -69,18 +69,17 @@ namespace LimpiezaProyect.Controllers
                         Turno = turno,
                         FechaHoraRevisado = DateTime.Now,
                         CodFormulario = CodFormulario,
-                        Estado = "1",
+                        Estado = "0",
                     };
 
                     _context.Add(registros);
                     await _context.SaveChangesAsync();
                     TempData["CodArea"] = CodArea;
-                    TempData["odFormulario"] = CodFormulario;
-                    var registrosActualizados = await _context.LimpRegistros
-                        .Where(r => r.CodFormulario == CodFormulario)
-                        .ToListAsync();
+                    TempData["CodFormulario"] = CodFormulario;
+                    TempData["Empresa"] = CodEmpresa;
+                    
 
-                    return View("Index", registrosActualizados);
+                    return RedirectToAction("Index", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
                 }
             }
 
@@ -102,6 +101,19 @@ namespace LimpiezaProyect.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index", new { CodFormulario = registroAEliminar.CodFormulario, CodArea = CodArea,CodEmpresa = CodEmpresa });
+        }
+        [HttpPost]
+        public async Task<IActionResult> Cerrar(string CodArea,string CodFormulario, int NumFormulario, string CodEmpresa)
+        {
+            var ActualizarRegistro = _context.LimpRegistros.FirstOrDefault(r => r.NumFormulario == NumFormulario && r.CodArea == CodArea && r.CodEmpresa == CodEmpresa);
+
+            if (ActualizarRegistro != null)
+            {
+                ActualizarRegistro.Estado = "1";
+                _context.SaveChanges();
+                return RedirectToAction("Index", new { NumFormulario = NumFormulario ,CodFormulario=CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
+            }
+            return View("Error");
         }
     }
 }
