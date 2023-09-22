@@ -1,4 +1,4 @@
-﻿@model List<LimpFormularioActividad>
+﻿@model List<LimpRegistroDetalle>
 
 
 <form method="post" asp-action="Envio" class="form-horizontal">
@@ -6,10 +6,9 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Area: @TempData["Area"]</h5>
+                    <h5>Formulario: @TempData["Area"]</h5>
                     <h5>Formulario: @TempData["NumFormulario"]</h5>
                     <h3 class="card-title">Tabla de formularios</h3>
-
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -34,15 +33,17 @@
                             @for (var i = 0; i < Model.Count; i++)
                             {
                                 <tr>
-                                    <td>@Html.DisplayFor(m => Model[i].Decsripcion)</td>
+                                    <td>@Html.DisplayFor(m => Model[i].CodActividad)</td>
                                     <td>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="model[@i].Realizado" id="Realizado_@Model[i].CodActividad" />
                                             <input type="hidden" name="model[@i].CodActividad" value="@Model[i].CodActividad" />
-                                            <input class="form-check-input" type="checkbox" name="model[@i].CodActividad" id="Realizado_@Model[i].CodActividad" />
-                                            <label class="form-check-label" for="Realizado_@Model[i].CodActividad">
-                                                Realizado
-                                            </label>
+                                            <input class="form-check-input" type="checkbox" name="model[@i].Realizado" id="realizado_@Model[i].CodActividad" />
+                                            <label class="form-check-label" for="realizado_@Model[i].CodActividad">
+                                                <input class="form-check-input" type="checkbox" name="model[@i].Realizado" id="@Model[i].Realizado" />
+                                                <label class="form-check-label" for="@Model[i].Realizado">
+                                                    Realizado
+                                                </label>
                                         </div>
                                     </td>
                                 </tr>
@@ -56,8 +57,7 @@
             <input type="hidden" name="CodFormulario" value="@TempData["Formulario"]" />
             <input type="hidden" name="NumFormulario" value="@TempData["NumFormulario"]" />
             <input type="hidden" name="CodEmpresa" value="@TempData["Empresa"]" />
-            <button type="submit" class="btn btn-primary">Enviar</button>
-            <button type="submit" class="btn btn-danger">Atras</button>
+            <button type="submit" class="btn btn-danger">Crear</button>
         </div>
     </div>
 </form>

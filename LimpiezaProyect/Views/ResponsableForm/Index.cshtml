@@ -4,25 +4,28 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
+                <div class="d-flex flex-column align-items-center">
+                    <h3 class="card-title">Tabla de formularios</h3>
 
+                    
+                </div>
                 <div>
                     <h5>Area: @TempData["Area"] </h5>
                     <h5>Formulario: @TempData["Formulario"] </h5>
                     <h5>Usuario: Nelson Molina</h5>
                     <p>Fecha y hora actual: <span id="fechaHoraActual"></span></p>
 
-                </div>
-                <h3 class="card-title">Tabla de formularios</h3>
-                <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                </div>               
+                
+                <div class="d-flex justify-content-between align-items-center">
+                    
 
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-default">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
+                    <form method="post" asp-action="CreateForm">
+                        <input type="hidden" name="CodArea" value="@TempData["Area"]" />
+                        <input type="hidden" name="CodFormulario" value="@TempData["Formulario"]" />
+                        <input type="hidden" name="CodEmpresa" value="@TempData["Empresa"]" />
+                        <button type="submit" class="btn btn-primary">Crear</button>
+                    </form>
                 </div>
             </div>
             <!-- /.card-header -->
@@ -40,7 +43,7 @@
                     <tbody>
                         @foreach (var registros in Model)
                         {
-                            var botonID = "botonCerrar_" + registros.NumFormulario; // Crea un ID único para cada botón
+                            var botonID = "botonCerrar_" + registros.NumFormulario; 
                             <tr>
                                 <td>@Html.DisplayFor(m => registros.NumFormulario)</td>
                                 <td>@Html.DisplayFor(m => registros.CodArea)</td>
@@ -91,11 +94,11 @@
 
         </div>
         <!-- /.card -->
-        <form method="post" asp-action="CreateForm">
+        <form method="post" asp-action="Salir" class="d-flex">
             <input type="hidden" name="CodArea" value="@TempData["Area"]" />
             <input type="hidden" name="CodFormulario" value="@TempData["Formulario"]" />
             <input type="hidden" name="CodEmpresa" value="@TempData["Empresa"]" />
-            <button type="submit" class="btn btn-danger">Crear</button>
+            <button type="submit" class="btn btn-danger mr-auto">Atras</button>
         </form>
         
     </div>

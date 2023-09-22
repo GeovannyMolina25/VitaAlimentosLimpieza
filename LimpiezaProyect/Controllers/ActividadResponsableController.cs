@@ -19,8 +19,8 @@ namespace LimpiezaProyect.Controllers
             TempData["Formulario"] = CodFormulario.ToString();
             TempData["NumFormulario"] = Numformulario;
             TempData["Empresa"] = CodEmpresa.ToString();
-            var actividadFormulario = _context.LimpFormularioActividads.Where(m=>m.CodFormulario == CodFormulario).ToList();
-
+            var actividadFormulario = _context.LimpRegistroDetalles.Where(m=>m.NumFormulario == Numformulario).ToList();
+            ViewBag.Hola = actividadFormulario;
             return View(actividadFormulario);
         }
 
@@ -28,12 +28,17 @@ namespace LimpiezaProyect.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
+        
+        public async Task<ActionResult> Atras(List<LimpRegistroDetalle> model, string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
+        {
+            return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa  });
+        }
         public async Task<ActionResult> Envio(List<LimpRegistroDetalle> model, string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
         {
-           
+
             foreach (var detalle in model)
             {
-               
+
                 var detalles = new LimpRegistroDetalle()
                 {
                     NumFormulario = NumFormulario,
@@ -41,15 +46,13 @@ namespace LimpiezaProyect.Controllers
                     CodRegistro = 0,
                     CodActividad = detalle.CodActividad,
                     CodResponsable = "Ngmolina",
-                    Realizado = detalle.Realizado, 
+                    Realizado = detalle.Realizado,
                     FechaHoraCreacion = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     CodEmpresa = CodEmpresa,
-                    CodArea = CodArea,
                     FechaHoraVerificacion = DateTime.Now,
                     VerificadoPor = "ngmolina",
                     RevisadoPor = "Gmolina",
                 };
-
                 _context.Add(detalles);
             }
 
@@ -57,13 +60,11 @@ namespace LimpiezaProyect.Controllers
 
             TempData["Message"] = "Formulario enviado correctamente";
 
-            return RedirectToAction("Index","ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
-        }
-        public async Task<ActionResult> Atras(List<LimpRegistroDetalle> model, string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
-        {
-            return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa  });
+            
+            return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
         }
     }
+
 }
 
 
