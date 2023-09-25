@@ -26,37 +26,25 @@ namespace LimpiezaProyect.Controllers
             return View(codResgistros);
         }
 
-        public async Task<IActionResult> CreateForm(string CodArea, string CodFormulario, string CodEmpresa)
+        public async Task<IActionResult> Create( string CodArea, string CodFormulario, string CodEmpresa)
         {
-            TempData["Area"] = CodArea.ToString();
+            TempData["Area"]= CodArea.ToString();
             TempData["Formulario"] = CodFormulario.ToString();
             TempData["Empresa"] = CodEmpresa.ToString();
+
             return View();
         }
 
 
-        [HttpPost]
+            [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> CreateForm( List<LimpRegistroDetalle> model, string CodArea, string CodFormulario, string CodEmpresa)
+        public async Task<IActionResult> EnviarForm( List<LimpRegistroDetalle> model, string turno, string CodArea, string CodFormulario, string CodEmpresa)
         {
+
             if (ModelState.IsValid && CodArea != null && CodFormulario != null && CodEmpresa != null)
             {
-                var horaActual = DateTime.Now.TimeOfDay;
-                string turno = "";
-
-                if (horaActual >= TimeSpan.Zero && horaActual < TimeSpan.FromHours(12))
-                {
-                    turno = "Mañana";
-                }
-                else if (horaActual >= TimeSpan.FromHours(12) && horaActual < TimeSpan.FromHours(19))
-                {
-                    turno = "Tarde";
-                }
-                else
-                {
-                    turno = "Noche";
-                }
+                
 
                 var registros = new LimpRegistro()
                 {
@@ -140,5 +128,6 @@ namespace LimpiezaProyect.Controllers
             var LimpFormularios = _context.LimpFormularios.Where(x => x.CodArea == CodArea).ToList();
             return RedirectToAction("Index","Responsable",new { NumFormulario = NumFormulario, CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
         }
+        
     }
 }
