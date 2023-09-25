@@ -69,23 +69,19 @@ namespace LimpiezaProyect.Controllers
                     CodFormulario = CodFormulario,
                     Estado = "0",
                 };
-
                 _context.Add(registros);
-
-                // Asigna el NumFormulario después de guardar para que esté disponible
                 await _context.SaveChangesAsync();
                 var NumFormulario = registros.NumFormulario;
                 List<LimpFormularioActividad> datos = _context.LimpFormularioActividads
-     .Where(r => r.CodFormulario == CodFormulario)
-     .ToList();
-                // Crea los detalles para el mismo NumFormulario
+                 .Where(r => r.CodFormulario == CodFormulario)
+                 .ToList();
                 foreach (var detalle in datos)
                 {
                     var detalles = new LimpRegistroDetalle()
                     {
                         NumFormulario = NumFormulario,
                         CodFormulario = CodFormulario,
-                        CodRegistro = registros.CodRegistro, // Asigna el CodRegistro del registro principal
+                        CodRegistro = registros.CodRegistro,
                         CodActividad = detalle.CodActividad,
                         CodResponsable = "Ngmolina",
                         Realizado = false,
@@ -142,7 +138,6 @@ namespace LimpiezaProyect.Controllers
         [HttpPost]
         public async Task<IActionResult> Salir(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
         {
-            // Ahora puedes usar el valor de codArea en tu consulta
             var LimpFormularios = _context.LimpFormularios.Where(x => x.CodArea == CodArea).ToList();
             return RedirectToAction("Index","Responsable",new { NumFormulario = NumFormulario, CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
         }

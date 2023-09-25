@@ -33,24 +33,31 @@ namespace LimpiezaProyect.Controllers
         {
             return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa  });
         }
+        
         [HttpPost]
-        [ValidateAntiForgeryToken]
-       
         public async Task<IActionResult> Envio(List<LimpRegistroDetalle> model, string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
         {
-            foreach (var detalle in model)
-            {
-                var actividadExistente = _context.LimpRegistroDetalles.FirstOrDefault(a => a.CodActividad == detalle.CodActividad && a.NumFormulario == NumFormulario);
-
-                if (actividadExistente != null)
+            
+                foreach (var detalle in model)
                 {
-                    actividadExistente.Realizado = detalle.Realizado;
+                    var actividadExistente = _context.LimpRegistroDetalles.FirstOrDefault(a => a.CodActividad == detalle.CodActividad && a.NumFormulario == NumFormulario);
+
+                    if (actividadExistente != null)
+                    {
+                        actividadExistente.Realizado = detalle.Realizado;
+                    }
                 }
-            }
 
-            await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
 
-            TempData["Message"] = "Cambios guardados correctamente";
+                TempData["Message"] = "Cambios guardados correctamente";
+
+                return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
+            
+        }
+        [HttpPost]
+        public async Task<IActionResult> Salir(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
+        {
 
             return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
         }

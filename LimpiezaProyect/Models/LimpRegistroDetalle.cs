@@ -10,7 +10,7 @@ namespace LimpiezaProyect.Models
         public int CodRegistro { get; set; }
         public string? CodActividad { get; set; }
         public string? CodResponsable { get; set; }
-        public bool? Realizado { get; set; }
+        public bool Realizado { get; set; }
         public string? FechaHoraCreacion { get; set; }
         public string CodEmpresa { get; set; } = null!;
         public DateTime? FechaHoraVerificacion { get; set; }
