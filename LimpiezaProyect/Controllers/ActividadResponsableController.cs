@@ -13,12 +13,13 @@ namespace LimpiezaProyect.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index( string CodArea, string CodFormulario, int Numformulario,string CodEmpresa)
+        public async Task<IActionResult> Index( string Estado, string CodArea, string CodFormulario, int Numformulario,string CodEmpresa)
         {
             TempData["Area"] = CodArea.ToString();
             TempData["Formulario"] = CodFormulario.ToString();
             TempData["NumFormulario"] = Numformulario;
             TempData["Empresa"] = CodEmpresa.ToString();
+            TempData["Estado"] = Estado;
             var actividadFormulario = _context.LimpRegistroDetalles.Where(m=>m.NumFormulario == Numformulario).ToList();
             ViewBag.Hola = actividadFormulario;
             return View(actividadFormulario);
@@ -35,7 +36,7 @@ namespace LimpiezaProyect.Controllers
         }
         
         [HttpPost]
-        public async Task<IActionResult> Envio(List<LimpRegistroDetalle> model, string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
+        public async Task<IActionResult> Envio(List<LimpRegistroDetalle> model,string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
         {
             
                 foreach (var detalle in model)
@@ -52,11 +53,11 @@ namespace LimpiezaProyect.Controllers
 
                 TempData["Message"] = "Cambios guardados correctamente";
 
-                return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
+                return RedirectToAction("Index", "ResponsableForm", new {CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
             
         }
         [HttpPost]
-        public async Task<IActionResult> Salir(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
+        public async Task<IActionResult> Salir( string CodArea,  string CodFormulario, int NumFormulario, string CodEmpresa)
         {
 
             return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });

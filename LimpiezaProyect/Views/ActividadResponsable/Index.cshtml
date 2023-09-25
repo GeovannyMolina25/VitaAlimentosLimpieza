@@ -43,7 +43,7 @@
                                         <div class="form-check">
                                             <input type="hidden" name="model[@i].CodActividad" value='@Model[i].CodActividad' />
                                             <input type="checkbox" class="form-check-input" name="model[@i].Realizado" value="true" @(Model[i].Realizado ? "checked" : "") />
-                                            <label class="form-check-label @((Model[i].Realizado) ? "text-success" : "")">
+                                            <label class="form-check-label @((Model[i].Realizado) ? "text-success" : "text-danger")">
                                                 @(Model[i].Realizado ? "Realizado" : "No Realizado")
                                             </label>
                                         </div>
@@ -54,7 +54,15 @@
                     </table>
                 </div>
             </div>
-            <button type="submit" class="btn btn-danger">Enviar</button>
+            @if (TempData["Estado"].ToString() == "0")
+            {
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            }
+            else
+            {
+                <a class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true">Enviar</a>
+            }
+            
         </div>
     </div>
 </form>
@@ -63,5 +71,6 @@
     <input type="hidden" name="CodFormulario" value='@TempData["Formulario"]' />
     <input type="hidden" name="NumFormulario" value='@TempData["NumFormulario"]' />
     <input type="hidden" name="CodEmpresa" value='@TempData["Empresa"]' />
+    <input type="hidden" name="Estado" value='@TempData["Estado"]' />
     <button type="submit" class="btn btn-danger">Atras</button>
 </form>

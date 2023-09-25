@@ -109,7 +109,6 @@ namespace LimpiezaProyect.Controllers
         public async Task<IActionResult> EliminarRegistro(string CodArea, int NumFormulario, string CodEmpresa)
         {
             var registroAEliminar = await _context.LimpRegistros.FirstOrDefaultAsync(x => x.NumFormulario == NumFormulario);
-
             if (registroAEliminar == null)
             {
                 return NotFound();
