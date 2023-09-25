@@ -17,8 +17,10 @@ namespace LimpiezaProyect.Controllers
         }
         public async Task<IActionResult> Index(string CodFormulario, string CodArea, string CodEmpresa)
         {
-            var codResgistros = await _context.LimpRegistros.Where(x => x.CodFormulario == CodFormulario).ToListAsync();
-
+            var codResgistros = await _context.LimpRegistros
+            .Where(x => x.CodFormulario == CodFormulario)
+            .OrderByDescending(x => x.FechaHoraCreacion) 
+            .ToListAsync();
             TempData["Area"] = CodArea != null ? CodArea.ToString() : null;
             TempData["Formulario"] = CodFormulario != null ? CodFormulario.ToString() : null;
             TempData["Empresa"] = CodEmpresa != null ? CodEmpresa.ToString() : null;
@@ -92,20 +94,26 @@ namespace LimpiezaProyect.Controllers
             return View();
         }
 
+        
 
         [HttpPost]
         public async Task<IActionResult> EliminarRegistro(string CodArea, int NumFormulario, string CodEmpresa)
-        {
+        { 
+            var detallesAEliminar = await _context.LimpRegistroDetalles.Where(x => x.NumFormulario == NumFormulario).ToListAsync();
+
+            foreach (var detalle in detallesAEliminar)
+            {
+                _context.LimpRegistroDetalles.Remove(detalle);
+            }
+            await _context.SaveChangesAsync();
             var registroAEliminar = await _context.LimpRegistros.FirstOrDefaultAsync(x => x.NumFormulario == NumFormulario);
             if (registroAEliminar == null)
             {
                 return NotFound();
             }
-
             _context.LimpRegistros.Remove(registroAEliminar);
             await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index", new { CodFormulario = registroAEliminar.CodFormulario, CodArea = CodArea,CodEmpresa = CodEmpresa });
+            return RedirectToAction("Index", new { CodFormulario = registroAEliminar.CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
         }
 
 

@@ -6,20 +6,15 @@
             <div class="card-header">
                 <div class="d-flex flex-column align-items-center">
                     <h3 class="card-title">Tabla de formularios</h3>
-
                 </div>
                 <div>
                     <h5>Area: @TempData["Area"] </h5>
                     <h5>Formulario: @TempData["Formulario"] </h5>
                     <h5>Usuario: Nelson Molina</h5>
                     <p>Fecha y hora actual: <span id="fechaHoraActual"></span></p>
-
-                </div>               
-                
+                </div>
                 <div class="d-flex justify-content-between align-items-center">
-                    
-
-                    <form method="post" action="@Url.Action("Create", "ResponsableForm")" >
+                    <form method="post" action="@Url.Action("Create", "ResponsableForm")">
                         <input type="hidden" name="CodArea" value="@TempData["Area"]" />
                         <input type="hidden" name="CodFormulario" value="@TempData["Formulario"]" />
                         <input type="hidden" name="CodEmpresa" value="@TempData["Empresa"]" />
@@ -32,7 +27,7 @@
                 <table id="tablaRegistros" class="table table-hover text-nowrap">
                     <thead>
                         <tr>
-                            <td>Numero</td>                           
+                            <td>Numero</td>
                             <td>Turno</td>
                             <td>Fecha</td>
                             <td>Actividades</td>
@@ -41,7 +36,7 @@
                     <tbody>
                         @foreach (var registros in Model)
                         {
-                            var botonID = "botonCerrar_" + registros.NumFormulario; 
+                            var botonID = "botonCerrar_" + registros.NumFormulario;
                             <tr>
                                 <td>@Html.DisplayFor(m => registros.NumFormulario)</td>
                                 <td>@Html.DisplayFor(m => registros.Turno)</td>
@@ -55,7 +50,7 @@
                                         <input type="hidden" name="NumFormulario" value="@registros.NumFormulario" />
                                         <input type="hidden" name="CodEmpresa" value="@registros.CodEmpresa" />
                                         <button type="submit" class="btn btn-primary">
-                                            <i class="fas fa-eye"></i> 
+                                            <i class="fas fa-eye"></i>
                                         </button>
                                     </form>
 
@@ -65,8 +60,8 @@
                                             <input type="hidden" name="CodArea" value="@registros.CodArea" />
                                             <input type="hidden" name="NumFormulario" value="@registros.NumFormulario" />
                                             <input type="hidden" name="CodEmpresa" value="@registros.CodEmpresa" />
-                                            <button type="submit" class="btn btn-danger" name="btnEliminar" value="Eliminar">
-                                                <i class="fas fa-trash"></i> 
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal_@registros.NumFormulario">
+                                                <i class="fas fa-trash"></i>
                                             </button>
                                         </form>
 
@@ -85,26 +80,52 @@
                                         <button type="button" class="btn btn-outline-primary" disabled>Cerrado</button>
                                     }
                                 </td>
-
                             </tr>
+                            <div class="modal fade" id="deleteModal_@registros.NumFormulario" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ¿Estás seguro de que deseas eliminar este registro?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <form method="post" action="@Url.Action("EliminarRegistro", "ResponsableForm")">
+                                                <input type="hidden" name="CodArea" value="@registros.CodArea" />
+                                                <input type="hidden" name="NumFormulario" value="@registros.NumFormulario" />
+                                                <input type="hidden" name="CodEmpresa" value="@registros.CodEmpresa" />
+                                                <button type="submit" class="btn btn-danger" name="btnEliminar" value="Eliminar">
+                                                    <i class="fas fa-trash"></i> Eliminar
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         }
-
                     </tbody>
                 </table>
-
             </div>
-            <!-- /.card-body -->
-
         </div>
-        <!-- /.card -->
         <form method="post" asp-action="Salir" class="d-flex">
             <input type="hidden" name="CodArea" value="@TempData["Area"]" />
             <input type="hidden" name="CodFormulario" value="@TempData["Formulario"]" />
             <input type="hidden" name="CodEmpresa" value="@TempData["Empresa"]" />
             <button type="submit" class="btn btn-danger mr-auto">Atras</button>
         </form>
-        
     </div>
-
 </div>
+<script>
+    document.getElementById("showDeleteModalButton").addEventListener("click", function () {
+        $('#deleteModal').modal('show');
+    });
 
+    $('#deleteModal').on('hidden.bs.modal', function () {
+        $(this).find('form')[0].reset();
+    });
+</script>
