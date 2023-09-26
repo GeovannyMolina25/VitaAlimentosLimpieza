@@ -17,7 +17,7 @@ namespace LimpiezaProyect.Models
         public string? VerificadoPor { get; set; }
         public string? RevisadoPor { get; set; }
 
-        public virtual LimpFormularioActividad? Cod { get; set; }
+        public virtual LimpFormularioActividad Cod { get; set; }
         public virtual LimpRegistro? NumFormularioNavigation { get; set; }
     }
 }

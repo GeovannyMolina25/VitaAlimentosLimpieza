@@ -3,6 +3,7 @@ using LimpiezaProyect.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -24,6 +25,7 @@ namespace LimpiezaProyect.Controllers
             TempData["Area"] = CodArea != null ? CodArea.ToString() : null;
             TempData["Formulario"] = CodFormulario != null ? CodFormulario.ToString() : null;
             TempData["Empresa"] = CodEmpresa != null ? CodEmpresa.ToString() : null;
+            
 
             return View(codResgistros);
         }
@@ -54,8 +56,10 @@ namespace LimpiezaProyect.Controllers
                     FechaHoraCreacion = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     CodEmpresa = CodEmpresa,
                     CreadoPor = "Gmolina",
+                    RevisadoPor = "Ngmolina",
+                    VerificadoPor = "NULL",
                     Turno = turno,
-                    FechaHoraRevisado = DateTime.Now,
+                    FechaHoraRevisado = null,
                     CodFormulario = CodFormulario,
                     Estado = "0",
                 };
@@ -85,6 +89,7 @@ namespace LimpiezaProyect.Controllers
                 }
 
                 await _context.SaveChangesAsync();
+                
 
                 TempData["Message"] = "Formulario enviado correctamente";
 
@@ -136,6 +141,11 @@ namespace LimpiezaProyect.Controllers
             var LimpFormularios = _context.LimpFormularios.Where(x => x.CodArea == CodArea).ToList();
             return RedirectToAction("Index","Responsable",new { NumFormulario = NumFormulario, CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
         }
-        
+        public async Task<IActionResult> SalirRegistro(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
+        {
+            var LimpFormularios = _context.LimpFormularios.Where(x => x.CodArea == CodArea).ToList();
+            return RedirectToAction("Index", "ResponsableForm", new { NumFormulario = NumFormulario, CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
+        }
+
     }
 }

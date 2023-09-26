@@ -27,8 +27,14 @@
                         <input type="hidden" name="CodFormulario" value="@TempData["Formulario"]" />
                         <input type="hidden" name="CodEmpresa" value="@TempData["Empresa"]" />
                         <button type="button" onclick="submitForm()" class="btn btn-info">Enviar</button>
-                        <button type="submit" class="btn btn-default">Cancel</button>
+                        
                     </div>
+                </form>
+                <form method="post" asp-action="SalirRegistro" id="myForm">
+                    <input type="hidden" name="CodArea" value="@TempData["Area"]" />
+                    <input type="hidden" name="CodFormulario" value="@TempData["Formulario"]" />
+                    <input type="hidden" name="CodEmpresa" value="@TempData["Empresa"]" />
+                <button type="submit" class="btn btn-default">Cancel</button>
                 </form>
             </div>
         </div>

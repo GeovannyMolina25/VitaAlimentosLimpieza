@@ -15,6 +15,8 @@ namespace LimpiezaProyect.Controllers
 
         public async Task<IActionResult> Index( string Estado, string CodArea, string CodFormulario, int Numformulario,string CodEmpresa)
         {
+            
+
             TempData["Area"] = CodArea.ToString();
             TempData["Formulario"] = CodFormulario.ToString();
             TempData["NumFormulario"] = Numformulario;
@@ -22,6 +24,7 @@ namespace LimpiezaProyect.Controllers
             TempData["Estado"] = Estado;
             var actividadFormulario = _context.LimpRegistroDetalles.Where(m=>m.NumFormulario == Numformulario).ToList();
             ViewBag.Hola = actividadFormulario;
+            
             return View(actividadFormulario);
         }
 
