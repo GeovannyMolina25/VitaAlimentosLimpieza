@@ -16,7 +16,7 @@ namespace LimpiezaProyect.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index(string CodFormulario, string CodArea, string CodEmpresa)
+        public async Task<IActionResult> Index(string CodFormulario, string CodArea, string CodEmpresa, List<string> User)
         {
             var codResgistros = await _context.LimpRegistros
             .Where(x => x.CodFormulario == CodFormulario)
@@ -25,16 +25,18 @@ namespace LimpiezaProyect.Controllers
             TempData["Area"] = CodArea != null ? CodArea.ToString() : null;
             TempData["Formulario"] = CodFormulario != null ? CodFormulario.ToString() : null;
             TempData["Empresa"] = CodEmpresa != null ? CodEmpresa.ToString() : null;
+            TempData["User"] = User;
             
 
             return View(codResgistros);
         }
 
-        public async Task<IActionResult> Create( string CodArea, string CodFormulario, string CodEmpresa)
+        public async Task<IActionResult> Create( string CodArea, string CodFormulario, string CodEmpresa, List<string> User)
         {
             TempData["Area"]= CodArea.ToString();
             TempData["Formulario"] = CodFormulario.ToString();
             TempData["Empresa"] = CodEmpresa.ToString();
+            TempData["User"] = User;
 
             return View();
         }
@@ -43,7 +45,7 @@ namespace LimpiezaProyect.Controllers
             [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> EnviarForm( List<LimpRegistroDetalle> model, string turno, string CodArea, string CodFormulario, string CodEmpresa)
+        public async Task<IActionResult> EnviarForm( List<LimpRegistroDetalle> model, string turno, string CodArea, string CodFormulario, string CodEmpresa, List<string> User)
         {
 
             if (ModelState.IsValid && CodArea != null && CodFormulario != null && CodEmpresa != null)
@@ -55,7 +57,7 @@ namespace LimpiezaProyect.Controllers
                     CodArea = CodArea,
                     FechaHoraCreacion = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     CodEmpresa = CodEmpresa,
-                    CreadoPor = "Gmolina",
+                    CreadoPor = User.FirstOrDefault(),
                     RevisadoPor = "Ngmolina",
                     VerificadoPor = "NULL",
                     Turno = turno,
@@ -77,7 +79,7 @@ namespace LimpiezaProyect.Controllers
                         CodFormulario = CodFormulario,
                         CodRegistro = registros.CodRegistro,
                         CodActividad = detalle.CodActividad,
-                        CodResponsable = "Ngmolina",
+                        CodResponsable = User.FirstOrDefault(),
                         Realizado = false,
                         FechaHoraCreacion = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                         CodEmpresa = CodEmpresa,
@@ -93,7 +95,7 @@ namespace LimpiezaProyect.Controllers
 
                 TempData["Message"] = "Formulario enviado correctamente";
 
-                return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
+                return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa,  User = User});
             }
             ViewData["Registros"] = new SelectList(_context.LimpRegistros, "CodRegistro", "CodRegistro");
             return View();
@@ -102,7 +104,7 @@ namespace LimpiezaProyect.Controllers
         
 
         [HttpPost]
-        public async Task<IActionResult> EliminarRegistro(string CodArea, int NumFormulario, string CodEmpresa)
+        public async Task<IActionResult> EliminarRegistro(string CodArea, int NumFormulario, string CodEmpresa, List<string> User)
         { 
             var detallesAEliminar = await _context.LimpRegistroDetalles.Where(x => x.NumFormulario == NumFormulario).ToListAsync();
 
@@ -118,12 +120,12 @@ namespace LimpiezaProyect.Controllers
             }
             _context.LimpRegistros.Remove(registroAEliminar);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", new { CodFormulario = registroAEliminar.CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
+            return RedirectToAction("Index", new { CodFormulario = registroAEliminar.CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa , User = User});
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> Cerrar(string CodArea,string CodFormulario, int NumFormulario, string CodEmpresa)
+        public async Task<IActionResult> Cerrar(string CodArea,string CodFormulario, int NumFormulario, string CodEmpresa, List<string> User)
         {
             var ActualizarRegistro = _context.LimpRegistros.FirstOrDefault(r => r.NumFormulario == NumFormulario && r.CodArea == CodArea && r.CodEmpresa == CodEmpresa);
 
@@ -131,21 +133,22 @@ namespace LimpiezaProyect.Controllers
             {
                 ActualizarRegistro.Estado = "1";
                 _context.SaveChanges();
-                return RedirectToAction("Index", new { NumFormulario = NumFormulario ,CodFormulario=CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
+                return RedirectToAction("Index", new { NumFormulario = NumFormulario ,CodFormulario=CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
             }
             return View("Error");
         }
         [HttpPost]
-        public async Task<IActionResult> Salir(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
+        public async Task<IActionResult> Salir(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa, List<string> User)
         {
             var LimpFormularios = _context.LimpFormularios.Where(x => x.CodArea == CodArea).ToList();
-            return RedirectToAction("Index","Responsable",new { NumFormulario = NumFormulario, CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
+            return RedirectToAction("Index","Responsable",new { NumFormulario = NumFormulario, CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
         }
         public async Task<IActionResult> SalirRegistro(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
         {
             var LimpFormularios = _context.LimpFormularios.Where(x => x.CodArea == CodArea).ToList();
-            return RedirectToAction("Index", "ResponsableForm", new { NumFormulario = NumFormulario, CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
+            return RedirectToAction("Index", "ResponsableForm", new { NumFormulario = NumFormulario, CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
         }
+        
 
     }
 }

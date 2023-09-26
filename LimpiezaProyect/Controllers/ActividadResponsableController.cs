@@ -13,7 +13,7 @@ namespace LimpiezaProyect.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index( string Estado, string CodArea, string CodFormulario, int Numformulario,string CodEmpresa)
+        public async Task<IActionResult> Index( string Estado, string CodArea, string CodFormulario, int Numformulario,string CodEmpresa, List<string> User)
         {
             
 
@@ -22,6 +22,7 @@ namespace LimpiezaProyect.Controllers
             TempData["NumFormulario"] = Numformulario;
             TempData["Empresa"] = CodEmpresa.ToString();
             TempData["Estado"] = Estado;
+            TempData["User"] = User;
             var actividadFormulario = _context.LimpRegistroDetalles.Where(m=>m.NumFormulario == Numformulario).ToList();
             ViewBag.Hola = actividadFormulario;
             
@@ -33,13 +34,13 @@ namespace LimpiezaProyect.Controllers
         [ValidateAntiForgeryToken]
 
         
-        public async Task<ActionResult> Atras(List<LimpRegistroDetalle> model, string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
+        public async Task<ActionResult> Atras(List<LimpRegistroDetalle> model, string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa, List<string> User)
         {
-            return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa  });
+            return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
         }
         
         [HttpPost]
-        public async Task<IActionResult> Envio(List<LimpRegistroDetalle> model,string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
+        public async Task<IActionResult> Envio(List<LimpRegistroDetalle> model,string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa, List<string> User)
         {
             
                 foreach (var detalle in model)
@@ -56,14 +57,32 @@ namespace LimpiezaProyect.Controllers
 
                 TempData["Message"] = "Cambios guardados correctamente";
 
-                return RedirectToAction("Index", "ResponsableForm", new {CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
+                return RedirectToAction("Index", "ResponsableForm", new {CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
             
         }
         [HttpPost]
-        public async Task<IActionResult> Salir( string CodArea,  string CodFormulario, int NumFormulario, string CodEmpresa)
+        public async Task<IActionResult> Salir( string CodArea,  string CodFormulario, int NumFormulario, string CodEmpresa, List<string> User)
         {
 
-            return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa });
+            return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
+        }
+        public async Task<IActionResult> SalirSupervisor(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa, List<string> User)
+        {
+
+            return RedirectToAction("Index", "Supervisor", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
+        }
+        public async Task<IActionResult> EnviarVerificado(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa, List<string> User)
+        {
+            var ActualizarRegistro = _context.LimpRegistros.FirstOrDefault(r => r.NumFormulario == NumFormulario && r.CodArea == CodArea && r.CodEmpresa == CodEmpresa);
+
+            if (ActualizarRegistro != null)
+            {
+                ActualizarRegistro.FechaHoraRevisado = DateTime.Now;
+                ActualizarRegistro.RevisadoPor = User.ElementAtOrDefault(1);
+                _context.SaveChanges();
+                return RedirectToAction("Index", "Supervisor", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
+            }
+            return RedirectToAction("Index", "Supervisor", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
         }
 
     }

@@ -24,9 +24,30 @@ namespace LimpiezaProyect.Controllers
           
             ViewBag.FechaHoraActual = fechaHoraActual;
             List<LimpArea> areas = _context.LimpAreas.ToList();
-            
 
-            return View(areas);
+            //List<string> Usuario = new List<string>()
+            //{
+            //    "Nelson Molina","Gmolina","adm", "PQSA"
+            //};
+
+
+            List<string> Usuario = new List<string>()
+                {
+                    "Maykel Molina","Mmolina","super", "PQSA"
+
+            };
+
+
+            //List<string> Usuario = new List<string>()
+            //    {
+            //        "Javier Hervas","JHervas","Responsable", "PQSA"
+
+            //    };
+
+
+            TempData["User"] = Usuario;    
+
+                return View(areas);
         }
         public IActionResult CreateArea() 
         {

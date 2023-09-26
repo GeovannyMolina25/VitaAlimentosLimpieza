@@ -5,12 +5,17 @@
     <input type="hidden" name="CodFormulario" value='@TempData["Formulario"]' />
     <input type="hidden" name="NumFormulario" value='@TempData["NumFormulario"]' />
     <input type="hidden" name="CodEmpresa" value='@TempData["Empresa"]' />
+    @foreach (var item in (TempData["User"] as List<string>))
+    {
+        <input type="hidden" name="User" value="@item" />
+    }
 
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <div class="card-header">
+                        <h5>Usuario: @((TempData["User"] as List<string>)?.FirstOrDefault())</h5>
                         <h5>Formulario: @TempData["Area"]</h5>
                         <h5>Formulario: @TempData["NumFormulario"]</h5>
                         <h3 class="card-title">Tabla de formularios</h3>
@@ -58,23 +63,68 @@
                     </table>
                 </div>
             </div>
-            @if (TempData["Estado"].ToString() == "0")
+
+            @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Responsable")
             {
+
+            @if (TempData["Estado"].ToString() == "0")
+            { 
                 <button type="submit" class="btn btn-primary">Enviar</button>
             }
             else
             {
                 <a class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true">Enviar</a>
             }
+
+            }
             
         </div>
     </div>
 </form>
-<form method="post" asp-action="Salir" class="form-horizontal">
-    <input type="hidden" name="CodArea" value='@TempData["Area"]' />
-    <input type="hidden" name="CodFormulario" value='@TempData["Formulario"]' />
-    <input type="hidden" name="NumFormulario" value='@TempData["NumFormulario"]' />
-    <input type="hidden" name="CodEmpresa" value='@TempData["Empresa"]' />
-    <input type="hidden" name="Estado" value='@TempData["Estado"]' />
+@if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Responsable")
+{
+    <form method="post" asp-action="Salir" class="d-flex">
+        <input type="hidden" name="CodArea" value='@TempData["Area"]' />
+        <input type="hidden" name="CodFormulario" value='@TempData["Formulario"]' />
+        <input type="hidden" name="NumFormulario" value='@TempData["NumFormulario"]' />
+        <input type="hidden" name="CodEmpresa" value='@TempData["Empresa"]' />
+        <input type="hidden" name="Estado" value='@TempData["Estado"]' />
+        @foreach (var item in (TempData["User"] as List<string>))
+        {
+            <input type="hidden" name="User" value="@item" />
+        }
+        <button type="submit" class="btn btn-danger">Atras</button>
+    </form>
+}
+else if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "super")
+{
+    <form method="post" asp-action="SalirSupervisor" class="d-flex">
+        <input type="hidden" name="CodArea" value='@TempData["Area"]' />
+        <input type="hidden" name="CodFormulario" value='@TempData["Formulario"]' />
+        <input type="hidden" name="NumFormulario" value='@TempData["NumFormulario"]' />
+        <input type="hidden" name="CodEmpresa" value='@TempData["Empresa"]' />
+        <input type="hidden" name="Estado" value='@TempData["Estado"]' />
+        @foreach (var item in (TempData["User"] as List<string>))
+    {
+        <input type="hidden" name="User" value="@item" />
+    }
     <button type="submit" class="btn btn-danger">Atras</button>
 </form>
+}
+@if ((TempData["User"] as List<string>
+    )?.ElementAtOrDefault(2) == "super" )
+{
+    <form method="post" asp-action="EnviarVerificado" class="d-flex">
+        <input type="hidden" name="CodArea" value='@TempData["Area"]' />
+        <input type="hidden" name="CodFormulario" value='@TempData["Formulario"]' />
+        <input type="hidden" name="NumFormulario" value='@TempData["NumFormulario"]' />
+        <input type="hidden" name="CodEmpresa" value='@TempData["Empresa"]' />
+        <input type="hidden" name="Estado" value='@TempData["Estado"]' />
+        @foreach (var item in (TempData["User"] as List<string>))
+        {
+            <input type="hidden" name="User" value="@item" />
+        }
+        <button type="submit" class="btn btn-success">Verificado</button>
+    </form>
+}
+

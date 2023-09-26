@@ -23,14 +23,14 @@ namespace LimpiezaProyect.Controllers
         */
         
         
-        public  IActionResult Index(string codArea)
+        public  IActionResult Index(string codArea, List<string> User)
         {
-            
+            TempData["User"] = User;
             var LimpFormularios = _context.LimpFormularios.Where(x => x.CodArea == codArea).ToList();
             return View(LimpFormularios);
+            
         }
-       
-
+        
 
     }
 }

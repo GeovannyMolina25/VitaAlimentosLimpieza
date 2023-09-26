@@ -10,7 +10,7 @@ public class SupervisorController : Controller
         _context = context;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa, List<string> User)
     {
         var documentosRevisados = _context.LimpRegistros.ToList();
         return View(documentosRevisados);
@@ -23,14 +23,14 @@ public class SupervisorController : Controller
 
         if (accion == "1")
         {
-            documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraVerificacion == null).ToList();
+            documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado == null).ToList();
             TempData["accion"] = accion.ToString();
 
         }
         else if (accion == "2")
         {
 
-            documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraVerificacion != null).ToList();
+            documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado != null).ToList();
             TempData["accion"] = accion.ToString();
 
         }

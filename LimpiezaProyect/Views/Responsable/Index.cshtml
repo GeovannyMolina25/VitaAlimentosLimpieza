@@ -39,6 +39,10 @@
                                         <input type="hidden" name="CodFormulario" value="@formularios.CodFormulario"/>
                                         <input type="hidden" name="CodArea" value="@formularios.CodArea" />
                                         <input type="hidden" name="CodEmpresa" value="@formularios.CodEmpresa" />
+                                        @foreach (var item in (TempData["User"] as List<string>))
+                                        {
+                                            <input type="hidden" name="User" value="@item" />
+                                        }
                                         <button type="submit" class="btn btn-primary">Ver</button>
                                         
                                     </form>
@@ -58,6 +62,10 @@
         <!-- /.card -->
         <div class="text-center mt-3">
             <form method="post" action="@Url.Action("Index","Inicio")">
+                @foreach (var item in (TempData["User"] as List<string>))
+                {
+                    <input type="hidden" name="User" value="@item" />
+                }
                 <button type="submit" class="btn btn-danger">Atras</button>
             </form>
         </div>

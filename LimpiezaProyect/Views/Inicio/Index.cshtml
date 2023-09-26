@@ -1,7 +1,7 @@
 ﻿@model List<LimpArea>
 
 <div class="content">
-    <h3>Bienvenido, Nelson </h3>
+    <h5>Usuario: @((TempData["User"] as List<string>)?.FirstOrDefault())</h5>
     <p>Fecha y hora actual: <span id="fechaHoraActual"></span></p>
     <h5 class="mb-2">Tipos de formularios</h5>
     <div class="row">
@@ -29,6 +29,10 @@
                         <form method="post" action="@Url.Action("Index","Responsable")">
                             <input type="hidden" name="codArea" value="@area.CodArea" />
                             <input type="hidden" name="CodRegistro" value="@area.CodRegistro" />
+                            @foreach (var item in (TempData["User"] as List<string>))
+                            {
+                                <input type="hidden" name="User" value="@item" />
+                            }
                             <button type="submit" style="border: none; background: none; padding: 0; margin: 0; cursor: pointer; font: inherit;">@Html.DisplayFor(m => area.Descripcion)</button>
                             
                         </form>
@@ -39,6 +43,10 @@
         
     </div>
     <div class="text-center mt-3">
+        @foreach (var item in (TempData["User"] as List<string>))
+        {
+            <input type="hidden" name="User" value="@item" />
+        }
         <button type="button" class="btn btn-danger"><a asp-action="CreateArea" style="None">Añadir</a></button>
         
     </div>

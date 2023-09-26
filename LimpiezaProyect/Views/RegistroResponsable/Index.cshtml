@@ -47,6 +47,10 @@
                                 <td>
                                     <input type="hidden" name="CodArea" value="@formularios.CodArea" />
                                     <input type="hidden" name="CodArea" value="@formularios.CodFormulario" />
+                                        @foreach (var item in (TempData["User"] as List<string>))
+                                        {
+                                        <input type="hidden" name="User" value="@item" />
+                                        }
                                     <button type="submit" class="btn btn-primary">Ver</button>
                                     <button type="button" class="btn btn-primary">Eliminar</button>
                                     <button type="button" class="btn btn-primary">Cerrar</button>                                  
@@ -66,6 +70,10 @@
         </div>
         <!-- /.card -->
         <div class="text-center mt-3">
+            @foreach (var item in (TempData["User"] as List<string>))
+            {
+                <input type="hidden" name="User" value="@item" />
+            }
             <button type="button" class="btn btn-danger"><a asp-action="CreateForm">Añadir</a></button>
         </div>
     </div>
