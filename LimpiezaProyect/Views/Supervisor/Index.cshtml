@@ -1,8 +1,7 @@
 ﻿@model List<LimpRegistro>
-@using (Html.BeginForm("Filter", "Supervisor", FormMethod.Post))
-{
-<div class="wrapper">
 
+<div class="wrapper">
+        <h5>Usuario: @((TempData["User"] as List<string>)?.FirstOrDefault())</h5>
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
@@ -93,4 +92,3 @@
   
 </div>
 
-}
