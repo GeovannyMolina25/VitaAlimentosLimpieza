@@ -45,9 +45,15 @@ namespace LimpiezaProyect.Controllers
             //    };
 
 
-            TempData["User"] = Usuario;    
+            TempData["User"] = Usuario;
+            var Countformularios = _context.LimpRegistros.Count();
+            var NoRformularios = _context.LimpRegistros.Where(r=>r.FechaHoraRevisado == null).Count();
+            var Rformularios = _context.LimpRegistros.Where(r => r.FechaHoraRevisado != null).Count();
+            TempData["Count"] = Countformularios;
+            TempData["NoRevisado"] = NoRformularios;
+            TempData["Revisado"] = Rformularios;
 
-                return View(areas);
+            return View(areas);
         }
         public IActionResult CreateArea() 
         {

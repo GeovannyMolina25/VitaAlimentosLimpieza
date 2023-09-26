@@ -10,16 +10,17 @@ public class SupervisorController : Controller
         _context = context;
     }
 
-    public IActionResult Index(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa, List<string> User)
+    public IActionResult Index( List<string> User)
     {
+        TempData["User"] = User;
         var documentosRevisados = _context.LimpRegistros.ToList();
         return View(documentosRevisados);
     }
 
     [HttpPost]
-    public IActionResult Filter(string? accion)
+    public IActionResult Filter(string? accion, List<string> User)
     {
-        var documentosRevisados = new List<LimpRegistro>();
+        var documentosRevisados = _context.LimpRegistros.ToList();
 
         if (accion == "1")
         {
@@ -34,6 +35,7 @@ public class SupervisorController : Controller
             TempData["accion"] = accion.ToString();
 
         }
+        TempData["User"] = User;
 
         return View("Index", documentosRevisados);
     }

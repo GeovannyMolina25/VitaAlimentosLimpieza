@@ -3,15 +3,85 @@
 <div class="content">
     <h5>Usuario: @((TempData["User"] as List<string>)?.FirstOrDefault())</h5>
     <p>Fecha y hora actual: <span id="fechaHoraActual"></span></p>
+    
+    @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "super")
+    {
+        <h5 class="mb-2 mt-4">Formularios</h5>
+        <div class="row">
+            <div class="col-lg-4 col-4">
+                <!-- small card -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>@TempData["Count"]</h3>
+                        <p>Todos los formularios</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <form method="post" action="@Url.Action("Filter", "Supervisor")">
+                        <input type="hidden" name="accion" value="" />
+                        @foreach (var item in (TempData["User"] as List<string>))
+                        {
+                            <input type="hidden" name="User"  />
+                        }
+                        <button type="submit" class="btn btn-outline-secondary">Ver mas ...</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4 col-4">
+                <!-- small card -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>@TempData["NoRevisado"]</h3>
+                        <p>Formularios No revisados</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+
+                    <form method="post" action="@Url.Action("Filter", "Supervisor")">
+                        <input type="hidden" name="accion" value="1" />
+                        @foreach (var item in (TempData["User"] as List<string>))
+                        {
+                            <input type="hidden" name="User" value="@item" />
+                        }
+                        <button type="submit" class="btn btn-outline-secondary">Ver mas ...</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4 col-4">
+                <!-- small card -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>@TempData["Revisado"]</h3>
+                        <p>Todos los formularios</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+
+                    <form method="post" action="@Url.Action("Filter", "Supervisor")">
+                        <input type="hidden" name="accion" value="2" />
+                        @foreach (var item in (TempData["User"] as List<string>))
+                        {
+                            <input type="hidden" name="User" value="@item" />
+                        }
+                        <button type="submit" class="btn btn-outline-secondary">Ver mas ...</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    }
     <h5 class="mb-2">Tipos de formularios</h5>
     <div class="row">
         @foreach (var area in Model)
         {
-            <div class="col-md-4">
+            <div class="col-lg-4 col-6">
                 <div class="card card-success">
                     <div class="card-header">
                         <h3 class="card-title">Areas</h3>
-                        
                         <div class="card-tools">
                             <button href="#" type="button" class="btn btn-tool">
                                 <a href="#" class="nav-link">
@@ -21,8 +91,6 @@
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            
-                            
                         </div>
                     </div>
                     <div class="card-body">

@@ -64,6 +64,10 @@
                                                     <input type="hidden" name="CodFormulario" value="@registros.CodFormulario" />
                                                     <input type="hidden" name="NumFormulario" value="@registros.NumFormulario" />
                                                     <input type="hidden" name="CodEmpresa" value="@registros.CodEmpresa" />
+                                                    @foreach (var item in (TempData["User"] as List<string>))
+                                                    {
+                                                        <input type="hidden" name="User" value="@item" />
+                                                    }
                                                     <button type="submit" class="btn btn-primary">
                                                         <i class="fas fa-eye"></i>
                                                     </button>
@@ -74,12 +78,18 @@
 
                                         }
                   </tbody>
+
                 </table>
               </div>
             </div>
           </div>
         </div>
       </div>
+        <form method="post" action="@Url.Action("Index", "Inicio")" class="d-inline">
+            <button type="submit" class="btn btn-danger">
+                <i class="">  Salir  </i>
+            </button>
+        </form>
   
 </div>
 
