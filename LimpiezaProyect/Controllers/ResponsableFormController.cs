@@ -19,7 +19,7 @@ namespace LimpiezaProyect.Controllers
         public async Task<IActionResult> Index(string CodFormulario, string CodArea, string CodEmpresa, List<string> User)
         {
             var codResgistros = await _context.LimpRegistros
-            .Where(x => x.CodFormulario == CodFormulario)
+            .Where(x => x.CodFormulario == CodFormulario )
             .OrderByDescending(x => x.FechaHoraCreacion) 
             .ToListAsync();
             TempData["Area"] = CodArea != null ? CodArea.ToString() : null;
@@ -58,7 +58,7 @@ namespace LimpiezaProyect.Controllers
                     FechaHoraCreacion = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     CodEmpresa = CodEmpresa,
                     CreadoPor = User.FirstOrDefault(),
-                    RevisadoPor = "Ngmolina",
+                    
                     VerificadoPor = "NULL",
                     Turno = turno,
                     FechaHoraRevisado = null,
@@ -107,7 +107,7 @@ namespace LimpiezaProyect.Controllers
         public async Task<IActionResult> EliminarRegistro(string CodArea, int NumFormulario, string CodEmpresa, List<string> User)
         { 
             var detallesAEliminar = await _context.LimpRegistroDetalles.Where(x => x.NumFormulario == NumFormulario).ToListAsync();
-
+            
             foreach (var detalle in detallesAEliminar)
             {
                 _context.LimpRegistroDetalles.Remove(detalle);
@@ -143,7 +143,7 @@ namespace LimpiezaProyect.Controllers
             var LimpFormularios = _context.LimpFormularios.Where(x => x.CodArea == CodArea).ToList();
             return RedirectToAction("Index","Responsable",new { NumFormulario = NumFormulario, CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
         }
-        public async Task<IActionResult> SalirRegistro(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa)
+        public async Task<IActionResult> SalirRegistro(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa, List<string> User)
         {
             var LimpFormularios = _context.LimpFormularios.Where(x => x.CodArea == CodArea).ToList();
             return RedirectToAction("Index", "ResponsableForm", new { NumFormulario = NumFormulario, CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });

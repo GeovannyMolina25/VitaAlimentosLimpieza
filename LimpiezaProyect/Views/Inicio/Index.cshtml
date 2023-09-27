@@ -10,16 +10,16 @@
         <div class="row">
             <div class="col-lg-4 col-4">
                 <!-- small card -->
-                <div class="small-box bg-warning">
+                <div class="small-box bg-success">
                     <div class="inner">
                         <h3>@TempData["Count"]</h3>
-                        <p>Todos los formularios</p>
+                        <p><strong>Formularios abiertos</strong></p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-user-plus"></i>
+                        <i class="fas fa-folder-open"></i>
                     </div>
                     <form method="post" action="@Url.Action("Filter", "Supervisor")">
-                        <input type="hidden" name="accion"  />
+                        <input type="hidden" name="accion" value="3" />
                         @foreach (var item in (TempData["User"] as List<string>))
                         {
                             <input type="hidden" name="User" value="@item" />
@@ -30,13 +30,13 @@
             </div>
             <div class="col-lg-4 col-4">
                 <!-- small card -->
-                <div class="small-box bg-warning">
+                <div class="small-box bg-danger">
                     <div class="inner">
                         <h3>@TempData["NoRevisado"]</h3>
-                        <p>Formularios No revisados</p>
+                        <p>Formularios <strong>NO revisados</strong></p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-chart-pie"></i>
+                        <i class="fas fa-exclamation-circle"></i>
                     </div>
 
                     <form method="post" action="@Url.Action("Filter", "Supervisor")">
@@ -51,13 +51,13 @@
             </div>
             <div class="col-lg-4 col-4">
                 <!-- small card -->
-                <div class="small-box bg-warning">
+                <div class="small-box bg-info">
                     <div class="inner">
                         <h3>@TempData["Revisado"]</h3>
-                        <p>Todos los formularios</p>
+                        <p>Formulario <strong>revisados</strong></p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-user-plus"></i>
+                        <i class="fas fa-check-circle"></i>
                     </div>
 
                     <form method="post" action="@Url.Action("Filter", "Supervisor")">
@@ -74,6 +74,10 @@
 
 
     }
+    @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Responsable")
+    {
+        
+  
     <h5 class="mb-2">Tipos de formularios</h5>
     <div class="row">
         @foreach (var area in Model)
@@ -118,5 +122,5 @@
         <button type="button" class="btn btn-danger"><a asp-action="CreateArea" style="None">Añadir</a></button>
         
     </div>
-    
+    }
 </div>

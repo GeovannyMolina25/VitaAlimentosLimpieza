@@ -44,11 +44,17 @@ namespace LimpiezaProyect.Controllers
 
             //    };
 
+            //List<string> Usuario = new List<string>()
+            //    {
+            //        "Benito Camelas","BCamelas","Responsable", "PQSA"
+
+            //    };
+
 
             TempData["User"] = Usuario;
-            var Countformularios = _context.LimpRegistros.Count();
-            var NoRformularios = _context.LimpRegistros.Where(r=>r.FechaHoraRevisado == null).Count();
-            var Rformularios = _context.LimpRegistros.Where(r => r.FechaHoraRevisado != null).Count();
+            var Countformularios = _context.LimpRegistros.Where( r => r.Estado != "1").Count();
+            var NoRformularios = _context.LimpRegistros.Where(r=>r.FechaHoraRevisado == null && r.Estado != "0").Count();
+            var Rformularios = _context.LimpRegistros.Where(r => r.FechaHoraRevisado != null && r.Estado != "0").Count();
             TempData["Count"] = Countformularios;
             TempData["NoRevisado"] = NoRformularios;
             TempData["Revisado"] = Rformularios;

@@ -13,7 +13,7 @@ namespace LimpiezaProyect.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index( string Estado, string CodArea, string CodFormulario, int Numformulario,string CodEmpresa, List<string> User)
+        public async Task<IActionResult> Index( string Estado, string CodArea, string CodFormulario, int Numformulario,string CodEmpresa, string FechaHoraRevisado,string accion, List<string> User)
         {
             
 
@@ -22,7 +22,9 @@ namespace LimpiezaProyect.Controllers
             TempData["NumFormulario"] = Numformulario;
             TempData["Empresa"] = CodEmpresa.ToString();
             TempData["Estado"] = Estado;
+            TempData["Revisado"] = FechaHoraRevisado;
             TempData["User"] = User;
+            TempData["accion"] = accion;
             var actividadFormulario = _context.LimpRegistroDetalles.Where(m=>m.NumFormulario == Numformulario).ToList();
             ViewBag.Hola = actividadFormulario;
             
@@ -66,12 +68,12 @@ namespace LimpiezaProyect.Controllers
 
             return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
         }
-        public async Task<IActionResult> SalirSupervisor(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa, List<string> User)
+        public async Task<IActionResult> SalirSupervisor(string accion, List<string> User)
         {
 
-            return RedirectToAction("Index", "Supervisor", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
+            return RedirectToAction("Index", "Supervisor", new {  accion = accion, User = User });
         }
-        public async Task<IActionResult> EnviarVerificado(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa, List<string> User)
+        public async Task<IActionResult> EnviarVerificado(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa,string accion, List<string> User)
         {
             var ActualizarRegistro = _context.LimpRegistros.FirstOrDefault(r => r.NumFormulario == NumFormulario && r.CodArea == CodArea && r.CodEmpresa == CodEmpresa);
 
@@ -80,9 +82,9 @@ namespace LimpiezaProyect.Controllers
                 ActualizarRegistro.FechaHoraRevisado = DateTime.Now;
                 ActualizarRegistro.RevisadoPor = User.ElementAtOrDefault(1);
                 _context.SaveChanges();
-                return RedirectToAction("Index", "Supervisor", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
+                return RedirectToAction("Index", "Supervisor", new { accion = accion,  User = User});
             }
-            return RedirectToAction("Index", "Supervisor", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
+            return RedirectToAction("Index", "Supervisor", new { accion = accion, User = User });
         }
 
     }

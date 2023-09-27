@@ -51,6 +51,7 @@
                                         <div class="form-check">
                                             <input type="hidden" name="model[@i].CodActividad" value='@Model[i].CodActividad' />
                                             <input type="checkbox" class="form-check-input" name="model[@i].Realizado" value="true" @(Model[i].Realizado ? "checked" : "") />
+                                            <input type="hidden" name="model[@i].VerificadoPor" value='@Model[i].VerificadoPor' />
                                             <label class="form-check-label @((Model[i].Realizado) ? "text-success" : "text-danger")">
                                                 @(Model[i].Realizado ? "Realizado" : "No Realizado")
                                             </label>
@@ -98,12 +99,8 @@
 }
 else if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "super")
 {
-    <form method="post" asp-action="SalirSupervisor" class="d-flex">
-        <input type="hidden" name="CodArea" value='@TempData["Area"]' />
-        <input type="hidden" name="CodFormulario" value='@TempData["Formulario"]' />
-        <input type="hidden" name="NumFormulario" value='@TempData["NumFormulario"]' />
-        <input type="hidden" name="CodEmpresa" value='@TempData["Empresa"]' />
-        <input type="hidden" name="Estado" value='@TempData["Estado"]' />
+    <form method="post" action="@Url.Action("Filter", "Supervisor")" class="d-flex">
+        <input type="hidden" name="accion" value="@TempData["accion"]" />
         @foreach (var item in (TempData["User"] as List<string>))
     {
         <input type="hidden" name="User" value="@item" />
@@ -120,11 +117,38 @@ else if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "super")
         <input type="hidden" name="NumFormulario" value='@TempData["NumFormulario"]' />
         <input type="hidden" name="CodEmpresa" value='@TempData["Empresa"]' />
         <input type="hidden" name="Estado" value='@TempData["Estado"]' />
+        <input type="hidden" name="accion" value='@TempData["accion"]' />
         @foreach (var item in (TempData["User"] as List<string>))
         {
             <input type="hidden" name="User" value="@item" />
         }
-        <button type="submit" class="btn btn-success">Verificado</button>
+        @if (TempData["Revisado"] == null && TempData["Estado"].ToString() == "1")
+        {
+            <button type="submit" class="btn btn-success">Revisado</button>
+        }
+        else if (TempData["Revisado"] != null && TempData["Estado"].ToString() == "1")
+        {
+            <button type="button" class="btn btn-success" disabled>Enviado</button>
+        }
+
+        
     </form>
+    @if (TempData["Estado"].ToString() == "1")
+        {
+        <form method="post" action="@Url.Action("AbrirFormulario", "Supervisor")" class="d-inline">
+            <input type="hidden" name="CodArea" value='@TempData["Area"]' />
+            <input type="hidden" name="CodFormulario" value='@TempData["Formulario"]' />
+            <input type="hidden" name="NumFormulario" value='@TempData["NumFormulario"]' />
+            <input type="hidden" name="CodEmpresa" value='@TempData["Empresa"]' />
+            <input type="hidden" name="Estado" value='@TempData["Estado"]' />
+            <input type="hidden" name="accion" value='@TempData["accion"]' />
+            @foreach (var item in (TempData["User"] as List<string>))
+            {
+                <input type="hidden" name="User" value="@item" />
+            }
+            <button type="submit" class="btn btn-outline-primary">Reabrir formulario</button>
+            </form>
+        
+        }
 }
 
