@@ -36,7 +36,7 @@ namespace LimpiezaProyect.Controllers
         [ValidateAntiForgeryToken]
 
         
-        public async Task<ActionResult> Atras(List<LimpRegistroDetalle> model, string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa, List<string> User)
+        public async Task<ActionResult> Atras(List<LimpRegistroDetalle> model, string CodArea, string CodFormulario, string CodEmpresa, List<string> User)
         {
             return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
         }
@@ -63,7 +63,7 @@ namespace LimpiezaProyect.Controllers
             
         }
         [HttpPost]
-        public async Task<IActionResult> Salir( string CodArea,  string CodFormulario, int NumFormulario, string CodEmpresa, List<string> User)
+        public async Task<IActionResult> Salir( string CodArea,  string CodFormulario, string CodEmpresa, List<string> User)
         {
 
             return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
@@ -73,7 +73,7 @@ namespace LimpiezaProyect.Controllers
 
             return RedirectToAction("Index", "Supervisor", new {  accion = accion, User = User });
         }
-        public async Task<IActionResult> EnviarVerificado(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa,string accion, List<string> User)
+        public async Task<IActionResult> EnviarVerificado(string CodArea, int NumFormulario, string CodEmpresa,string accion, List<string> User)
         {
             var ActualizarRegistro = _context.LimpRegistros.FirstOrDefault(r => r.NumFormulario == NumFormulario && r.CodArea == CodArea && r.CodEmpresa == CodEmpresa);
 
