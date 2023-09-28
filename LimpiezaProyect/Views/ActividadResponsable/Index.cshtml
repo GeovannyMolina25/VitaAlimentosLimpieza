@@ -100,7 +100,18 @@ else if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "super")
         <input type="hidden" name="User" value="@item" />
     }
     <button type="submit" class="btn btn-danger">Atras</button>
-</form>
+    </form>
+}
+else if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Verificador")
+{
+    <form method="post" action="@Url.Action("Filter", "Verificador")" class="d-flex">
+        <input type="hidden" name="accion" value="@TempData["accion"]" />
+        @foreach (var item in (TempData["User"] as List<string>))
+        {
+            <input type="hidden" name="User" value="@item" />
+        }
+        <button type="submit" class="btn btn-danger">Atras</button>
+    </form>
 }
 @if ((TempData["User"] as List<string>
     )?.ElementAtOrDefault(2) == "super" )

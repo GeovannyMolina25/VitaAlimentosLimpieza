@@ -15,7 +15,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Formularios <strong>abiertos</strong> </span>
-                        <span class="info-box-number">@TempData["Count"]</span>
+                        <span class="info-box-number"><h3>@TempData["Count"]</h3></span>
                         <form method="post" action="@Url.Action("Filter", "Verificador")">
                         <input type="hidden" name="accion" value="1" />
                         @foreach (var item in (TempData["User"] as List<string>))
@@ -36,7 +36,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Formularios <strong>cerrados</strong></span>
-                        <span class="info-box-number">@TempData["Cerrado"]</span>
+                        <span class="info-box-number"><h3>@TempData["Cerrado"]</h3></span>
                         <form method="post" action="@Url.Action("Filter", "Verificador")">
                         <input type="hidden" name="accion" value="2" />
                         @foreach (var item in (TempData["User"] as List<string>))
@@ -57,7 +57,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Formularios <strong>supervisados</strong></span>
-                        <span class="info-box-number">@TempData["Revisado"]</span>
+                        <span class="info-box-number"><h3>@TempData["Revisado"]</h3></span>
                         <form method="post" action="@Url.Action("Filter", "Verificador")">
                         <input type="hidden" name="accion" value="3" />
                         @foreach (var item in (TempData["User"] as List<string>))
@@ -75,7 +75,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Formularios <strong>verificados</strong></span>
-                        <span class="info-box-number">@TempData["Verificado"]</span>
+                        <span class="info-box-number"><h3>@TempData["Verificado"]</h3></span>
                         <form method="post" action="@Url.Action("Filter", "Verificador")">
                         <input type="hidden" name="accion" value="4" />
                         @foreach (var item in (TempData["User"] as List<string>))

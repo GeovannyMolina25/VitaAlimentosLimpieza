@@ -87,6 +87,11 @@ namespace LimpiezaProyect.Controllers
             }
             return RedirectToAction("Index", "Supervisor", new { accion = accion, User = User });
         }
+        public async Task<IActionResult> SalirVerificador(string accion, List<string> User)
+        {
+
+            return RedirectToAction("Index", "Verificador", new { accion = accion, User = User });
+        }
 
     }
 

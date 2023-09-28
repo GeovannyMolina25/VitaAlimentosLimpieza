@@ -26,20 +26,20 @@ namespace LimpiezaProyect.Controllers
             var documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado == null && x.Estado != "Abierto").ToList();
             if (accion == "1")
             {
-                documentosRevisados = _context.LimpRegistros.Where(x => x.Estado != "1" && x.Estado == "Abierto").ToList();
+                documentosRevisados = _context.LimpRegistros.Where(x => x.Estado == "Abierto").ToList();
             }
             else if (accion == "2")
             {
-                documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado == null && x.Estado != "Abierto").ToList();
+                documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado == null && x.Estado == "Cerrado").ToList();
 
             }
             else if (accion == "3")
             {
-                documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado != null && x.Estado != "abierto").ToList();
+                documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado != null && x.Estado == "Revisado").ToList();
             }
             else if (accion == "4")
             {
-                documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado != null && x.Estado != "abierto").ToList();
+                documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraVerificacion != null && x.Estado == "Verificado").ToList();
             }
             TempData["User"] = User;
             TempData["accion"] = accion.ToString();
