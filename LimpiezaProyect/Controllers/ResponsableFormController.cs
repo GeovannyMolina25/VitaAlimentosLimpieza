@@ -55,7 +55,7 @@ namespace LimpiezaProyect.Controllers
                 var registros = new LimpRegistro()
                 {
                     CodArea = CodArea,
-                    FechaHoraCreacion = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                    FechaHoraCreacion = DateTime.Now,
                     CodEmpresa = CodEmpresa,
                     CreadoPor = User.FirstOrDefault(),
                     
@@ -63,7 +63,7 @@ namespace LimpiezaProyect.Controllers
                     Turno = turno,
                     FechaHoraRevisado = null,
                     CodFormulario = CodFormulario,
-                    Estado = "0",
+                    Estado = "Abierto",
                 };
                 _context.Add(registros);
                 await _context.SaveChangesAsync();
@@ -81,7 +81,7 @@ namespace LimpiezaProyect.Controllers
                         CodActividad = detalle.CodActividad,
                         CodResponsable = User.FirstOrDefault(),
                         Realizado = false,
-                        FechaHoraCreacion = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                        FechaHoraCreacion = DateTime.Now,
                         CodEmpresa = CodEmpresa,
                         FechaHoraVerificacion = DateTime.Now,
                         VerificadoPor = "ngmolina",
@@ -131,7 +131,7 @@ namespace LimpiezaProyect.Controllers
 
             if (ActualizarRegistro != null)
             {
-                ActualizarRegistro.Estado = "1";
+                ActualizarRegistro.Estado = "Cerrado";
                 _context.SaveChanges();
                 return RedirectToAction("Index", new { NumFormulario = NumFormulario ,CodFormulario=CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
             }

@@ -2,9 +2,7 @@
 using LimpiezaProyect.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
 namespace LimpiezaProyect.Controllers
 {
@@ -31,11 +29,11 @@ namespace LimpiezaProyect.Controllers
             //};
 
 
-            List<string> Usuario = new List<string>()
-                {
-                    "Maykel Molina","Mmolina","super", "PQSA"
+            //List<string> Usuario = new List<string>()
+            //    {
+            //        "Maykel Molina","Mmolina","super", "PQSA"
 
-            };
+            //};
 
 
             //List<string> Usuario = new List<string>()
@@ -43,6 +41,10 @@ namespace LimpiezaProyect.Controllers
             //        "Javier Hervas","JHervas","Responsable", "PQSA"
 
             //    };
+            List<string> Usuario = new List<string>()
+            {
+                "Amy Brigette","    ABrigette", "Verificador","PQSA"
+            };
 
             //List<string> Usuario = new List<string>()
             //    {
@@ -52,9 +54,9 @@ namespace LimpiezaProyect.Controllers
 
 
             TempData["User"] = Usuario;
-            var Countformularios = _context.LimpRegistros.Where( r => r.Estado != "1").Count();
-            var NoRformularios = _context.LimpRegistros.Where(r=>r.FechaHoraRevisado == null && r.Estado != "0").Count();
-            var Rformularios = _context.LimpRegistros.Where(r => r.FechaHoraRevisado != null && r.Estado != "0").Count();
+            var Countformularios = _context.LimpRegistros.Where(x=> x.Estado == "Abierto").Count();
+            var NoRformularios = _context.LimpRegistros.Where(r=>r.FechaHoraRevisado == null && r.Estado != "Abierto").Count();
+            var Rformularios = _context.LimpRegistros.Where(r => r.FechaHoraRevisado != null && r.Estado == "Revisado").Count();
             TempData["Count"] = Countformularios;
             TempData["NoRevisado"] = NoRformularios;
             TempData["Revisado"] = Rformularios;

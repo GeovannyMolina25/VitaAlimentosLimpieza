@@ -1,7 +1,10 @@
 ﻿@model List<LimpRegistro>
 
 <div class="wrapper">
-        <h5>Usuario: @((TempData["User"] as List<string>)?.FirstOrDefault())</h5>
+        <p></p>
+        <p>Usuario: @((TempData["User"] as List<string>)?.FirstOrDefault())</p>
+        <p><strong>Fecha y hora actual:</strong> <span id="fechaHoraActual"></span></p>
+        <hr>
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">

@@ -22,11 +22,12 @@
 
     @RenderSection("Styles",required:false)
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition" style="height: 100vh;">
+
     <partial name="_Navbar"/>
 
-    <partial name="_Sidebar" />
-    <div class="content-wrapper">
+    <!-- <partial name="_Sidebar" /> -->
+    <div  style="min-height: 100vh;">
         <div class="content">
             <div class="container-fluid">
                 @RenderBody()

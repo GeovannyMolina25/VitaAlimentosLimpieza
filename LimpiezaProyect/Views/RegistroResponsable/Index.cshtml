@@ -6,12 +6,12 @@
             <div class="card-header">
                 
                 <div>
-                    |
-                    <h5>Area:  @Model.FirstOrDefault()?.CodArea</h5>
-                    <h5>Formulario: @Model.FirstOrDefault()?.CodFormulario</h5>
-                    <h5>Usuario: Nelson Molina</h5>
-                    <p>Fecha y hora actual: <span id="fechaHoraActual"></span></p>
-
+                    <p></p>
+                    <p><strong>Area: <strong />   @Model.FirstOrDefault()?.CodArea</p>
+                    <p><strong>Formulario:<strong /> @Model.FirstOrDefault()?.CodFormulario</p>
+                    <p><strong>Usuario:<strong /> @((TempData["User"] as List<string>)?.FirstOrDefault())</p>
+                    <p><strong>Fecha y hora actual:<strong /> <span id="fechaHoraActual"></span></p>
+                    <hr>
                 </div>
                 <h3 class="card-title">Tabla de formularios</h3>
                 <div class="card-tools">

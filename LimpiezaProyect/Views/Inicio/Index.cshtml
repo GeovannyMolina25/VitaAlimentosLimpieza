@@ -1,12 +1,18 @@
 ﻿@model List<LimpArea>
 
 <div class="content">
-    <h5>Usuario: @((TempData["User"] as List<string>)?.FirstOrDefault())</h5>
-    <p>Fecha y hora actual: <span id="fechaHoraActual"></span></p>
-    
+    <p></p>
+    <p><strong>Usuario:</strong> @((TempData["User"] as List<string>)?.FirstOrDefault())</p>
+    <p><strong>Fecha y hora actual:</strong> <span id="fechaHoraActual"></span></p>
+    <hr>
+    @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Verificador")
+    {
+        <h1> Hola mundo</h1>
+    }
+
     @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "super")
     {
-        <h5 class="mb-2 mt-4">Formularios</h5>
+        <h5 class="mb-2 mt-4">Areas</h5>
         <div class="row">
             <div class="col-lg-4 col-4">
                 <!-- small card -->
@@ -78,20 +84,16 @@
     {
         
   
-    <h5 class="mb-2">Tipos de formularios</h5>
+        <h3 class="mb-2"><strong>Areas</strong></h3>
     <div class="row">
         @foreach (var area in Model)
         {
             <div class="col-lg-4 col-6">
                 <div class="card card-success">
                     <div class="card-header">
-                        <h3 class="card-title">Areas</h3>
+                        
                         <div class="card-tools">
-                            <button href="#" type="button" class="btn btn-tool">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-trash"></i>
-                                </a>
-                            </button>
+                            
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
@@ -111,16 +113,7 @@
                     </div>
                 </div>
             </div>
-        }
-        
-    </div>
-    <div class="text-center mt-3">
-        @foreach (var item in (TempData["User"] as List<string>))
-        {
-            <input type="hidden" name="User" value="@item" />
-        }
-        <button type="button" class="btn btn-danger"><a asp-action="CreateArea" style="None">Añadir</a></button>
-        
+        } 
     </div>
     }
 </div>

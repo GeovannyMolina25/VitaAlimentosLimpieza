@@ -1,4 +1,5 @@
-﻿@model List<LimpRegistro>
+﻿@using System.Globalization
+@model List<LimpRegistro>
 
 <div class="row">
     <div class="col-12">
@@ -8,10 +9,12 @@
                     <h3 class="card-title">Tabla de formularios</h3>
                 </div>
                 <div>
-                    <h5>Area: @TempData["Area"] </h5>
-                    <h5>Formulario: @TempData["Formulario"] </h5>
-                    <h5>Usuario: @((TempData["User"] as List<string>)?.FirstOrDefault())</h5>
-                    <p>Fecha y hora actual: <span id="fechaHoraActual"></span></p>
+                    <p></p>
+                    <p> <strong>Area: </strong> @TempData["Area"] </p>
+                    <p><strong>Formulario: </strong>@TempData["Formulario"] </p>
+                    <p><strong>Usuario: </strong>@((TempData["User"] as List<string>)?.FirstOrDefault())</p>
+                    <p><strong>Fecha y hora actual: </strong><span id="fechaHoraActual"></span></p>
+                    <hr>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                     <form method="post" action="@Url.Action("Create", "ResponsableForm")">
@@ -32,10 +35,11 @@
                 <table id="tablaRegistros" class="table table-hover text-nowrap">
                     <thead>
                         <tr>
-                            <td>Numero</td>
+                            <td>Num</td>
                             <td>Turno</td>
                             <td>Fecha</td>
                             <td>Creado por</td>
+                            <td>Estado</td>
                             <td>Actividades</td>
                         </tr>
                     </thead>
@@ -46,9 +50,21 @@
                             <tr>
                                 <td>@Html.DisplayFor(m => registros.NumFormulario)</td>
                                 <td>@Html.DisplayFor(m => registros.Turno)</td>
-                                <td>@Html.DisplayFor(m => registros.FechaHoraCreacion)</td>
+                                <td>
+                                    @{
+                                        DateTime? fechaHoraNullable = registros.FechaHoraCreacion;
+                                        string fechaFormateada = fechaHoraNullable.HasValue
+                                        ? fechaHoraNullable.Value.ToString("yyyy-MM-dd")
+                                        : string.Empty;
+                                        string horaFormateada = fechaHoraNullable.HasValue
+                                        ? fechaHoraNullable.Value.ToString("HH:mm:ss")
+                                        : string.Empty;
+                                    }
+                                    <div>@fechaFormateada</div>
+                                    <div>@horaFormateada</div>
+                                </td>
                                 <td>@Html.DisplayFor(m => registros.CreadoPor)</td>
-
+                                <td>@Html.DisplayFor(m => registros.Estado)</td>
                                 <td>
                                     <form method="post" action="@Url.Action("Index", "ActividadResponsable")" class="d-inline">
                                         <input type="hidden" name="CodArea" value="@registros.CodArea" />
@@ -66,7 +82,7 @@
                                         </button>
                                     </form>
 
-                                    @if (registros.Estado == "0")
+                                    @if (registros.Estado == "Abierto")
                                     {
                                         @if ((TempData["User"] as List<string>)?.FirstOrDefault() == registros.CreadoPor)
                                         {
@@ -98,11 +114,7 @@
                                                 <i class="fas fa-check"></i> Cerrar
                                             </button>
                                         </form>
-                                    }
-                                    else
-                                    {
-                                        <button type="button" class="btn btn-outline-primary" disabled>Cerrado</button>
-                                    }
+                                    }   
                                 </td>
                             </tr>
                             <div class="modal fade" id="deleteModal_@registros.NumFormulario" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">

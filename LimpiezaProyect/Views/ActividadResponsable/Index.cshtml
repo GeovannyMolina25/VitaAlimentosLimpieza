@@ -15,20 +15,13 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-header">
-                        <h5>Usuario: @((TempData["User"] as List<string>)?.FirstOrDefault())</h5>
-                        <h5>Formulario: @TempData["Area"]</h5>
-                        <h5>Formulario: @TempData["NumFormulario"]</h5>
+                        <p></p>
+                        <p><strong>Usuario: </strong>@((TempData["User"] as List<string>)?.FirstOrDefault())</p>
+                        <p><strong>Area: </strong> @TempData["Area"]</p>
+                        <p><strong>Formulario: </strong>  @TempData["NumFormulario"]</p>
+                        <hr>
                         <h3 class="card-title">Tabla de formularios</h3>
-                        <div class="card-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-default">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="card-body table-responsive p-0">
@@ -50,11 +43,12 @@
                                     <td>
                                         <div class="form-check">
                                             <input type="hidden" name="model[@i].CodActividad" value='@Model[i].CodActividad' />
-                                            <input type="checkbox" class="form-check-input" name="model[@i].Realizado" value="true" @(Model[i].Realizado ? "checked" : "") />
+                                            <input type="checkbox" class="form-check-input" name="model[@i].Realizado" value="true" @(Model[i].Realizado ?? false ? "checked" : "") />
                                             <input type="hidden" name="model[@i].VerificadoPor" value='@Model[i].VerificadoPor' />
-                                            <label class="form-check-label @((Model[i].Realizado) ? "text-success" : "text-danger")">
-                                                @(Model[i].Realizado ? "Realizado" : "No Realizado")
+                                            <label class="form-check-label @(Model[i].Realizado ?? false ? "text-success" : "text-danger")">
+                                                @(Model[i].Realizado ?? false ? "Realizado" : "No Realizado")
                                             </label>
+
                                         </div>
                                     </td>
                                 </tr>
@@ -68,7 +62,7 @@
             @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Responsable")
             {
 
-            @if (TempData["Estado"].ToString() == "0")
+            @if (TempData["Estado"].ToString() == "Abierto")
             { 
                 <button type="submit" class="btn btn-primary">Enviar</button>
             }
@@ -122,18 +116,18 @@ else if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "super")
         {
             <input type="hidden" name="User" value="@item" />
         }
-        @if (TempData["Revisado"] == null && TempData["Estado"].ToString() == "1")
+        @if (TempData["Estado"].ToString() == "Cerrado")
         {
             <button type="submit" class="btn btn-success">Revisado</button>
         }
-        else if (TempData["Revisado"] != null && TempData["Estado"].ToString() == "1")
+        else if ( TempData["Estado"].ToString() == "Revisado")
         {
             <button type="button" class="btn btn-success" disabled>Revisado</button>
         }
 
         
     </form>
-    @if (TempData["Estado"].ToString() == "1")
+    @if (TempData["Estado"].ToString() == "Cerrado" || TempData["Estado"].ToString() == "Revisado")
         {
         <form method="post" action="@Url.Action("AbrirFormulario", "Supervisor")" class="d-inline">
             <input type="hidden" name="CodArea" value='@TempData["Area"]' />

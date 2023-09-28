@@ -13,7 +13,7 @@ namespace LimpiezaProyect.Models
         public int NumFormulario { get; set; }
         public string? CodArea { get; set; }
         public string? CodEmpresa { get; set; }
-        public string? FechaHoraCreacion { get; set; }
+        public DateTime? FechaHoraCreacion { get; set; }
         public string? CreadoPor { get; set; }
         public string? Turno { get; set; }
         public string? RevisadoPor { get; set; }

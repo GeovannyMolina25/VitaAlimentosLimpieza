@@ -81,6 +81,7 @@ namespace LimpiezaProyect.Controllers
             {
                 ActualizarRegistro.FechaHoraRevisado = DateTime.Now;
                 ActualizarRegistro.RevisadoPor = User.ElementAtOrDefault(1);
+                ActualizarRegistro.Estado = "Revisado";
                 _context.SaveChanges();
                 return RedirectToAction("Index", "Supervisor", new { accion = accion,  User = User});
             }

@@ -14,26 +14,26 @@ public class SupervisorController : Controller
     {
         TempData["User"] = User;
         TempData["accion"] = accion.ToString();
-        var documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado == null && x.Estado != "0").ToList();
+        var documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado == null && x.Estado != "Abierto").ToList();
         return View(documentosRevisados);
     }
 
     [HttpPost]
     public IActionResult Filter(string? accion, List<string> User)
     {
-        var documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado == null && x.Estado != "0").ToList();
+        var documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado == null && x.Estado != "Abierto").ToList();
         if (accion == "3")
         {
-            documentosRevisados = _context.LimpRegistros.Where(x=>x.Estado != "1").ToList();
+            documentosRevisados = _context.LimpRegistros.Where(x=>x.Estado != "1" && x.Estado == "Abierto").ToList();
         }
         else if (accion == "1")
         {
-            documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado == null && x.Estado != "0").ToList();
+            documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado == null && x.Estado != "Abierto").ToList();
 
         }
         else if (accion == "2")
         {
-            documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado != null  && x.Estado != "0").ToList();
+            documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado != null  && x.Estado != "abierto").ToList();
         }
         TempData["User"] = User;
         TempData["accion"] = accion.ToString();
@@ -46,7 +46,9 @@ public class SupervisorController : Controller
 
         if (ActualizarRegistro != null)
         {
-            ActualizarRegistro.Estado = "0";
+            ActualizarRegistro.Estado = "Abierto";
+            ActualizarRegistro.RevisadoPor = null;
+            ActualizarRegistro.FechaHoraRevisado = null;
             _context.SaveChanges();
             return RedirectToAction("Index", new { accion = accion, User = User });
         }
@@ -60,7 +62,7 @@ public class SupervisorController : Controller
 
         if (ActualizarRegistro != null)
         {
-            ActualizarRegistro.Estado = "1";
+            ActualizarRegistro.Estado = "Cerrado";
             _context.SaveChanges();
             return RedirectToAction("Index", new { NumFormulario = NumFormulario, CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
         }
