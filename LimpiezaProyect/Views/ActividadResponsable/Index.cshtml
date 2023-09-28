@@ -58,7 +58,7 @@
                     </table>
                 </div>
             </div>
-
+            <div class="d-flex justify-content-center">
             @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Responsable")
             {
 
@@ -72,75 +72,51 @@
             }
 
             }
-            
+            </div>
         </div>
     </div>
 </form>
-@if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Responsable")
-{
-    <form method="post" asp-action="Salir" class="d-flex">
-        <input type="hidden" name="CodArea" value='@TempData["Area"]' />
-        <input type="hidden" name="CodFormulario" value='@TempData["Formulario"]' />
-        <input type="hidden" name="NumFormulario" value='@TempData["NumFormulario"]' />
-        <input type="hidden" name="CodEmpresa" value='@TempData["Empresa"]' />
-        <input type="hidden" name="Estado" value='@TempData["Estado"]' />
-        @foreach (var item in (TempData["User"] as List<string>))
-        {
-            <input type="hidden" name="User" value="@item" />
-        }
-        <button type="submit" class="btn btn-danger">Atras</button>
-    </form>
-}
-else if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "super")
-{
-    <form method="post" action="@Url.Action("Filter", "Supervisor")" class="d-flex">
-        <input type="hidden" name="accion" value="@TempData["accion"]" />
-        @foreach (var item in (TempData["User"] as List<string>))
+<div class="d-flex justify-content-center">
+    @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Responsable")
     {
-        <input type="hidden" name="User" value="@item" />
+        <form method="post" asp-action="Salir" class="text-center">
+            <input type="hidden" name="CodArea" value='@TempData["Area"]' />
+            <input type="hidden" name="CodFormulario" value='@TempData["Formulario"]' />
+            <input type="hidden" name="NumFormulario" value='@TempData["NumFormulario"]' />
+            <input type="hidden" name="CodEmpresa" value='@TempData["Empresa"]' />
+            <input type="hidden" name="Estado" value='@TempData["Estado"]' />
+            @foreach (var item in (TempData["User"] as List<string>))
+            {
+                <input type="hidden" name="User" value="@item" />
+            }
+            <button type="submit" class="btn btn-danger">Atras</button>
+        </form>
     }
-    <button type="submit" class="btn btn-danger">Atras</button>
-    </form>
-}
-else if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Verificador")
-{
-    <form method="post" action="@Url.Action("Filter", "Verificador")" class="d-flex">
-        <input type="hidden" name="accion" value="@TempData["accion"]" />
-        @foreach (var item in (TempData["User"] as List<string>))
-        {
-            <input type="hidden" name="User" value="@item" />
-        }
-        <button type="submit" class="btn btn-danger">Atras</button>
-    </form>
-}
-@if ((TempData["User"] as List<string>
-    )?.ElementAtOrDefault(2) == "super" )
-{
-    <form method="post" asp-action="EnviarVerificado" class="d-flex">
-        <input type="hidden" name="CodArea" value='@TempData["Area"]' />
-        <input type="hidden" name="CodFormulario" value='@TempData["Formulario"]' />
-        <input type="hidden" name="NumFormulario" value='@TempData["NumFormulario"]' />
-        <input type="hidden" name="CodEmpresa" value='@TempData["Empresa"]' />
-        <input type="hidden" name="Estado" value='@TempData["Estado"]' />
-        <input type="hidden" name="accion" value='@TempData["accion"]' />
-        @foreach (var item in (TempData["User"] as List<string>))
-        {
-            <input type="hidden" name="User" value="@item" />
-        }
-        @if (TempData["Estado"].ToString() == "Cerrado")
-        {
-            <button type="submit" class="btn btn-success">Revisado</button>
-        }
-        else if ( TempData["Estado"].ToString() == "Revisado")
-        {
-            <button type="button" class="btn btn-success" disabled>Revisado</button>
-        }
-
-        
-    </form>
-    @if (TempData["Estado"].ToString() == "Cerrado" || TempData["Estado"].ToString() == "Revisado")
-        {
-        <form method="post" action="@Url.Action("AbrirFormulario", "Supervisor")" class="d-inline">
+    else if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "super")
+    {
+        <form method="post" action="@Url.Action("Filter", "Supervisor")" class="text-center">
+            <input type="hidden" name="accion" value="@TempData["accion"]" />
+            @foreach (var item in (TempData["User"] as List<string>))
+            {
+                <input type="hidden" name="User" value="@item" />
+            }
+            <button type="submit" class="btn btn-danger">Atras</button>
+        </form>
+    }
+    else if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Verificador")
+    {
+        <form method="post" action="@Url.Action("Filter", "Verificador")" class="text-center">
+            <input type="hidden" name="accion" value="@TempData["accion"]" />
+            @foreach (var item in (TempData["User"] as List<string>))
+            {
+                <input type="hidden" name="User" value="@item" />
+            }
+            <button type="submit" class="btn btn-danger">Atras</button>
+        </form>
+    }
+    @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "super")
+    {
+        <form method="post" asp-action="EnviarVerificado" class="text-center">
             <input type="hidden" name="CodArea" value='@TempData["Area"]' />
             <input type="hidden" name="CodFormulario" value='@TempData["Formulario"]' />
             <input type="hidden" name="NumFormulario" value='@TempData["NumFormulario"]' />
@@ -151,9 +127,30 @@ else if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Verificad
             {
                 <input type="hidden" name="User" value="@item" />
             }
-            <button type="submit" class="btn btn-outline-primary">Reabrir formulario</button>
+            @if (TempData["Estado"].ToString() == "Cerrado")
+            {
+                <button type="submit" class="btn btn-success">Revisado</button>
+            }
+            else if (TempData["Estado"].ToString() == "Revisado")
+            {
+                <button type="button" class="btn btn-success" disabled>Revisado</button>
+            }
+        </form>
+        @if (TempData["Estado"].ToString() == "Cerrado" || TempData["Estado"].ToString() == "Revisado")
+        {
+            <form method="post" action="@Url.Action("AbrirFormulario", "Supervisor")" class="d-inline text-center">
+                <input type="hidden" name="CodArea" value='@TempData["Area"]' />
+                <input type="hidden" name="CodFormulario" value='@TempData["Formulario"]' />
+                <input type="hidden" name="NumFormulario" value='@TempData["NumFormulario"]' />
+                <input type="hidden" name="CodEmpresa" value='@TempData["Empresa"]' />
+                <input type="hidden" name="Estado" value='@TempData["Estado"]' />
+                <input type="hidden" name="accion" value='@TempData["accion"]' />
+                @foreach (var item in (TempData["User"] as List<string>))
+                {
+                    <input type="hidden" name="User" value="@item" />
+                }
+                <button type="submit" class="btn btn-outline-primary">Reabrir formulario</button>
             </form>
-        
         }
-}
-
+    }
+</div>

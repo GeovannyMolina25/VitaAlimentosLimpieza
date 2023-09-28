@@ -155,6 +155,7 @@
                 </table>
             </div>
         </div>
+        <div class="d-flex justify-content-center">
         <form method="post" asp-action="Salir" class="d-flex">
             <input type="hidden" name="CodArea" value="@TempData["Area"]" />
             <input type="hidden" name="CodFormulario" value="@TempData["Formulario"]" />
@@ -166,6 +167,7 @@
             <button type="submit" class="btn btn-danger mr-auto">Atras</button>
 
         </form>
+        </div>
     </div>
 </div>
 <script>

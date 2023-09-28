@@ -69,7 +69,7 @@
             
         </div>
         <!-- /.card -->
-        <div class="text-center mt-3">
+        <div class="d-flex justify-content-center">
             @foreach (var item in (TempData["User"] as List<string>))
             {
                 <input type="hidden" name="User" value="@item" />

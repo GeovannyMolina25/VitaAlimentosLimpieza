@@ -51,7 +51,7 @@
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
-        <div class="text-center mt-3">
+        <div class="d-flex justify-content-center">
             <form method="post" action="@Url.Action("Index","Inicio")">
                 @foreach (var item in (TempData["User"] as List<string>))
                 {

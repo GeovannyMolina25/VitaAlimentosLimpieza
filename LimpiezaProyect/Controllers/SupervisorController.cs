@@ -14,7 +14,7 @@ public class SupervisorController : Controller
     {
         TempData["User"] = User;
         TempData["accion"] = accion.ToString();
-        var documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado == null && x.Estado != "Abierto").ToList();
+        var documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado == null && x.Estado == "Abierto").ToList();
         return View(documentosRevisados);
     }
 
@@ -24,16 +24,16 @@ public class SupervisorController : Controller
         var documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado == null && x.Estado != "Abierto").ToList();
         if (accion == "3")
         {
-            documentosRevisados = _context.LimpRegistros.Where(x=>x.Estado != "1" && x.Estado == "Abierto").ToList();
+            documentosRevisados = _context.LimpRegistros.Where(x=> x.Estado == "Abierto").ToList();
         }
         else if (accion == "1")
         {
-            documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado == null && x.Estado != "Abierto").ToList();
+            documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado == null && x.Estado == "Cerrado").ToList();
 
         }
         else if (accion == "2")
         {
-            documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado != null  && x.Estado != "abierto").ToList();
+            documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado != null  && x.Estado == "Revisado" || x.Estado == "Verificado").ToList();
         }
         TempData["User"] = User;
         TempData["accion"] = accion.ToString();
