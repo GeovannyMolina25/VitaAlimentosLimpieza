@@ -1,0 +1,94 @@
+﻿@model List<LimpRegistro>
+
+<div class="wrapper">
+    <p></p>
+    <p>Usuario: @((TempData["User"] as List<string>)?.FirstOrDefault())</p>
+    <p><strong>Fecha y hora actual:</strong> <span id="fechaHoraActual"></span></p>
+    <hr>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        @if (TempData.Peek("accion").ToString() == "1")
+                        {
+                            <h3 class="card-title">Formularios <strong>abiertos</strong> </h3>
+                        }
+                        else if (TempData.Peek("accion").ToString() == "2")
+                        {
+                            <h3 class="card-title">Formularios <strong>cerrados</strong></h3>
+                        }
+                        else if (TempData.Peek("accion").ToString() == "3")
+                        {
+                            <h3 class="card-title">Formularios <strong>supervisados</strong></h3>
+                        }
+                        else if (TempData.Peek("accion").ToString() == "4")
+                        {
+                            <h3 class="card-title">Formularios <strong>verificados</strong></h3>
+                        }
+
+                    </div>
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Num</th>
+                                    <th>Nombre</th>
+                                    <th>Creado por</th>
+                                    <th>fecha</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var registros in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(m => registros.NumFormulario)</td>
+                                        <td>@Html.DisplayFor(m => registros.CodArea)</td>
+                                        <td>@Html.DisplayFor(m => registros.CreadoPor)</td>
+                                        <td>@Html.DisplayFor(m => registros.FechaHoraCreacion)</td>
+                                        <td>@Html.DisplayFor(m => registros.CodFormulario)</td>
+                                        <td>
+
+                                            <form method="post" action="@Url.Action("Index", "ActividadResponsable")" class="d-inline">
+                                                <input type="hidden" name="CodArea" value="@registros.CodArea" />
+                                                <input type="hidden" name="Estado" value="@registros.Estado" />
+                                                <input type="hidden" name="CodFormulario" value="@registros.CodFormulario" />
+                                                <input type="hidden" name="NumFormulario" value="@registros.NumFormulario" />
+                                                <input type="hidden" name="CodEmpresa" value="@registros.CodEmpresa" />
+                                                <input type="hidden" name="FechaHoraRevisado" value="@registros.FechaHoraRevisado" />
+                                                <input type="hidden" name="accion" value="@TempData["accion"]" />
+                                                @foreach (var item in (TempData["User"] as List<string>))
+                                                {
+                                                    <input type="hidden" name="User" value="@item" />
+                                                }
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </form>
+
+
+                                        </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form method="post" action="@Url.Action("Index", "Inicio")" class="d-inline">
+        <input type="hidden" name="accion" value="@TempData["accion"]" />
+        <button type="submit" class="btn btn-danger">
+            <i class="">  Salir  </i>
+        </button>
+    </form>
+
+</div>
+

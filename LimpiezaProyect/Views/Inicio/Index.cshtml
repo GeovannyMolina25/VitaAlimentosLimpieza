@@ -7,7 +7,87 @@
     <hr>
     @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Verificador")
     {
-        <h1> Hola mundo</h1>
+        <h5 class="mt-4 mb-2">Formularios <code>Verificador</code></h5>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box bg-info">
+                    <span class="info-box-icon"><i class="fas fa-folder-open"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Formularios <strong>abiertos</strong> </span>
+                        <span class="info-box-number">@TempData["Count"]</span>
+                        <form method="post" action="@Url.Action("Filter", "Verificador")">
+                        <input type="hidden" name="accion" value="1" />
+                        @foreach (var item in (TempData["User"] as List<string>))
+                        {
+                            <input type="hidden" name="User" value="@item" />
+                        }
+                        <button type="submit" class="btn btn-outline-secondary">Ver mas...</button>
+                        </form>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box bg-success">
+                    <span class="info-box-icon"><i class="fas fa-folder"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Formularios <strong>cerrados</strong></span>
+                        <span class="info-box-number">@TempData["Cerrado"]</span>
+                        <form method="post" action="@Url.Action("Filter", "Verificador")">
+                        <input type="hidden" name="accion" value="2" />
+                        @foreach (var item in (TempData["User"] as List<string>))
+                        {
+                            <input type="hidden" name="User" value="@item" />
+                        }
+                        <button type="submit" class="btn btn-outline-secondary">Ver mas...</button>
+                        </form>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box bg-warning">
+                    <span class="info-box-icon"><i class="fas fa-check-circle"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Formularios <strong>supervisados</strong></span>
+                        <span class="info-box-number">@TempData["Revisado"]</span>
+                        <form method="post" action="@Url.Action("Filter", "Verificador")">
+                        <input type="hidden" name="accion" value="3" />
+                        @foreach (var item in (TempData["User"] as List<string>))
+                        {
+                            <input type="hidden" name="User" value="@item" />
+                        }
+                        <button type="submit" class="btn btn-outline-secondary">Ver mas...</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box bg-danger">
+                    <span class="info-box-icon"><i class="fas fa-check-double"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Formularios <strong>verificados</strong></span>
+                        <span class="info-box-number">@TempData["Verificado"]</span>
+                        <form method="post" action="@Url.Action("Filter", "Verificador")">
+                        <input type="hidden" name="accion" value="4" />
+                        @foreach (var item in (TempData["User"] as List<string>))
+                        {
+                            <input type="hidden" name="User" value="@item" />
+                        }
+                        <button type="submit" class="btn btn-outline-secondary">Ver mas...</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     }
 
     @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "super")
@@ -15,7 +95,6 @@
         <h5 class="mb-2 mt-4">Areas</h5>
         <div class="row">
             <div class="col-lg-4 col-4">
-                <!-- small card -->
                 <div class="small-box bg-success">
                     <div class="inner">
                         <h3>@TempData["Count"]</h3>
@@ -35,7 +114,6 @@
                 </div>
             </div>
             <div class="col-lg-4 col-4">
-                <!-- small card -->
                 <div class="small-box bg-danger">
                     <div class="inner">
                         <h3>@TempData["NoRevisado"]</h3>
@@ -56,7 +134,6 @@
                 </div>
             </div>
             <div class="col-lg-4 col-4">
-                <!-- small card -->
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>@TempData["Revisado"]</h3>

@@ -57,9 +57,14 @@ namespace LimpiezaProyect.Controllers
             var Countformularios = _context.LimpRegistros.Where(x=> x.Estado == "Abierto").Count();
             var NoRformularios = _context.LimpRegistros.Where(r=>r.FechaHoraRevisado == null && r.Estado != "Abierto").Count();
             var Rformularios = _context.LimpRegistros.Where(r => r.FechaHoraRevisado != null && r.Estado == "Revisado").Count();
+            var Vformularios = _context.LimpRegistros.Where(r => r.FechaHoraVerificacion != null && r.Estado == "Verificado").Count();
+            var Cformularios = _context.LimpRegistros.Where(r => r.FechaHoraVerificacion == null && r.Estado == "Cerrado").Count();
+            
             TempData["Count"] = Countformularios;
             TempData["NoRevisado"] = NoRformularios;
             TempData["Revisado"] = Rformularios;
+            TempData["Verificado"] = Vformularios;
+            TempData["Cerrado"] = Cformularios;
 
             return View(areas);
         }
