@@ -36,11 +36,11 @@ namespace LimpiezaProyect.Controllers
             //};
 
 
-            List<string> Usuario = new List<string>()
-                {
-                    "Javier Hervas","JHervas","Responsable", "PQSA"
+            //List<string> Usuario = new List<string>()
+            //    {
+            //        "Javier Hervas","JHervas","Responsable", "PQSA"
 
-                };
+            //    };
 
             //List<string> Usuario = new List<string>()
             //    {
@@ -48,10 +48,10 @@ namespace LimpiezaProyect.Controllers
 
             //    };
 
-            //List<string> Usuario = new List<string>()
-            //{
-            //    "Amy Brigette","    ABrigette", "Verificador","PQSA"
-            //};
+            List<string> Usuario = new List<string>()
+            {
+                "Amy Brigette","    ABrigette", "Verificador","PQSA"
+            };
 
 
             TempData["User"] = Usuario;
