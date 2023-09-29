@@ -8,7 +8,7 @@ namespace LimpiezaProyect.Models
         public int? NumFormulario { get; set; }
         public string? CodFormulario { get; set; }
         public int CodRegistro { get; set; }
-        public string? CodActividad { get; set; }
+        public int? CodActividad { get; set; }
         public string? CodResponsable { get; set; }
         public bool? Realizado { get; set; }
         public DateTime? FechaHoraCreacion { get; set; }

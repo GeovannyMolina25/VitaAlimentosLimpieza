@@ -10,7 +10,7 @@ namespace LimpiezaProyect.Models
             LimpRegistroDetalles = new HashSet<LimpRegistroDetalle>();
         }
 
-        public string CodActividad { get; set; } = null!;
+        public int CodActividad { get; set; }
         public string? Decsripcion { get; set; }
         public string CodEmpresa { get; set; } = null!;
         public string? CreadoPor { get; set; }

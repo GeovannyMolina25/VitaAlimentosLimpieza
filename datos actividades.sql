@@ -393,4 +393,9 @@ VALUES ('Documentos en su lugar', 'PQSA', 'ngmolina', GETDATE(), 'ngmolina', GET
 INSERT INTO [Prod].[LimpFormularioActividad] ([Decsripcion], [CodEmpresa], [CreadoPor], [FechaHoraCreacion], [ActualixzadoPor], [FechaHoraActualizacion], [CodRegistro], [CodFormulario])
 VALUES ('Herramientas en su lugar', 'PQSA', 'ngmolina', GETDATE(), 'ngmolina', GETDATE(), 168, 'T-PRO-RE-023');
 
+
+select * from Prod.LimpRegistro
+select * from Prod.LimpFormulario
+select * from Prod.LimpArea
 select * from Prod.LimpFormularioActividad
+select * from Prod.LimpRegistroDetalle
