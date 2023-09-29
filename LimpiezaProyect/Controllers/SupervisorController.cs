@@ -33,7 +33,7 @@ public class SupervisorController : Controller
         }
         else if (accion == "2")
         {
-            documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado != null  && x.Estado == "Revisado" || x.Estado == "Verificado").ToList();
+            documentosRevisados = _context.LimpRegistros.Where(x => x.FechaHoraRevisado != null  && x.Estado == "Revisado" ).ToList();
         }
         TempData["User"] = User;
         TempData["accion"] = accion.ToString();

@@ -9,7 +9,7 @@
     {
         <h5 class="mt-4 mb-2">Formularios <code>Verificador</code></h5>
         <div class="row">
-            <div class="col-md-3 col-sm-6 col-6">
+            <div class="col-md-3 col-sm-6 col-12">
                 <div class="info-box bg-info">
                     <span class="info-box-icon"><i class="fas fa-folder-open"></i></span>
 
@@ -56,7 +56,7 @@
                     <span class="info-box-icon"><i class="fas fa-check-circle"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Formularios <strong>supervisados</strong></span>
+                        <span class="info-box-text">Formularios <strong>revisados</strong></span>
                         <span class="info-box-number"><h3>@TempData["Revisado"]</h3></span>
                         <form method="post" action="@Url.Action("Filter", "Verificador")">
                         <input type="hidden" name="accion" value="3" />
@@ -117,7 +117,7 @@
                 <div class="small-box bg-danger">
                     <div class="inner">
                         <h3>@TempData["NoRevisado"]</h3>
-                        <p>Formularios <strong>NO revisados</strong></p>
+                        <p>Formularios <strong>cerrados</strong></p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-exclamation-circle"></i>

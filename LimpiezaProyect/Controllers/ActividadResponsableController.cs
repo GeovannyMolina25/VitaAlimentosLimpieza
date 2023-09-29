@@ -27,7 +27,8 @@ namespace LimpiezaProyect.Controllers
             TempData["accion"] = accion;
             var actividadFormulario = _context.LimpRegistroDetalles.Where(m=>m.NumFormulario == Numformulario).ToList();
             ViewBag.Hola = actividadFormulario;
-            
+            var nombreActividad = _context.LimpFormularioActividads.Where(m => m.CodFormulario == CodFormulario).ToList();
+            TempData["Nombres"] = nombreActividad;
             return View(actividadFormulario);
         }
 

@@ -36,11 +36,11 @@ namespace LimpiezaProyect.Controllers
             //};
 
 
-            //List<string> Usuario = new List<string>()
-            //    {
-            //        "Javier Hervas","JHervas","Responsable", "PQSA"
+            List<string> Usuario = new List<string>()
+                {
+                    "Javier Hervas","JHervas","Responsable", "PQSA"
 
-            //    };
+                };
 
             //List<string> Usuario = new List<string>()
             //    {
@@ -48,16 +48,16 @@ namespace LimpiezaProyect.Controllers
 
             //    };
 
-            List<string> Usuario = new List<string>()
-            {
-                "Amy Brigette","    ABrigette", "Verificador","PQSA"
-            };
+            //List<string> Usuario = new List<string>()
+            //{
+            //    "Amy Brigette","    ABrigette", "Verificador","PQSA"
+            //};
 
 
             TempData["User"] = Usuario;
             var Countformularios = _context.LimpRegistros.Where(x=> x.Estado == "Abierto").Count();
             var NoRformularios = _context.LimpRegistros.Where(r=>r.FechaHoraRevisado == null && r.Estado != "Abierto").Count();
-            var Rformularios = _context.LimpRegistros.Where(x => x.FechaHoraRevisado != null && x.Estado == "Revisado" && x.Estado != "Verificado").Count();
+            var Rformularios = _context.LimpRegistros.Where(x => x.Estado == "Revisado").Count();
             var Vformularios = _context.LimpRegistros.Where(r => r.FechaHoraVerificacion != null && r.Estado == "Verificado").Count();
             var Cformularios = _context.LimpRegistros.Where(r => r.FechaHoraVerificacion == null && r.Estado == "Cerrado").Count();
             

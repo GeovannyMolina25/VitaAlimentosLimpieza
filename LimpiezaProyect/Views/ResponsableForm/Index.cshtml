@@ -35,12 +35,12 @@
                 <table id="tablaRegistros" class="table table-hover text-nowrap">
                     <thead>
                         <tr>
-                            <td>Num</td>
-                            <td>Turno</td>
-                            <td>Fecha</td>
-                            <td>Creado por</td>
-                            <td>Estado</td>
-                            <td>Actividades</td>
+                            <td> <strong>Num</strong> </td>
+                            <td><strong>Turno</strong></td>
+                            <td><strong>Fecha</strong></td>
+                            <td><strong>Creado por</strong></td>
+                            <td><strong>Estado</strong></td>
+                            <td><strong>Actividades</strong></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -154,19 +154,19 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-        <div class="d-flex justify-content-center">
-        <form method="post" asp-action="Salir" class="d-flex">
-            <input type="hidden" name="CodArea" value="@TempData["Area"]" />
-            <input type="hidden" name="CodFormulario" value="@TempData["Formulario"]" />
-            <input type="hidden" name="CodEmpresa" value="@TempData["Empresa"]" />
-            @foreach (var item in (TempData["User"] as List<string>))
-            {
-                <input type="hidden" name="User" value="@item" />
-            }
-            <button type="submit" class="btn btn-danger mr-auto">Atras</button>
+            <div class="d-flex justify-content-center">
+                <form method="post" asp-action="Salir" class="d-flex">
+                    <input type="hidden" name="CodArea" value="@TempData["Area"]" />
+                    <input type="hidden" name="CodFormulario" value="@TempData["Formulario"]" />
+                    <input type="hidden" name="CodEmpresa" value="@TempData["Empresa"]" />
+                    @foreach (var item in (TempData["User"] as List<string>))
+                    {
+                        <input type="hidden" name="User" value="@item" />
+                    }
+                    <button type="submit" class="btn btn-danger mr-auto">Atras</button>
 
-        </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>

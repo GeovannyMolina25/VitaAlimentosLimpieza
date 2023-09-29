@@ -1,4 +1,7 @@
-﻿@model List<LimpRegistroDetalle>
+﻿@{
+    var nombres = TempData["Nombres"] as List<LimpFormularioActividad>; 
+}
+@model List<LimpRegistroDetalle>
 
 <form method="post" asp-action="Envio" class="form-horizontal">
     <input type="hidden" name="CodArea" value='@TempData["Area"]' />
@@ -27,10 +30,9 @@
                 <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
                         <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Nombre</th>
-                                <th>Check</th>
+                            <tr>  
+                                <th><strong>Nombre</strong></th>
+                                <th><strong>Realizado</strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,17 +40,34 @@
                             @for (var i = 0; i < Model.Count; i++)
                             {
                                 <tr>
-                                    <td>@Html.DisplayFor(m =>Model[i].CodActividad)</td>
-                                    <td>@Html.DisplayFor(m =>Model[i].CodActividad)</td>
+                                    
+                                    <td>
+                                        @foreach(var nombre in nombres)
+                                        {
+                                            @if (Model[i].CodActividad == nombre.CodActividad)
+                                            {
+                                                <strong> @nombre.Decsripcion</strong>
+                                            }
+                                        }
+                                        
+                                    </td>
                                     <td>
                                         <div class="form-check">
                                             <input type="hidden" name="model[@i].CodActividad" value='@Model[i].CodActividad' />
-                                            <input type="checkbox" class="form-check-input" name="model[@i].Realizado" value="true" @(Model[i].Realizado ?? false ? "checked" : "") />
+
+                                            @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "super" || (TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Verificador")
+                                            {
+                                                <input type="checkbox" class="form-check-input" name="model[@i].Realizado" value="true" disabled="disabled" @(Model[i].Realizado ?? false ? "checked" : "") />
+                                            }
+                                            else
+                                            {
+                                                <input type="checkbox" class="form-check-input" name="model[@i].Realizado" value="true" @(Model[i].Realizado ?? false ? "checked" : "") />
+                                            }
+
                                             <input type="hidden" name="model[@i].VerificadoPor" value='@Model[i].VerificadoPor' />
                                             <label class="form-check-label @(Model[i].Realizado ?? false ? "text-success" : "text-danger")">
-                                                @(Model[i].Realizado ?? false ? "Realizado" : "No Realizado")
+                                                @(Model[i].Realizado ?? false ? "*" : "*")
                                             </label>
-
                                         </div>
                                     </td>
                                 </tr>

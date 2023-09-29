@@ -58,7 +58,6 @@ namespace LimpiezaProyect.Controllers
                     FechaHoraCreacion = DateTime.Now,
                     CodEmpresa = CodEmpresa,
                     CreadoPor = User.FirstOrDefault(),
-                    
                     VerificadoPor = "NULL",
                     Turno = turno,
                     FechaHoraRevisado = null,

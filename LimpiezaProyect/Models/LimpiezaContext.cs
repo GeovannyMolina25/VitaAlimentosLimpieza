@@ -22,7 +22,14 @@ namespace LimpiezaProyect.Models
         public virtual DbSet<LimpRegistro> LimpRegistros { get; set; } = null!;
         public virtual DbSet<LimpRegistroDetalle> LimpRegistroDetalles { get; set; } = null!;
 
-        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Server=DESKTOP-CNQN4CO; Database=Limpieza; Trusted_Connection=True;");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -191,7 +198,7 @@ namespace LimpiezaProyect.Models
                 entity.Property(e => e.FechaHoraVerificacion).HasColumnType("datetime");
 
                 entity.Property(e => e.RevisadoPor)
-                    .HasMaxLength(10)
+                    .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasDefaultValueSql("((20))");
 
@@ -200,7 +207,7 @@ namespace LimpiezaProyect.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.VerificadoPor)
-                    .HasMaxLength(10)
+                    .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasDefaultValueSql("((20))");
 
@@ -233,18 +240,16 @@ namespace LimpiezaProyect.Models
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.Property(e => e.FechaHoraCreacion)
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
+                entity.Property(e => e.FechaHoraCreacion).HasColumnType("datetime");
 
                 entity.Property(e => e.FechaHoraVerificacion).HasColumnType("datetime");
 
                 entity.Property(e => e.RevisadoPor)
-                    .HasMaxLength(10)
+                    .HasMaxLength(20)
                     .IsUnicode(false);
 
                 entity.Property(e => e.VerificadoPor)
-                    .HasMaxLength(10)
+                    .HasMaxLength(20)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.NumFormularioNavigation)
