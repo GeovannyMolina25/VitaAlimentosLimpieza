@@ -64,15 +64,20 @@ namespace LimpiezaProyect.Controllers
             TempData["accion"] = accion.ToString();
             return View("Index", documentosRevisados);
         }
-        public async Task<IActionResult> VerificadoForm(string CodArea, int NumFormulario, string CodEmpresa, string? accion, List<string> User)
+        public IActionResult VerificadoForm(string CodArea, int NumFormulario, string CodEmpresa, string? accion, List<string> User)
         {
             var ActualizarRegistro = _context.LimpRegistros.FirstOrDefault(r => r.NumFormulario == NumFormulario && r.CodArea == CodArea && r.CodEmpresa == CodEmpresa);
+            List<LimpRegistroDetalle> datos = _context.LimpRegistroDetalles.Where(r => r.NumFormulario == NumFormulario ).ToList();
 
             if (ActualizarRegistro != null)
             {
                 ActualizarRegistro.Estado = "Verificado";
                 ActualizarRegistro.FechaHoraVerificacion = DateTime.Now;
                 ActualizarRegistro.VerificadoPor = User.FirstOrDefault();
+                foreach (var detalle in datos)
+                {
+                    detalle.VerificadoPor = User.FirstOrDefault();
+                }
                 _context.SaveChanges();
                 return RedirectToAction("Index", new { accion = accion, User = User });
 

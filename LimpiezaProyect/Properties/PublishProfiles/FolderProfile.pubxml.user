@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\publish\</_PublishTargetUrl>
+    <History>True|2023-10-06T18:53:58.0927906Z;True|2023-10-06T12:23:15.4502925-05:00;True|2023-10-06T08:23:13.3629239-05:00;True|2023-10-06T08:19:10.0327789-05:00;True|2023-10-05T13:57:46.9922521-05:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

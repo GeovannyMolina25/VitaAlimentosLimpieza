@@ -1,0 +1,200 @@
+========================= Limpieza=============
+USE [Pqsa]
+GO
+
+/****** Object:  Table [Prod].[LimpRegistroDetalle]    Script Date: 10/10/2023 9:04:58 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [Prod].[LimpRegistroDetalle](
+	[NumFormulario] [int] NULL,
+	[CodFormulario] [varchar](20) NULL,
+	[CodRegistro] [int] IDENTITY(1,1) NOT NULL,
+	[CodActividad] [int] NULL,
+	[CodResponsable] [varchar](20) NULL,
+	[Realizado] [bit] NULL,
+	[FechaHoraCreacion] [datetime] NULL,
+	[CodEmpresa] [varchar](10) NOT NULL,
+	[FechaHoraVerificacion] [datetime] NULL,
+	[VerificadoPor] [varchar](20) NULL,
+	[RevisadoPor] [varchar](20) NULL,
+ CONSTRAINT [PK_LimpRegistroDetalle] PRIMARY KEY CLUSTERED 
+(
+	[CodRegistro] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [Prod].[LimpRegistroDetalle] ADD  CONSTRAINT [DF_LimpRegistroDetalle_CodFormulario]  DEFAULT ((20)) FOR [CodFormulario]
+GO
+
+ALTER TABLE [Prod].[LimpRegistroDetalle]  WITH CHECK ADD  CONSTRAINT [FK_LimpRegistroDetalle_LimpFormularioActividad] FOREIGN KEY([CodActividad], [CodEmpresa], [CodFormulario])
+REFERENCES [Prod].[LimpFormularioActividad] ([CodActividad], [CodEmpresa], [CodFormulario])
+GO
+
+ALTER TABLE [Prod].[LimpRegistroDetalle] CHECK CONSTRAINT [FK_LimpRegistroDetalle_LimpFormularioActividad]
+GO
+
+ALTER TABLE [Prod].[LimpRegistroDetalle]  WITH CHECK ADD  CONSTRAINT [FK_LimpRegistroDetalle_LimpRegistro] FOREIGN KEY([NumFormulario])
+REFERENCES [Prod].[LimpRegistro] ([NumFormulario])
+GO
+
+ALTER TABLE [Prod].[LimpRegistroDetalle] CHECK CONSTRAINT [FK_LimpRegistroDetalle_LimpRegistro]
+GO
+
+
+----------------------------
+USE [Pqsa]
+GO
+
+/****** Object:  Table [Prod].[LimpRegistro]    Script Date: 10/10/2023 9:04:53 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [Prod].[LimpRegistro](
+	[NumFormulario] [int] IDENTITY(1,1) NOT NULL,
+	[CodArea] [varchar](20) NULL,
+	[CodEmpresa] [varchar](10) NULL,
+	[FechaHoraCreacion] [datetime] NULL,
+	[CreadoPor] [varchar](20) NULL,
+	[Turno] [varchar](20) NULL,
+	[RevisadoPor] [varchar](20) NULL,
+	[FechaHoraRevisado] [datetime] NULL,
+	[VerificadoPor] [varchar](20) NULL,
+	[FechaHoraVerificacion] [datetime] NULL,
+	[CodRegistro] [int] NOT NULL,
+	[CodFormulario] [varchar](20) NULL,
+	[Estado] [varchar](20) NULL,
+ CONSTRAINT [PK_LimpRegistro] PRIMARY KEY CLUSTERED 
+(
+	[NumFormulario] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [Prod].[LimpRegistro] ADD  CONSTRAINT [DF_LimpRegistro_RevisadoPor]  DEFAULT ((20)) FOR [RevisadoPor]
+GO
+
+ALTER TABLE [Prod].[LimpRegistro] ADD  CONSTRAINT [DF_LimpRegistro_VerificadoPor]  DEFAULT ((20)) FOR [VerificadoPor]
+GO
+
+ALTER TABLE [Prod].[LimpRegistro]  WITH CHECK ADD  CONSTRAINT [FK_LimpRegistro_LimpFormulario] FOREIGN KEY([CodFormulario], [CodEmpresa])
+REFERENCES [Prod].[LimpFormulario] ([CodFormulario], [CodEmpresa])
+GO
+
+ALTER TABLE [Prod].[LimpRegistro] CHECK CONSTRAINT [FK_LimpRegistro_LimpFormulario]
+GO
+
+
+----------------------------------------
+USE [Pqsa]
+GO
+
+/****** Object:  Table [Prod].[LimpFormularioActividad]    Script Date: 10/10/2023 9:04:47 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [Prod].[LimpFormularioActividad](
+	[CodActividad] [int] IDENTITY(1,1) NOT NULL,
+	[Decsripcion] [varchar](100) NULL,
+	[CodEmpresa] [varchar](10) NOT NULL,
+	[CreadoPor] [varchar](20) NULL,
+	[FechaHoraCreacion] [datetime] NULL,
+	[ActualixzadoPor] [varchar](20) NULL,
+	[FechaHoraActualizacion] [datetime] NULL,
+	[CodRegistro] [int] NOT NULL,
+	[CodFormulario] [varchar](20) NOT NULL,
+	[LimpConfFormulario] [int] NULL,
+ CONSTRAINT [PK_LimpConfFormularioActividad_1] PRIMARY KEY CLUSTERED 
+(
+	[CodActividad] ASC,
+	[CodEmpresa] ASC,
+	[CodFormulario] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [Prod].[LimpFormularioActividad]  WITH CHECK ADD  CONSTRAINT [FK_LimpConfFormularioActividad_LimpConfFormulario] FOREIGN KEY([CodFormulario], [CodEmpresa])
+REFERENCES [Prod].[LimpFormulario] ([CodFormulario], [CodEmpresa])
+GO
+
+ALTER TABLE [Prod].[LimpFormularioActividad] CHECK CONSTRAINT [FK_LimpConfFormularioActividad_LimpConfFormulario]
+GO
+
+
+---------------------------------
+
+USE [Pqsa]
+GO
+
+/****** Object:  Table [Prod].[LimpFormulario]    Script Date: 10/10/2023 9:04:30 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [Prod].[LimpFormulario](
+	[CodFormulario] [varchar](20) NOT NULL,
+	[Descripcion] [varchar](100) NULL,
+	[CodRegistro] [int] IDENTITY(1,1) NOT NULL,
+	[CreadoPor] [varchar](20) NULL,
+	[FechaHoraCreacion] [datetime] NULL,
+	[ActualizadoPor] [varchar](20) NULL,
+	[FechaHoraActualizacion] [datetime] NULL,
+	[CodEmpresa] [varchar](10) NOT NULL,
+	[CodArea] [varchar](20) NOT NULL,
+ CONSTRAINT [PK_LimpConfFormulario_1] PRIMARY KEY CLUSTERED 
+(
+	[CodFormulario] ASC,
+	[CodEmpresa] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [Prod].[LimpFormulario]  WITH CHECK ADD  CONSTRAINT [FK_LimpConfFormulario_LimpArea] FOREIGN KEY([CodArea], [CodEmpresa])
+REFERENCES [Prod].[LimpArea] ([CodArea], [CodEmpresa])
+GO
+
+ALTER TABLE [Prod].[LimpFormulario] CHECK CONSTRAINT [FK_LimpConfFormulario_LimpArea]
+GO
+
+
+-------------------------------------ç
+USE [Pqsa]
+GO
+
+/****** Object:  Table [Prod].[LimpArea]    Script Date: 10/10/2023 9:04:26 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [Prod].[LimpArea](
+	[CodArea] [varchar](20) NOT NULL,
+	[CodRegistro] [int] IDENTITY(1,1) NOT NULL,
+	[Descripcion] [varchar](60) NULL,
+	[CodEmpresa] [varchar](10) NOT NULL,
+	[CreadoPor] [varchar](20) NULL,
+	[FechaHoraCreacion] [datetime] NULL,
+	[ActualizadoPor] [varchar](20) NULL,
+	[FechaHoraActualizacion] [datetime] NULL,
+ CONSTRAINT [PK_LimpArea] PRIMARY KEY CLUSTERED 
+(
+	[CodArea] ASC,
+	[CodEmpresa] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+

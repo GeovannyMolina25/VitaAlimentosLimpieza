@@ -1,0 +1,81 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = LimpiezaProyect
+build_property.RootNamespace = LimpiezaProyect
+build_property.ProjectDir = C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Nelson Molina/OneDrive/Escritorio/VitaAlimentosLimpieza/LimpiezaProyect/Views/ActividadResponsable/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZpZGFkUmVzcG9uc2FibGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nelson Molina/OneDrive/Escritorio/VitaAlimentosLimpieza/LimpiezaProyect/Views/Inicio/CreateArea.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5pY2lvXENyZWF0ZUFyZWEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nelson Molina/OneDrive/Escritorio/VitaAlimentosLimpieza/LimpiezaProyect/Views/Inicio/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5pY2lvXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nelson Molina/OneDrive/Escritorio/VitaAlimentosLimpieza/LimpiezaProyect/Views/RegistroResponsable/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cm9SZXNwb25zYWJsZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nelson Molina/OneDrive/Escritorio/VitaAlimentosLimpieza/LimpiezaProyect/Views/ResponsableForm/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzcG9uc2FibGVGb3JtXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nelson Molina/OneDrive/Escritorio/VitaAlimentosLimpieza/LimpiezaProyect/Views/ResponsableForm/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzcG9uc2FibGVGb3JtXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nelson Molina/OneDrive/Escritorio/VitaAlimentosLimpieza/LimpiezaProyect/Views/Responsable/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzcG9uc2FibGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nelson Molina/OneDrive/Escritorio/VitaAlimentosLimpieza/LimpiezaProyect/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nelson Molina/OneDrive/Escritorio/VitaAlimentosLimpieza/LimpiezaProyect/Views/Shared/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nelson Molina/OneDrive/Escritorio/VitaAlimentosLimpieza/LimpiezaProyect/Views/Shared/_Navbar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZiYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nelson Molina/OneDrive/Escritorio/VitaAlimentosLimpieza/LimpiezaProyect/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nelson Molina/OneDrive/Escritorio/VitaAlimentosLimpieza/LimpiezaProyect/Views/Supervisor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwZXJ2aXNvclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nelson Molina/OneDrive/Escritorio/VitaAlimentosLimpieza/LimpiezaProyect/Views/Verificador/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVyaWZpY2Fkb3JcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nelson Molina/OneDrive/Escritorio/VitaAlimentosLimpieza/LimpiezaProyect/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nelson Molina/OneDrive/Escritorio/VitaAlimentosLimpieza/LimpiezaProyect/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nelson Molina/OneDrive/Escritorio/VitaAlimentosLimpieza/LimpiezaProyect/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-o0d5tpze2g

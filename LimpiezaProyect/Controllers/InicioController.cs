@@ -14,47 +14,31 @@ namespace LimpiezaProyect.Controllers
         {
             _context = context;
         }
-
-        public IActionResult Index()
+        
+        [Route("/{rol}/{empresa}/{usuario}")]
+        public IActionResult Index(List<string> User, string rol, string empresa, string usuario)
         {
-            
+
             DateTime fechaHoraActual = DateTime.Now;
-          
             ViewBag.FechaHoraActual = fechaHoraActual;
             List<LimpArea> areas = _context.LimpAreas.ToList();
 
-            //List<string> Usuario = new List<string>()
-            //{
-            //    "Nelson Molina","Gmolina","adm", "PQSA"
-            //};
-
-
-            //List<string> Usuario = new List<string>()
-            //    {
-            //        "Maykel Molina","Mmolina","super", "PQSA"
-
-            //};
-
-
-            List<string> Usuario = new List<string>()
+            if (string.IsNullOrEmpty(rol) || string.IsNullOrEmpty(empresa) || string.IsNullOrEmpty(usuario))
+            {
+                if (User != null && User.Count >= 3)
                 {
-                    "Javier Hervas","JHervas","Responsable", "PQSA"
+                    rol = User[2];       
+                    empresa = User[3];   
+                    usuario = User[0];   
+                }
+             /*rcajas   else
+                {
+                    return RedirectToAction("Error"); 
+                }
+             */
+            }
 
-                };
-
-            //List<string> Usuario = new List<string>()
-            //    {
-            //        "Benito Camelas","BCamelas","Responsable", "PQSA"
-
-            //    };
-
-            //List<string> Usuario = new List<string>()
-            //{
-            //    "Amy Brigette","    ABrigette", "Verificador","PQSA"
-            //};
-
-
-            TempData["User"] = Usuario;
+            TempData["User"] = new List<string> { usuario, usuario, rol, empresa };
             var Countformularios = _context.LimpRegistros.Where(x=> x.Estado == "Abierto").Count();
             var NoRformularios = _context.LimpRegistros.Where(r=>r.FechaHoraRevisado == null && r.Estado != "Abierto").Count();
             var Rformularios = _context.LimpRegistros.Where(x => x.Estado == "Revisado").Count();
@@ -69,6 +53,7 @@ namespace LimpiezaProyect.Controllers
 
             return View(areas);
         }
+
         public IActionResult CreateArea() 
         {
             ViewData["Areas"] = new SelectList(_context.LimpAreas, "CodArea","Descripcion");

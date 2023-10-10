@@ -1,17 +1,28 @@
 ﻿<!-- Navbar -->
 <nav class="navbar navbar-expand navbar-white navbar-light w-100 " style="background-color: #F2F3F4;">
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
-        <li class="nav-item d-sm-inline-block">
-            <a href="~/" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
+    <ul class="nav">
+        <li class="nav-item">
+            
         </li>
     </ul>
+    <form method="post" action="@Url.Action("Index", "Inicio")">
+        @foreach (var item in (TempData["User"] as List<string>))
+        {
+            <input type="hidden" name="User" value="@item" />
+        }
+        <a href="#" class="nav-link mr-auto" onclick="this.closest('form').submit(); return false;">Inicio</a>
+    </form>
+
+
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+        <!-- Mostrar datos de TempData["User"] en el navbar -->
+        
+        <li class="nav-item">
+            <a href="http://192.168.0.38:9094" class="nav-link mr-auto"> <strong>Cerrar sesión</strong> </a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                 <i class="fas fa-expand-arrows-alt"></i>

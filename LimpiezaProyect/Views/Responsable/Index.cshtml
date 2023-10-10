@@ -5,28 +5,35 @@
         <div class="card">
             <div class="card-header">
                 <p></p>
-                <h3 class="card-title">Tabla de formularios</h3>
-                <hr>
+                <div class="d-flex flex-column align-items-center">
+                    <h3 class="card-title"><strong>Tabla de formularios</strong></h3>
+                </div>
+                <p></p>
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
-                            <td><strong>Nombre</strong></td>
-                            <td><strong>Codigo</strong></td>
+                            <td><strong>Características</strong></td>
                             <td><strong>Actividades</strong></td>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach(var formularios in Model)
+                        @foreach (var formularios in Model)
                         {
                             <tr>
-                                <td>@Html.DisplayFor(m=>formularios.Descripcion)</td>
-                                <td>@Html.DisplayFor(m=>formularios.CodFormulario)</td>
                                 <td>
+                                    <strong>Nombre:</strong> <br />
+                                    <p>@Html.DisplayFor(m => formularios.Descripcion)</p>
+                                    <strong>Código:</strong> <br />
+                                    <p>@Html.DisplayFor(m => formularios.CodFormulario)</p>
+                                </td>
+
+                                <td style="text-align: center; vertical-align: middle;">
+                                    <!-- Aplicamos los estilos text-align: center y vertical-align: middle; -->
                                     <form method="post" action="@Url.Action("Index","ResponsableForm")">
-                                        <input type="hidden" name="CodFormulario" value="@formularios.CodFormulario"/>
+                                        <input type="hidden" name="CodFormulario" value="@formularios.CodFormulario" />
                                         <input type="hidden" name="CodArea" value="@formularios.CodArea" />
                                         <input type="hidden" name="CodEmpresa" value="@formularios.CodEmpresa" />
                                         @foreach (var item in (TempData["User"] as List<string>))
@@ -34,17 +41,14 @@
                                             <input type="hidden" name="User" value="@item" />
                                         }
                                         <button type="submit" class="btn btn-primary">Escojer</button>
-                                        
                                     </form>
-                                    
-                                    
                                 </td>
                             </tr>
                         }
-                        
-                        
                     </tbody>
                 </table>
+
+
                 
             </div>
             <!-- /.card-body -->

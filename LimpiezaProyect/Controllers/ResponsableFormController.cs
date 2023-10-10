@@ -83,8 +83,7 @@ namespace LimpiezaProyect.Controllers
                         FechaHoraCreacion = DateTime.Now,
                         CodEmpresa = CodEmpresa,
                         FechaHoraVerificacion = DateTime.Now,
-                        VerificadoPor = "ngmolina",
-                        RevisadoPor = "Gmolina",
+                        
                     };
                     _context.Add(detalles);
                 }

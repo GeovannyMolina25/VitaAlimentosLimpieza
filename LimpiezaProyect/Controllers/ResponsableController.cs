@@ -13,16 +13,7 @@ namespace LimpiezaProyect.Controllers
         {
             _context = context;
         }
-        /*public async Task<IActionResult> Index()
-        {
 
-            var LimpFormularios = _context.LimpFormularios.Select(x => x.CodArea == "PastP2").ToList();
-
-            return View(await _context.LimpFormularios.ToListAsync());
-        }
-        */
-        
-        
         public  IActionResult Index(string codArea, List<string> User)
         {
             TempData["User"] = User;

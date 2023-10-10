@@ -1,18 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ProyectoLimpieza\\VitaAlimentosLimpieza\\VitaAlimentosLimpieza\\LimpiezaProyect\\LimpiezaProyect.csproj": {}
+    "C:\\Users\\Nelson Molina\\OneDrive\\Escritorio\\VitaAlimentosLimpieza\\LimpiezaProyect\\LimpiezaProyect.csproj": {}
   },
   "projects": {
-    "C:\\ProyectoLimpieza\\VitaAlimentosLimpieza\\VitaAlimentosLimpieza\\LimpiezaProyect\\LimpiezaProyect.csproj": {
+    "C:\\Users\\Nelson Molina\\OneDrive\\Escritorio\\VitaAlimentosLimpieza\\LimpiezaProyect\\LimpiezaProyect.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ProyectoLimpieza\\VitaAlimentosLimpieza\\VitaAlimentosLimpieza\\LimpiezaProyect\\LimpiezaProyect.csproj",
+        "projectUniqueName": "C:\\Users\\Nelson Molina\\OneDrive\\Escritorio\\VitaAlimentosLimpieza\\LimpiezaProyect\\LimpiezaProyect.csproj",
         "projectName": "LimpiezaProyect",
-        "projectPath": "C:\\ProyectoLimpieza\\VitaAlimentosLimpieza\\VitaAlimentosLimpieza\\LimpiezaProyect\\LimpiezaProyect.csproj",
+        "projectPath": "C:\\Users\\Nelson Molina\\OneDrive\\Escritorio\\VitaAlimentosLimpieza\\LimpiezaProyect\\LimpiezaProyect.csproj",
         "packagesPath": "C:\\Users\\Nelson Molina\\.nuget\\packages\\",
-        "outputPath": "C:\\ProyectoLimpieza\\VitaAlimentosLimpieza\\VitaAlimentosLimpieza\\LimpiezaProyect\\obj\\",
+        "outputPath": "C:\\Users\\Nelson Molina\\OneDrive\\Escritorio\\VitaAlimentosLimpieza\\LimpiezaProyect\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\Nelson Molina\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"

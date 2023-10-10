@@ -1,0 +1,130 @@
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\appsettings.Development.json
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\appsettings.json
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\LimpiezaProyect.staticwebassets.runtime.json
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\LimpiezaProyect.exe
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\LimpiezaProyect.deps.json
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\LimpiezaProyect.runtimeconfig.json
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\LimpiezaProyect.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\LimpiezaProyect.pdb
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Humanizer.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.Identity.Client.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\System.Drawing.Common.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\System.Runtime.Caching.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\System.Security.Permissions.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\System.Windows.Extensions.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.csproj.AssemblyReference.cache
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.GeneratedMSBuildEditorConfig.editorconfig
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.AssemblyInfoInputs.cache
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.AssemblyInfo.cs
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.csproj.CoreCompileInputs.cache
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.MvcApplicationPartsAssemblyInfo.cache
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.RazorAssemblyInfo.cache
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.RazorAssemblyInfo.cs
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\staticwebassets\msbuild.LimpiezaProyect.Microsoft.AspNetCore.StaticWebAssets.props
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\staticwebassets\msbuild.build.LimpiezaProyect.props
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\staticwebassets\msbuild.buildMultiTargeting.LimpiezaProyect.props
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\staticwebassets\msbuild.buildTransitive.LimpiezaProyect.props
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\staticwebassets.pack.json
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\staticwebassets.build.json
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\staticwebassets.development.json
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\scopedcss\bundle\LimpiezaProyect.styles.css
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\scopedcss\projectbundle\LimpiezaProyect.bundle.scp.css
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.csproj.CopyComplete
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\refint\LimpiezaProyect.dll
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.pdb
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.genruntimeconfig.cache
+E:\DesarrolloWebVS2022\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\ref\LimpiezaProyect.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\appsettings.Development.json
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\appsettings.json
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\LimpiezaProyect.staticwebassets.runtime.json
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\LimpiezaProyect.exe
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\LimpiezaProyect.deps.json
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\LimpiezaProyect.runtimeconfig.json
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\LimpiezaProyect.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\LimpiezaProyect.pdb
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Humanizer.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.Identity.Client.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\System.Drawing.Common.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\System.Runtime.Caching.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\System.Security.Permissions.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\System.Windows.Extensions.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.csproj.AssemblyReference.cache
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.AssemblyInfoInputs.cache
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.AssemblyInfo.cs
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.csproj.CoreCompileInputs.cache
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.RazorAssemblyInfo.cache
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.RazorAssemblyInfo.cs
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\staticwebassets\msbuild.LimpiezaProyect.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\staticwebassets\msbuild.build.LimpiezaProyect.props
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\staticwebassets\msbuild.buildMultiTargeting.LimpiezaProyect.props
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\staticwebassets\msbuild.buildTransitive.LimpiezaProyect.props
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\staticwebassets.pack.json
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\staticwebassets.build.json
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\staticwebassets.development.json
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\scopedcss\bundle\LimpiezaProyect.styles.css
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\scopedcss\projectbundle\LimpiezaProyect.bundle.scp.css
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.csproj.CopyComplete
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\refint\LimpiezaProyect.dll
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.pdb
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\LimpiezaProyect.genruntimeconfig.cache
+C:\Users\Nelson Molina\OneDrive\Escritorio\VitaAlimentosLimpieza\LimpiezaProyect\obj\Release\net6.0\ref\LimpiezaProyect.dll

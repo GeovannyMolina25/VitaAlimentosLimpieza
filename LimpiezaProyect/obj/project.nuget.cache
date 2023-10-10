@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3NaJIF7Y0rmMbjrv2x6L4v+EgGctKegQqinEXKhXlcNTXTzLKNUkCE0NQvdCQMzCiKtCTYvkoW+Us9j1dBLx2g==",
+  "dgSpecHash": "h0Lltd8/E6CPHJERNnTTDZ1LXK72HPzOyy70iY45eMRPyVyGMGZ37f8zDSFktluUPyg169ubYg3al51ab/GUNQ==",
   "success": true,
-  "projectFilePath": "C:\\ProyectoLimpieza\\VitaAlimentosLimpieza\\VitaAlimentosLimpieza\\LimpiezaProyect\\LimpiezaProyect.csproj",
+  "projectFilePath": "C:\\Users\\Nelson Molina\\OneDrive\\Escritorio\\VitaAlimentosLimpieza\\LimpiezaProyect\\LimpiezaProyect.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nelson Molina\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Nelson Molina\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

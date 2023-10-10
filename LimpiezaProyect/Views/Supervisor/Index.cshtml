@@ -2,7 +2,7 @@
 
 <div class="wrapper">
         <p></p>
-        <p>Usuario: @((TempData["User"] as List<string>)?.FirstOrDefault())</p>
+    <p> <strong>Usuario: </strong>@((TempData["User"] as List<string>)?.FirstOrDefault())</p>
         <p><strong>Fecha y hora actual:</strong> <span id="fechaHoraActual"></span></p>
         <hr>
       <div class="container-fluid">
@@ -27,11 +27,10 @@
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                                    <th><strong>Num</strong></th>
-                                    <th><strong>Nombre</strong></th>
-                                    <th><strong>Creado por</strong></th>
-                                    <th><strong>fecha</strong></th>
-                                    <th><strong>Estado</strong></th>
+                                    <th><strong>#</strong></th>
+                                    <th><strong>Area</strong></th> 
+                                    <th><strong>Características</strong></th>
+                                    <th><strong>Fecha</strong></th>
                                     <th><strong>Acciones</strong></th>
                   </tr>
                   </thead>
@@ -42,9 +41,14 @@
                                             <tr>
                                                 <td>@Html.DisplayFor(m => registros.NumFormulario)</td>
                                                 <td>@Html.DisplayFor(m => registros.CodArea)</td>
-                                                <td>@Html.DisplayFor(m => registros.CreadoPor)</td>
+                                                <td>
+                                            <strong>Creado por:</strong><br />
+                                            @Html.DisplayFor(m => registros.CreadoPor)<br />
+                                            <strong>Formulario:</strong><br />
+                                                    @Html.DisplayFor(m => registros.CodFormulario)
+                                                </td>
                                                 <td>@Html.DisplayFor(m => registros.FechaHoraCreacion)</td>
-                                                <td>@Html.DisplayFor(m => registros.CodFormulario)</td>
+                                                
                                         <td>
 
                                                 <form method="post" action="@Url.Action("Index", "ActividadResponsable")" class="d-inline">
@@ -80,10 +84,15 @@
     <div class="d-flex justify-content-center">
         <form method="post" action="@Url.Action("Index", "Inicio")" class="d-inline">
         <input type="hidden" name="accion" value="@TempData["accion"]" />
+            @foreach (var item in (TempData["User"] as List<string>))
+            {
+                <input type="hidden" name="User" value="@item" />
+            }
             <button type="submit" class="btn btn-danger">
              Atras
             </button>
         </form>
+       
     </div>
 </div>
 

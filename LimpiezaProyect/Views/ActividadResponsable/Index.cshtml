@@ -17,14 +17,14 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
+                    <div class="d-flex flex-column align-items-center">
+                        <h3 class="card-title"><strong>Tabla de actividades</strong></h3>
+                    </div>
                     <div class="card-header">
                         <p></p>
                         <p><strong>Usuario: </strong>@((TempData["User"] as List<string>)?.FirstOrDefault())</p>
                         <p><strong>Area: </strong> @TempData["Area"]</p>
-                        <p><strong>Formulario: </strong>  @TempData["NumFormulario"]</p>
-                        <hr>
-                        <h3 class="card-title">Tabla de formularios</h3>
-                        
+                        <p><strong>Formulario: </strong>@TempData["NumFormulario"]</p>
                     </div>
                 </div>
                 <div class="card-body table-responsive p-0">
@@ -55,7 +55,7 @@
                                         <div class="form-check">
                                             <input type="hidden" name="model[@i].CodActividad" value='@Model[i].CodActividad' />
 
-                                            @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "super" || (TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Verificador")
+                                            @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "SupervisorLimp" || (TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "VerificadorLimp")
                                             {
                                                 <input type="checkbox" class="form-check-input" name="model[@i].Realizado" value="true" disabled="disabled" @(Model[i].Realizado ?? false ? "checked" : "") />
                                             }
@@ -78,25 +78,23 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center">
-            @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Responsable")
-            {
-
-            @if (TempData["Estado"].ToString() == "Abierto")
-            { 
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            }
-            else
-            {
-                <a class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true">Enviar</a>
-            }
-
-            }
+                @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "OperadorLimp")
+                {
+                    @if (TempData["Estado"].ToString() == "Abierto")
+                    {
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    }
+                    else
+                    {
+                        <a class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true">Enviar</a>
+                    }
+                }
             </div>
         </div>
     </div>
 </form>
 <div class="d-flex justify-content-center">
-    @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Responsable")
+    @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "OperadorLimp")
     {
         <form method="post" asp-action="Salir" class="text-center">
             <input type="hidden" name="CodArea" value='@TempData["Area"]' />
@@ -111,7 +109,7 @@
             <button type="submit" class="btn btn-danger">Atras</button>
         </form>
     }
-    else if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "super")
+    else if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "SupervisorLimp")
     {
         <form method="post" action="@Url.Action("Filter", "Supervisor")" class="text-center">
             <input type="hidden" name="accion" value="@TempData["accion"]" />
@@ -122,7 +120,7 @@
             <button type="submit" class="btn btn-danger">Atras</button>
         </form>
     }
-    else if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "Verificador")
+    else if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "VerificadorLimp")
     {
         <form method="post" action="@Url.Action("Filter", "Verificador")" class="text-center">
             <input type="hidden" name="accion" value="@TempData["accion"]" />
@@ -133,7 +131,7 @@
             <button type="submit" class="btn btn-danger">Atras</button>
         </form>
     }
-    @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "super")
+    @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "SupervisorLimp")
     {
         <form method="post" asp-action="EnviarVerificado" class="text-center">
             <input type="hidden" name="CodArea" value='@TempData["Area"]' />

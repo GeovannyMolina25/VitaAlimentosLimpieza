@@ -13,7 +13,7 @@ namespace LimpiezaProyect.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index( string Estado, string CodArea, string CodFormulario, int Numformulario,string CodEmpresa, string FechaHoraRevisado,string accion, List<string> User)
+        public IActionResult Index( string Estado, string CodArea, string CodFormulario, int Numformulario,string CodEmpresa, string FechaHoraRevisado,string accion, List<string> User)
         {
             
 
@@ -37,7 +37,7 @@ namespace LimpiezaProyect.Controllers
         [ValidateAntiForgeryToken]
 
         
-        public async Task<ActionResult> Atras(List<LimpRegistroDetalle> model, string CodArea, string CodFormulario, string CodEmpresa, List<string> User)
+        public ActionResult Atras(string CodArea, string CodFormulario, string CodEmpresa, List<string> User)
         {
             return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
         }
@@ -64,31 +64,35 @@ namespace LimpiezaProyect.Controllers
             
         }
         [HttpPost]
-        public async Task<IActionResult> Salir( string CodArea,  string CodFormulario, string CodEmpresa, List<string> User)
+        public IActionResult Salir( string CodArea,  string CodFormulario, string CodEmpresa, List<string> User)
         {
 
             return RedirectToAction("Index", "ResponsableForm", new { CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
         }
-        public async Task<IActionResult> SalirSupervisor(string accion, List<string> User)
+        public IActionResult SalirSupervisor(string accion, List<string> User)
         {
 
             return RedirectToAction("Index", "Supervisor", new {  accion = accion, User = User });
         }
-        public async Task<IActionResult> EnviarVerificado(string CodArea, int NumFormulario, string CodEmpresa,string accion, List<string> User)
+        public IActionResult EnviarVerificado(string CodArea, int NumFormulario, string CodEmpresa,string accion, List<string> User)
         {
             var ActualizarRegistro = _context.LimpRegistros.FirstOrDefault(r => r.NumFormulario == NumFormulario && r.CodArea == CodArea && r.CodEmpresa == CodEmpresa);
-
+            List<LimpRegistroDetalle> datos = _context.LimpRegistroDetalles.Where(r => r.NumFormulario == NumFormulario && r.CodEmpresa == CodEmpresa).ToList();
             if (ActualizarRegistro != null)
             {
                 ActualizarRegistro.FechaHoraRevisado = DateTime.Now;
                 ActualizarRegistro.RevisadoPor = User.ElementAtOrDefault(1);
                 ActualizarRegistro.Estado = "Revisado";
+                foreach(var detalle in datos)
+                {
+                    detalle.RevisadoPor = User.ElementAtOrDefault(1);
+                }
                 _context.SaveChanges();
                 return RedirectToAction("Index", "Supervisor", new { accion = accion,  User = User});
             }
             return RedirectToAction("Index", "Supervisor", new { accion = accion, User = User });
         }
-        public async Task<IActionResult> SalirVerificador(string accion, List<string> User)
+        public IActionResult SalirVerificador(string accion, List<string> User)
         {
 
             return RedirectToAction("Index", "Verificador", new { accion = accion, User = User });

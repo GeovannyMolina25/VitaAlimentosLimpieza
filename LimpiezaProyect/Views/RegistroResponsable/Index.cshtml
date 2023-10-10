@@ -4,7 +4,10 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                
+                <div class="d-flex flex-column align-items-center">
+                    <h3 class="card-title"><strong>Tabla de formularios</strong></h3>
+                </div>
+                <hr>
                 <div>
                     <p></p>
                     <p><strong>Area: <strong />   @Model.FirstOrDefault()?.CodArea</p>
@@ -13,7 +16,6 @@
                     <p><strong>Fecha y hora actual:<strong /> <span id="fechaHoraActual"></span></p>
                     <hr>
                 </div>
-                <h3 class="card-title">Tabla de formularios</h3>
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                         <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -79,18 +81,3 @@
     </div>
 
 </div>
-
-<script>
-    // Función para mostrar la fecha y hora actual
-    function mostrarFechaHoraActual() {
-        var fechaHora = new Date();
-        var elementoFechaHora = document.getElementById("fechaHoraActual");
-        elementoFechaHora.textContent = fechaHora.toLocaleString();
-    }
-
-    // Actualizar la fecha y hora cada segundo
-    setInterval(mostrarFechaHoraActual, 1000);
-
-    // Mostrar la fecha y hora actual al cargar la página
-    mostrarFechaHoraActual();
-</script>
