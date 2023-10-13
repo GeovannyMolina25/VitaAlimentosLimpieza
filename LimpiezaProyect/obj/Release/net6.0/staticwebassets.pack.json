@@ -8229,6 +8229,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Nelson Molina\\OneDrive\\Escritorio\\VitaAlimentosLimpieza\\LimpiezaProyect\\wwwroot\\img\\Vita.jpg",
+      "PackagePath": "staticwebassets\\img\\Vita.jpg"
+    },
+    {
       "Id": "C:\\Users\\Nelson Molina\\OneDrive\\Escritorio\\VitaAlimentosLimpieza\\LimpiezaProyect\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

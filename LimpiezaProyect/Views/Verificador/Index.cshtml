@@ -65,6 +65,8 @@
                                                 <input type="hidden" name="CodEmpresa" value="@registros.CodEmpresa" />
                                                 <input type="hidden" name="FechaHoraRevisado" value="@registros.FechaHoraRevisado" />
                                                 <input type="hidden" name="accion" value="@TempData["accion"]" />
+                                                <input type="hidden" name="FechaInicio" value="@TempData["FechaInicio"]" />
+                                                <input type="hidden" name="FechaFin" value="@TempData["FechaFin"]" />
                                                 @foreach (var item in (TempData["User"] as List<string>))
                                                 {
                                                     <input type="hidden" name="User" value="@item" />
@@ -83,6 +85,8 @@
                                                     <input type="hidden" name="CodEmpresa" value="@registros.CodEmpresa" />
                                                     <input type="hidden" name="FechaHoraRevisado" value="@registros.FechaHoraRevisado" />
                                                     <input type="hidden" name="accion" value="@TempData["accion"]" />
+                                                    <input type="hidden" name="FechaInicio" value="@TempData["FechaInicio"]" />
+                                                    <input type="hidden" name="FechaFin" value="@TempData["FechaFin"]" />
                                                     @foreach (var item in (TempData["User"] as List<string>))
                                                     {
                                                         <input type="hidden" name="User" value="@item" />
@@ -92,10 +96,28 @@
                                                     </button>
                                                 </form>
                                             }
-                                            else if (registros.Estado == "Revisado" && registros.Estado != "Cerrado" && registros.Estado != "Abierto")
+                                            @if (registros.Estado == "Verificado")
                                             {
-                                                <button type="button" class="btn btn-outline-success" disabled>Primary button</button>
+                                                <form method="post" action="@Url.Action("PDF", "Verificador")" class="d-inline">
+                                                    <input type="hidden" name="CodArea" value="@registros.CodArea" />
+                                                    <input type="hidden" name="NumFormulario" value="@registros.NumFormulario" />
+                                                    <input type="hidden" name="Estado" value="@registros.Estado" />
+                                                    <input type="hidden" name="CodFormulario" value="@registros.CodFormulario" />
+                                                    <input type="hidden" name="CodEmpresa" value="@registros.CodEmpresa" />
+                                                    <input type="hidden" name="FechaHoraRevisado" value="@registros.FechaHoraRevisado" />
+                                                    <input type="hidden" name="accion" value="@TempData["accion"]" />
+                                                    <input type="hidden" name="FechaInicio" value="@TempData["FechaInicio"]" />
+                                                    <input type="hidden" name="FechaFin" value="@TempData["FechaFin"]" />
+                                                    @foreach (var item in (TempData["User"] as List<string>))
+                                                    {
+                                                        <input type="hidden" name="User" value="@item" />
+                                                    }
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fas fa-check">PDF</i>
+                                                    </button>
+                                                </form>
                                             }
+                                            
                                         </td>
                                     </tr>
 
@@ -112,6 +134,8 @@
         <div class="d-flex justify-content-center">
             <form method="post" action="@Url.Action("Index", "Inicio")" class="d-inline">
                 <input type="hidden" name="accion" value="@TempData["accion"]" />
+        <input type="hidden" name="FechaInicio" value="@TempData["FechaInicio"]" />
+        <input type="hidden" name="FechaFin" value="@TempData["FechaFin"]" />
                 @foreach (var item in (TempData["User"] as List<string>))
                 {
                     <input type="hidden" name="User" value="@item" />

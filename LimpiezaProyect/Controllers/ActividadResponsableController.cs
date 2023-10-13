@@ -13,7 +13,7 @@ namespace LimpiezaProyect.Controllers
             _context = context;
         }
 
-        public IActionResult Index( string Estado, string CodArea, string CodFormulario, int Numformulario,string CodEmpresa, string FechaHoraRevisado,string accion, List<string> User)
+        public IActionResult Index( string Estado, string CodArea, string CodFormulario, int Numformulario,string CodEmpresa, string FechaHoraRevisado,string accion, List<string> User, DateTime? fechaInicio, DateTime? fechaFin)
         {
             
 
@@ -25,6 +25,8 @@ namespace LimpiezaProyect.Controllers
             TempData["Revisado"] = FechaHoraRevisado;
             TempData["User"] = User;
             TempData["accion"] = accion;
+            TempData["FechaInicio"] = fechaInicio;
+            TempData["FechaFin"] = fechaFin;
             var actividadFormulario = _context.LimpRegistroDetalles.Where(m=>m.NumFormulario == Numformulario).ToList();
             ViewBag.Hola = actividadFormulario;
             var nombreActividad = _context.LimpFormularioActividads.Where(m => m.CodFormulario == CodFormulario).ToList();

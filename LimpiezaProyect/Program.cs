@@ -1,5 +1,7 @@
 using LimpiezaProyect.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,8 +27,8 @@ app.UseRouting();
 
 app.UseEndpoints(endpoints =>
 {
-//rcajas   
- endpoints.MapControllerRoute(
+    //rcajas
+    endpoints.MapControllerRoute(
         name: "custom",
         pattern: "{controller=Inicio}/{action=Index}/{empresa}/{usuario}/{rol}"
     );
@@ -38,5 +40,8 @@ app.UseEndpoints(endpoints =>
 });
 
 app.MapFallbackToController("Index", "Inicio");
+
+// Establece el directorio de trabajo para la aplicación.
+Directory.SetCurrentDirectory(Directory.GetCurrentDirectory());
 
 app.Run();

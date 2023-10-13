@@ -59,6 +59,8 @@
                                                     <input type="hidden" name="CodEmpresa" value="@registros.CodEmpresa" />
                                                 <input type="hidden" name="FechaHoraRevisado" value="@registros.FechaHoraRevisado" />
                                                 <input type="hidden" name="accion" value="@TempData["accion"]" />
+                                                <input type="hidden" name="FechaInicio" value="@TempData["FechaInicio"]" />
+                                                <input type="hidden" name="FechaFin" value="@TempData["FechaFin"]" />
                                                     @foreach (var item in (TempData["User"] as List<string>))
                                                     {
                                                         <input type="hidden" name="User" value="@item" />
@@ -84,6 +86,8 @@
     <div class="d-flex justify-content-center">
         <form method="post" action="@Url.Action("Index", "Inicio")" class="d-inline">
         <input type="hidden" name="accion" value="@TempData["accion"]" />
+            <input type="hidden" name="FechaInicio" value="@TempData["FechaInicio"]" />
+            <input type="hidden" name="FechaFin" value="@TempData["FechaFin"]" />
             @foreach (var item in (TempData["User"] as List<string>))
             {
                 <input type="hidden" name="User" value="@item" />

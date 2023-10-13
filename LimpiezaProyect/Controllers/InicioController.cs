@@ -2,7 +2,9 @@
 using LimpiezaProyect.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Globalization;
 using System.Runtime.CompilerServices;
+using System;
 
 namespace LimpiezaProyect.Controllers
 {
@@ -16,12 +18,13 @@ namespace LimpiezaProyect.Controllers
         }
         
         [Route("/{rol}/{empresa}/{usuario}")]
-        public IActionResult Index(List<string> User, string rol, string empresa, string usuario)
+        public IActionResult Index(List<string> User, string rol, string empresa, string usuario,DateTime? fechaInicio, DateTime? fechaFin)
         {
-
+             
             DateTime fechaHoraActual = DateTime.Now;
             ViewBag.FechaHoraActual = fechaHoraActual;
             List<LimpArea> areas = _context.LimpAreas.ToList();
+            
 
             if (string.IsNullOrEmpty(rol) || string.IsNullOrEmpty(empresa) || string.IsNullOrEmpty(usuario))
             {
@@ -31,25 +34,62 @@ namespace LimpiezaProyect.Controllers
                     empresa = User[3];   
                     usuario = User[0];   
                 }
-             /*rcajas   else
-                {
-                    return RedirectToAction("Error"); 
-                }
-             */
+                
+                /*rcajas   else
+                   {
+                       return RedirectToAction("Error"); 
+                   }
+                */
             }
-
             TempData["User"] = new List<string> { usuario, usuario, rol, empresa };
-            var Countformularios = _context.LimpRegistros.Where(x=> x.Estado == "Abierto").Count();
-            var NoRformularios = _context.LimpRegistros.Where(r=>r.FechaHoraRevisado == null && r.Estado != "Abierto").Count();
-            var Rformularios = _context.LimpRegistros.Where(x => x.Estado == "Revisado").Count();
-            var Vformularios = _context.LimpRegistros.Where(r => r.FechaHoraVerificacion != null && r.Estado == "Verificado").Count();
-            var Cformularios = _context.LimpRegistros.Where(r => r.FechaHoraVerificacion == null && r.Estado == "Cerrado").Count();
+            if (fechaInicio != null || fechaFin!=null)
+            {
+                    fechaFin = fechaFin.Value.AddDays(1);
+                
+                var formularios = _context.LimpFormularios
+                .Where(r => r.FechaHoraCreacion >= fechaInicio && r.FechaHoraCreacion <= fechaFin)
+                .ToList();
+                var Countformularios = _context.LimpRegistros.Where(x => x.Estado == "Abierto" && (x.FechaHoraCreacion >= fechaInicio && x.FechaHoraCreacion <= fechaFin)).Count();
+                var NoRformularios = _context.LimpRegistros.Where(r => r.FechaHoraRevisado == null && r.Estado != "Abierto" && (r.FechaHoraCreacion >= fechaInicio && r.FechaHoraCreacion <= fechaFin)).Count();
+                var Rformularios = _context.LimpRegistros.Where(x => x.Estado == "Revisado"&& (x.FechaHoraCreacion >= fechaInicio && x.FechaHoraCreacion <= fechaFin)).Count();
+                var Vformularios = _context.LimpRegistros.Where(r => r.FechaHoraVerificacion != null && r.Estado == "Verificado" && (r.FechaHoraCreacion >= fechaInicio && r.FechaHoraCreacion <= fechaFin)).Count();
+                var Cformularios = _context.LimpRegistros.Where(r => r.FechaHoraVerificacion == null && r.Estado == "Cerrado" &&  (r.FechaHoraCreacion >= fechaInicio && r.FechaHoraCreacion <= fechaFin)).Count();
+                    TempData["Count"] = Countformularios;
+                    TempData["NoRevisado"] = NoRformularios;
+                    TempData["Revisado"] = Rformularios;
+                    TempData["Verificado"] = Vformularios;
+                    TempData["Cerrado"] = Cformularios;
+                TempData["FechaInicio"]= fechaInicio;
+                    TempData["FechaFin"] = fechaFin;
+                    
+                    TempData["FechaFinV"] = fechaFin.Value.AddDays(-1);
+
+            }
+            else
+            {
+                if(fechaInicio == null || fechaFin == null)
+{
+                    DateTime fechaActual = DateTime.Now;
+                    fechaInicio = fechaActual.AddDays(-31); 
+                    fechaFin = fechaActual.AddDays(1);
+
+
+                    var Countformularios = _context.LimpRegistros.Where(x => x.Estado == "Abierto" && (x.FechaHoraCreacion >= fechaInicio && x.FechaHoraCreacion <= fechaFin)).Count();
+                    var NoRformularios = _context.LimpRegistros.Where(r => r.FechaHoraRevisado == null && r.Estado != "Abierto" && (r.FechaHoraCreacion >= fechaInicio && r.FechaHoraCreacion <= fechaFin)).Count();
+                    var Rformularios = _context.LimpRegistros.Where(x => x.Estado == "Revisado" && (x.FechaHoraCreacion >= fechaInicio && x.FechaHoraCreacion <= fechaFin)).Count();
+                    var Vformularios = _context.LimpRegistros.Where(r => r.FechaHoraVerificacion != null && r.Estado == "Verificado" && (r.FechaHoraCreacion >= fechaInicio && r.FechaHoraCreacion <= fechaFin)).Count();
+                    var Cformularios = _context.LimpRegistros.Where(r => r.FechaHoraVerificacion == null && r.Estado == "Cerrado" && (r.FechaHoraCreacion >= fechaInicio && r.FechaHoraCreacion <= fechaFin)).Count();
+                    TempData["Count"] = Countformularios;
+                    TempData["NoRevisado"] = NoRformularios;
+                    TempData["Revisado"] = Rformularios;
+                    TempData["Verificado"] = Vformularios;
+                    TempData["FechaInicio"] = fechaInicio;
+                    TempData["FechaFin"] = fechaFin;
+                    fechaFin = fechaActual;
+                    TempData["FechaFinV"] = fechaFin;
+                }
+            }
             
-            TempData["Count"] = Countformularios;
-            TempData["NoRevisado"] = NoRformularios;
-            TempData["Revisado"] = Rformularios;
-            TempData["Verificado"] = Vformularios;
-            TempData["Cerrado"] = Cformularios;
 
             return View(areas);
         }
@@ -85,5 +125,7 @@ namespace LimpiezaProyect.Controllers
 
             return View(model);
         }
+
+        
     }
 }

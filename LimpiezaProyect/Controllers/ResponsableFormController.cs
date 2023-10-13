@@ -146,7 +146,24 @@ namespace LimpiezaProyect.Controllers
             var LimpFormularios = _context.LimpFormularios.Where(x => x.CodArea == CodArea).ToList();
             return RedirectToAction("Index", "ResponsableForm", new { NumFormulario = NumFormulario, CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
         }
-        
 
+        public IActionResult EnviarRevisado(string CodArea, string CodFormulario, int NumFormulario, string CodEmpresa, string accion, List<string> User)
+        {
+            var ActualizarRegistro = _context.LimpRegistros.FirstOrDefault(r => r.NumFormulario == NumFormulario && r.CodArea == CodArea && r.CodEmpresa == CodEmpresa);
+            List<LimpRegistroDetalle> datos = _context.LimpRegistroDetalles.Where(r => r.NumFormulario == NumFormulario && r.CodEmpresa == CodEmpresa).ToList();
+            if (ActualizarRegistro != null)
+            {
+                ActualizarRegistro.FechaHoraRevisado = DateTime.Now;
+                ActualizarRegistro.RevisadoPor = User.ElementAtOrDefault(1);
+                ActualizarRegistro.Estado = "Revisado";
+                foreach (var detalle in datos)
+                {
+                    detalle.RevisadoPor = User.ElementAtOrDefault(1);
+                }
+                _context.SaveChanges();
+                return RedirectToAction("Index", "ResponsableForm", new { NumFormulario = NumFormulario, CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
+            }
+            return RedirectToAction("Index", "ResponsableForm", new { NumFormulario = NumFormulario, CodFormulario = CodFormulario, CodArea = CodArea, CodEmpresa = CodEmpresa, User = User });
+        }
     }
 }

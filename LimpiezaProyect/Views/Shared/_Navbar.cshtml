@@ -7,10 +7,6 @@
         </li>
     </ul>
     <form method="post" action="@Url.Action("Index", "Inicio")">
-        @foreach (var item in (TempData["User"] as List<string>))
-        {
-            <input type="hidden" name="User" value="@item" />
-        }
         <a href="#" class="nav-link mr-auto" onclick="this.closest('form').submit(); return false;">Inicio</a>
     </form>
 

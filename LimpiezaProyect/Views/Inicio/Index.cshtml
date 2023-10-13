@@ -6,11 +6,44 @@
     <p><strong>Usuario:</strong> @((TempData["User"] as List<string>)?.FirstOrDefault())</p>
     <p><strong>Fecha y hora actual:</strong> <span id="fechaHoraActual"></span></p>
     <hr>
+    @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "VerificadorLimp" || (TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "SupervisorLimp")
+    {
+        <div>
+            <p><strong>Informacion con las fechas:</strong>  </p>
+            <p><strong>Inicio: </strong> @TempData["FechaInicio"] </p>
+            <p><strong>Final: </strong> @TempData["FechaFinV"] </p>
+        </div>
+        <hr>
+        <button class="btn btn btn-light" id="toggleRango">Elegir un rango de fechas</button>
+        <br>
+        <div id="resultado">
+            <br>
+            <form method="post" action="@Url.Action("Index", "Inicio")">
+                <label for="fecha1">Fecha de inicio:</label>
+                <input type="date" id="fecha1" name="fechaInicio" value="@(((DateTime?)TempData["FechaInicio"])?.ToString("yyyy-MM-dd"))">
+
+                <label for="fecha2">Fecha de fin:</label>
+                <input type="date" id="fecha2" name="fechaFin" value="@(((DateTime?)TempData["FechaFinV"])?.ToString("yyyy-MM-dd"))">
+
+                @foreach (var item in (TempData["User"] as List<string>))
+                {
+                    <input type="hidden" name="User" value="@item" />
+                }
+
+                <br>
+                <button type="submit" class="btn btn-dark">Consultar</button>
+            </form>
+        </div>
+        <hr>
+    }
+    
+    
     @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "VerificadorLimp")
     {
+        
         <h5 class="mt-4 mb-2">Formularios <code>Verificador</code></h5>
         <div class="row">
-            <div class="col-md-3 col-sm-6 col-12">
+            <div class="col-md-4 col-sm-6 col-12">
                 <div class="info-box bg-info">
                     <span class="info-box-icon"><i class="fas fa-folder-open"></i></span>
 
@@ -19,6 +52,8 @@
                         <span class="info-box-number"><h3>@TempData["Count"]</h3></span>
                         <form method="post" action="@Url.Action("Filter", "Verificador")">
                         <input type="hidden" name="accion" value="1" />
+                        <input type="hidden" name="FechaInicio" value="@TempData["FechaInicio"]" />
+                        <input type="hidden" name="FechaFin" value="@TempData["FechaFin"]" />
                         @foreach (var item in (TempData["User"] as List<string>))
                         {
                             <input type="hidden" name="User" value="@item" />
@@ -30,37 +65,17 @@
                 </div>
                 
             </div>
-            
-            <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box bg-success">
-                    <span class="info-box-icon"><i class="fas fa-folder"></i></span>
 
-                    <div class="info-box-content">
-                        <span class="info-box-text">Formularios <strong>cerrados</strong></span>
-                        <span class="info-box-number"><h3>@TempData["Cerrado"]</h3></span>
-                        <form method="post" action="@Url.Action("Filter", "Verificador")">
-                        <input type="hidden" name="accion" value="2" />
-                        @foreach (var item in (TempData["User"] as List<string>))
-                        {
-                            <input type="hidden" name="User" value="@item" />
-                        }
-                        <button type="submit" class="btn btn-outline-secondary">Ver mas...</button>
-                        </form>
-                    </div>
-                    
-                </div>
-                
-            </div>
-            
-            <div class="col-md-3 col-sm-6 col-12">
+            <div class="col-md-4 col-sm-6 col-12">
                 <div class="info-box bg-warning">
                     <span class="info-box-icon"><i class="fas fa-check-circle"></i></span>
-
-                    <div class="info-box-content">
+                    <div class="info-box-content">                      
                         <span class="info-box-text">Formularios <strong>revisados</strong></span>
                         <span class="info-box-number"><h3>@TempData["Revisado"]</h3></span>
                         <form method="post" action="@Url.Action("Filter", "Verificador")">
                         <input type="hidden" name="accion" value="3" />
+                        <input type="hidden" name="FechaInicio" value="@TempData["FechaInicio"]" />
+                        <input type="hidden" name="FechaFin" value="@TempData["FechaFin"]" />
                         @foreach (var item in (TempData["User"] as List<string>))
                         {
                             <input type="hidden" name="User" value="@item" />
@@ -70,7 +85,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6 col-12">
+            <div class="col-md-4 col-sm-6 col-12">
                 <div class="info-box bg-danger">
                     <span class="info-box-icon"><i class="fas fa-check-double"></i></span>
 
@@ -79,6 +94,8 @@
                         <span class="info-box-number"><h3>@TempData["Verificado"]</h3></span>
                         <form method="post" action="@Url.Action("Filter", "Verificador")">
                         <input type="hidden" name="accion" value="4" />
+                        <input type="hidden" name="FechaInicio" value="@TempData["FechaInicio"]" />
+                        <input type="hidden" name="FechaFin" value="@TempData["FechaFin"]" />
                         @foreach (var item in (TempData["User"] as List<string>))
                         {
                             <input type="hidden" name="User" value="@item" />
@@ -93,9 +110,9 @@
 
     @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "SupervisorLimp")
     {
-        <h5 class="mb-2 mt-4">Areas</h5>
+        <h5 class="mb-2 mt-6"> <strong>Formularios </strong> </h5>
         <div class="row">
-            <div class="col-lg-4 col-4">
+            <div class="col-lg-6 col-6">
                 <div class="small-box bg-success">
                     <div class="inner">
                         <h3>@TempData["Count"]</h3>
@@ -106,6 +123,8 @@
                     </div>
                     <form method="post" action="@Url.Action("Filter", "Supervisor")">
                         <input type="hidden" name="accion" value="3" />
+                        <input type="hidden" name="FechaInicio" value="@TempData["FechaInicio"]" />
+                        <input type="hidden" name="FechaFin" value="@TempData["FechaFin"]" />
                         @foreach (var item in (TempData["User"] as List<string>))
                         {
                             <input type="hidden" name="User" value="@item" />
@@ -114,27 +133,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-lg-4 col-4">
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h3>@TempData["NoRevisado"]</h3>
-                        <p>Formularios <strong>cerrados</strong></p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-exclamation-circle"></i>
-                    </div>
-
-                    <form method="post" action="@Url.Action("Filter", "Supervisor")">
-                        <input type="hidden" name="accion" value="1" />
-                        @foreach (var item in (TempData["User"] as List<string>))
-                        {
-                            <input type="hidden" name="User" value="@item" />
-                        }
-                        <button type="submit" class="btn btn-outline-secondary">Ver mas ...</button>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-4 col-4">
+            <div class="col-lg-6 col-6">
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>@TempData["Revisado"]</h3>
@@ -146,6 +145,8 @@
 
                     <form method="post" action="@Url.Action("Filter", "Supervisor")">
                         <input type="hidden" name="accion" value="2" />
+                        <input type="hidden" name="FechaInicio" value="@TempData["FechaInicio"]" />
+                        <input type="hidden" name="FechaFin" value="@TempData["FechaFin"]" />
                         @foreach (var item in (TempData["User"] as List<string>))
                         {
                             <input type="hidden" name="User" value="@item" />
@@ -158,11 +159,11 @@
 
 
     }
-    @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "OperadorLimp")
+    @if ((TempData["User"] as List<string>)?.ElementAtOrDefault(2) == "SupervisorLimp")
     {
-        
-  
-        <h3 class="mb-2"><strong>Areas</strong></h3>
+        <hr>
+
+        <h5 class="mb-2"><strong>Areas</strong></h5>
     <div class="row">
         @foreach (var area in Model)
         {
@@ -181,6 +182,8 @@
                         <form method="post" action="@Url.Action("Index","Responsable")">
                             <input type="hidden" name="codArea" value="@area.CodArea" />
                             <input type="hidden" name="CodRegistro" value="@area.CodRegistro" />
+                            <input type="hidden" name="FechaInicio" value="@TempData["FechaInicio"]" />
+                            <input type="hidden" name="FechaFin" value="@TempData["FechaFin"]" />
                             @foreach (var item in (TempData["User"] as List<string>))
                             {
                                 <input type="hidden" name="User" value="@item" />
@@ -195,4 +198,26 @@
     </div>
     }
 </div>
+
+<script>
+    var boton = document.getElementById("toggleRango");
+    var resultadoDiv = document.getElementById("resultado");
+
+    resultadoDiv.style.display = "none";
+    boton.classList.add("btn-warning");
+
+    boton.addEventListener("click", function () {
+        if (resultadoDiv.style.display === "none" || resultadoDiv.style.display === "") {
+            resultadoDiv.style.display = "block";
+            boton.textContent = "Ocultar rango de fechas";
+            boton.classList.remove("btn btn-dark");
+            boton.classList.add("btn-primary");  
+        } else {
+            resultadoDiv.style.display = "none";
+            boton.textContent = "Elegir un rango de fechas";
+            boton.classList.remove("btn btn-dark");
+            boton.classList.add("btn btn-dark");
+        }
+    });
+</script>
 

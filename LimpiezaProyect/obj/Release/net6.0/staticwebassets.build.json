@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lyeRJXpoMIPyM5Afi+Dle9NumKOaLqQDI6qoCuBXd+I=",
+  "Hash": "ovHK6kbo9Djleumc4ksw1xEA4N5SWcV/xFaOqGWlbzw=",
   "Source": "LimpiezaProyect",
   "BasePath": "_content/LimpiezaProyect",
   "Mode": "Default",
@@ -35001,6 +35001,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Nelson Molina\\OneDrive\\Escritorio\\VitaAlimentosLimpieza\\LimpiezaProyect\\wwwroot\\img\\Vita.jpg",
+      "SourceId": "LimpiezaProyect",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nelson Molina\\OneDrive\\Escritorio\\VitaAlimentosLimpieza\\LimpiezaProyect\\wwwroot\\",
+      "BasePath": "_content/LimpiezaProyect",
+      "RelativePath": "img/Vita.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Vita.jpg"
     },
     {
       "Identity": "C:\\Users\\Nelson Molina\\OneDrive\\Escritorio\\VitaAlimentosLimpieza\\LimpiezaProyect\\wwwroot\\js\\site.js",
